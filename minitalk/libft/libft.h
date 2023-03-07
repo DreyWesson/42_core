@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:31:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/08 09:07:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:57:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_isprint(int c);
 int		ft_atoi(const char* str);
 void	ft_bzero(void* s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putstrnbr_fd(char* str, int nbr);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char* s, int fd);
 void	ft_putendl_fd(char* s, int fd);

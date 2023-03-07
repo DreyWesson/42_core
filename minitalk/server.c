@@ -6,62 +6,57 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 06:23:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/02 12:17:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:43:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static t_server	g_server;
-
-/* Launching of the server and variables initialization */
-void	ft_init(void)
+void init(siginfo_t* info, void* context, int* pid)
 {
-	pid_t	pid;
-
-	g_server.bit = 8;
-	g_server.c = 0;
-	pid = getpid();
-	printf("Server PID -> %u\n", pid);
-	printf("Data sent from server -> \n");
+	(void)context;
+	(void)info;
+	if (*pid == 0)
+		*pid = info->si_pid;
 }
-
-/* Handle and decode the SIGUSR2 signals */
-void	ft_handler0(int signal)
+void	serverinfo(int signum, siginfo_t* info, void* context)
 {
-	(void)signal;
-	g_server.bit--;
-	g_server.c += (0 << g_server.bit);
-	if (g_server.bit == 0)
-	{
-		ft_putchar_fd(g_server.c, 1);
-		g_server.bit = 8;
-		g_server.c = 0;
-	}
-}
+	static int		pid;
+	static char		c;
+	static int		i;
 
-/* Handle and decode the SIGUSR2 signals */
-void	ft_handler1(int signal)
-{
-	(void)signal;
-	g_server.bit--;
-	g_server.c += (1 << g_server.bit);
-	if (g_server.bit == 0)
+	init(info, context, &pid);
+	if (signum == SIGUSR1)
+		c = (c << 1) | 1;
+	else if (signum == SIGUSR2)
+		c <<= 1;
+	if (++i == 8)
 	{
-		ft_putchar_fd(g_server.c, 1);
-		g_server.bit = 8;
-		g_server.c = 0;
+		i = 0;
+		if (!c)
+		{
+			kill(pid, SIGUSR1);
+			pid = 0;
+			return;
+		}
+		write(1, &c, 1);
+		c = 0;
 	}
+	kill(pid, SIGUSR2);
+	return;
 }
 
 int	main(void)
 {
-	ft_init();
+	struct sigaction	sa;
+
+	sigemptyset(&sa.sa_mask); // Empty s_maskThe sa_mask variable is a variable that contains signals to be blocked while processing them. A signal block is an operation method that reserves the signal set in sa_mask to the operating system to be processed later. Therefore, if the signals in the sa_mask variable are emptied through the sigemptyset() function, all signals are not blocked.
+	ft_putstrnbr_fd("Server PID: ", getpid());
+	sa.sa_sigaction = serverinfo;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
-		signal(SIGUSR1, ft_handler0);
-		signal(SIGUSR2, ft_handler1);
-		pause();
-	}
+		pause(); // pause() function is converted to a standby state until a signal is received. We need the pause function because we need to continuously receive bits.
 	return (0);
 }

@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstrnbr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 20:15:35 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:58 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/02 16:51:14 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/02 17:13:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINITALK_H
-# define FT_MINITALK_H
+#include "libft.h"
 
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <signal.h>
-#include <stdio.h>
-#include <sys/types.h>
-
-typedef struct s_server
+void	ft_putstrnbr_fd(char* str, int nbr)
 {
-	char	c;
-	int		bit;
-	pid_t	old_pid;
-} t_server;
-
-#endif
+	ft_putstr_fd(str, 1);
+	ft_putnbr_fd(nbr, 1);
+	ft_putchar_fd('\n', 1);
+}
