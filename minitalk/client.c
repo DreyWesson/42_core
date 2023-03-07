@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 08:38:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/05 08:29:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:26:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,25 @@ void	sig_handler(int n)
 
 int	conversion(char c, int pid)
 {
-	int	n;
+	int	itr;
 	int	bit_index;
 
 	bit_index = 7;
 	while (bit_index >= 0)
 	{
-		n = 0;
-		// if (c & (1 << bit_index)) // converts each char -> binary
+		itr = 0;
 		if ((c >> bit_index) & 1) // converts each char -> binary
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
 		while (g_receiver == 0) // handles no response from server
 		{
-			if (n == 42)
+			if (itr == 42)
 			{
 				write(1, "No response from server.\n", 26);
 				exit(1);
 			}
-			n++;
+			itr++;
 			usleep(100); // A bit of delay is required because the //kill function will send a repetitive signal to the server unilaterally.
 		}
 		g_receiver = 0;
@@ -70,21 +69,20 @@ int	conversion(char c, int pid)
 
 int	main(int argc, char* argv[])
 {
-	int		byte_index;
-	int	n;
+	int	byte_index;
+	int	pid;
 
 	if (argc != 3)
 	{
-		// write(1, "too few args!\n", 14);
 		ft_putstrnbr_fd("You need to pass 2 args but u passed ", argc - 1);
 		return (1);
 	}
 	byte_index = 0;
-	n = ft_atoi(argv[1]); // convert pid from str->num
+	pid = ft_atoi(argv[1]); // convert pid from str->num
 	signal(SIGUSR1, sig_handler);
 	signal(SIGUSR2, sig_handler);
 	while (argv[2][byte_index])
-		conversion(argv[2][byte_index++], n);
-	conversion(0, n); // handles multiple calls
+		conversion(argv[2][byte_index++], pid);
+	conversion('\0', pid); // handles multiple calls
 	return (0);
 }
