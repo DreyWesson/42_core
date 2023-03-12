@@ -260,3 +260,4 @@ After that, once you convert 9760 to binary, it is 0010 0110 0010 0000.
 And buf = (unicode >> 12 & 15) | 224; In part, 12 is moved through shift operation to become 1000 1000 0000 1001 and initialized to 0000 1001 through and operation.And finally, 1110 1001 is output through the OR operation that adds fixed bits.
 
 And since the remaining 2 bytes use only 6 bits each except for the operation of shift operation, it is initialized through 63 and and operation, and a fixed bit is added through 128 and or operation to be output.
+

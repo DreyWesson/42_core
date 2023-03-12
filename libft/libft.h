@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:31:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/08 09:07:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:11:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	ft_lstiter(t_list* lst, void (*f)(void*));
 void	ft_lstdelone(t_list* lst, void (*del)(void*));
 void	ft_lstclear(t_list** lst, void (*del)(void*));
 t_list* ft_lstmap(t_list* lst, void* (*f)(void*), void (*del)(void*));
+int	bin_to_char(int** ptr);
+int** char_to_bin(char* str);
 
 
 #endif

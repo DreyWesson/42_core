@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 08:38:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/07 15:26:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:57:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,28 @@
  * https://velog.io/tags/minitalk
  * https://linuxhint.com/signal_handlers_c_programming_language/
  * https://stackoverflow.com/questions/231912/what-is-the-difference-between-sigaction-and-signal
+ * cat ./text.txt|xargs -0 ./client 44545
 */
 
 #include "minitalk.h"
 
 static int	g_receiver;
 
-void	sig_handler(int n)
+void	sig_handler(int n, siginfo_t* info, void* context)
 {
 	static int	i;
 
+	(void)context;
+	(void)info;
+	(void)n;
 	g_receiver = 1;
 	if (n == SIGUSR2)
 		i++;
-	if (n == SIGUSR1)
+	else if (n == SIGUSR1)
 	{
 		ft_putstrnbr_fd("Num of bytes received ->", i / 8);
 		exit(0);
 	}
-	return;
 }
 
 int	conversion(char c, int pid)
@@ -47,19 +50,19 @@ int	conversion(char c, int pid)
 	while (bit_index >= 0)
 	{
 		itr = 0;
-		if ((c >> bit_index) & 1) // converts each char -> binary
+		if ((c >> bit_index) & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		while (g_receiver == 0) // handles no response from server
+		while (g_receiver == 0)
 		{
-			if (itr == 42)
+			if (itr == 50)
 			{
 				write(1, "No response from server.\n", 26);
 				exit(1);
 			}
 			itr++;
-			usleep(100); // A bit of delay is required because the //kill function will send a repetitive signal to the server unilaterally.
+			usleep(100);
 		}
 		g_receiver = 0;
 		bit_index--;
@@ -69,8 +72,10 @@ int	conversion(char c, int pid)
 
 int	main(int argc, char* argv[])
 {
-	int	byte_index;
-	int	pid;
+	struct sigaction	sa;
+	int					byte_index;
+	int					pid;
+
 
 	if (argc != 3)
 	{
@@ -78,11 +83,17 @@ int	main(int argc, char* argv[])
 		return (1);
 	}
 	byte_index = 0;
-	pid = ft_atoi(argv[1]); // convert pid from str->num
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
+	pid = ft_atoi(argv[1]);
+	ft_memset(&sa, 0, sizeof(sa));
+	sa.sa_sigaction = sig_handler;
+	sa.sa_flags = SA_RESTART | SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		ft_putstr_fd("Error sigaction\n", 1);
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+		ft_putstr_fd("Error sigaction\n", 1);
 	while (argv[2][byte_index])
 		conversion(argv[2][byte_index++], pid);
-	conversion('\0', pid); // handles multiple calls
+	conversion('\0', pid);
 	return (0);
 }
