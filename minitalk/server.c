@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 06:23:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/07 20:19:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:49:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	sig_handler(int signum, siginfo_t* info, void* context)
 			pid = 0;
 			return;
 		}
-		write(1, &c, 1);
+		ft_putchar_fd(c, 1);
 		c = 0;
 	}
 	kill(pid, SIGUSR2);
-	return;
+
 }
 
 int	main(void)

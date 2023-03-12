@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 08:38:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/12 12:57:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:54:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void	sig_handler(int n, siginfo_t* info, void* context)
 	if (n == SIGUSR2)
 		i++;
 	else if (n == SIGUSR1)
-	{
-		ft_putstrnbr_fd("Num of bytes received ->", i / 8);
-		exit(0);
-	}
+		ft_putstrnbr_fd("Num of bytes received -> ", i / 8);
 }
 
 int	conversion(char c, int pid)
@@ -58,7 +55,7 @@ int	conversion(char c, int pid)
 		{
 			if (itr == 50)
 			{
-				write(1, "No response from server.\n", 26);
+				ft_putendl_fd("No response from server.", 1);
 				exit(1);
 			}
 			itr++;
