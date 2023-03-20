@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	char c[5] = "Dare";
-	ft_printf("%d\n", (int)ft_strlen(c));
+	char c[2] = "H";
+	bin_to_char(char_to_bin(c));
 	return (0);
 }

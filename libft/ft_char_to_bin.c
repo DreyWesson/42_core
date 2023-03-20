@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:08:47 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/11 16:10:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/19 10:24:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int** char_to_bin(char* str)
 		i = 0;
 		while (bit_index >= 0) {
 			ptr[byte_index][i++] = (str[byte_index] >> bit_index) & 1;
-			// printf("-> %d\n", (str[byte_index] >> bit_index));
+			// ft_printf("%d -> %d\n", (str[byte_index] >> bit_index), (str[byte_index] >> bit_index) & 1);
 			bit_index--;
 		}
+		// ft_printf("\n");
 		byte_index++;
 	}
 	return (ptr);

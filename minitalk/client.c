@@ -6,25 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 08:38:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/12 13:54:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/19 11:35:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-/**
- * https://www.thegeekstuff.com/2012/03/linux-signals-fundamentals/
- * https://www.thegeekstuff.com/2012/03/catch-signals-sample-c-code/
- * https://velog.io/tags/minitalk
- * https://linuxhint.com/signal_handlers_c_programming_language/
- * https://stackoverflow.com/questions/231912/what-is-the-difference-between-sigaction-and-signal
- * cat ./text.txt|xargs -0 ./client 44545
-*/
 
 #include "minitalk.h"
 
 static int	g_receiver;
 
-void	sig_handler(int n, siginfo_t* info, void* context)
+void	sig_handler(int n, siginfo_t *info, void *context)
 {
 	static int	i;
 
@@ -38,7 +28,7 @@ void	sig_handler(int n, siginfo_t* info, void* context)
 		ft_putstrnbr_fd("Num of bytes received -> ", i / 8);
 }
 
-int	conversion(char c, int pid)
+int	ft_char_to_bin(char c, int pid)
 {
 	int	itr;
 	int	bit_index;
@@ -67,12 +57,11 @@ int	conversion(char c, int pid)
 	return (0);
 }
 
-int	main(int argc, char* argv[])
+int	main(int argc, char *argv[])
 {
 	struct sigaction	sa;
 	int					byte_index;
 	int					pid;
-
 
 	if (argc != 3)
 	{
@@ -81,16 +70,15 @@ int	main(int argc, char* argv[])
 	}
 	byte_index = 0;
 	pid = ft_atoi(argv[1]);
-	ft_memset(&sa, 0, sizeof(sa));
-	sa.sa_sigaction = sig_handler;
-	sa.sa_flags = SA_RESTART | SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART | SA_SIGINFO;
+	sa.sa_sigaction = sig_handler;
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 		ft_putstr_fd("Error sigaction\n", 1);
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 		ft_putstr_fd("Error sigaction\n", 1);
 	while (argv[2][byte_index])
-		conversion(argv[2][byte_index++], pid);
-	conversion('\0', pid);
+		ft_char_to_bin(argv[2][byte_index++], pid);
+	ft_char_to_bin('\0', pid);
 	return (0);
 }

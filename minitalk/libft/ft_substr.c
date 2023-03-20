@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 06:08:41 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/11 01:31:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/19 02:57:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@
 // 	ft_memmove(str, s + start, len);
 // 	return (str);
 // }
-char* ft_substr(char const* s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char* str;
+	char	*str;
 
 	if (!s)
 		return (NULL);
 	if (ft_strlen(s) < start)
 	{
-		str = (char*)malloc(sizeof(*s));
+		str = (char *)malloc(sizeof(*s));
 		str[0] = '\0';
 		return (str);
 	}
@@ -45,7 +45,7 @@ char* ft_substr(char const* s, unsigned int start, size_t len)
 		len = 0;
 	if (ft_strlen(s + start) < len)
 		len = ft_strlen(s + start);
-	str = (char*)malloc(len + 1);
+	str = (char *)malloc(len + 1);
 	if (!str)
 	{
 		return (NULL);
@@ -56,6 +56,6 @@ char* ft_substr(char const* s, unsigned int start, size_t len)
 
 // int	main(void)
 // {
-// 	printf("%s\n", ft_substr("hola", 2, 2));
+// 	ft_printf("%s\n", ft_substr("hola", 2, 2));
 // 	return (0);
 // }

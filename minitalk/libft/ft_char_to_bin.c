@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtox.c                                          :+:      :+:    :+:   */
+/*   ft_char_to_bin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 19:02:35 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/19 02:53:48 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/11 16:08:47 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:43:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_dtox(unsigned long n, char val)
+int	**char_to_bin(char *str)
 {
-	char			*ptr;
-	int				len;
-	unsigned long	rem;
-	int				j;
+	int	**ptr;
+	int	byte_index;
+	int	bit_index;
+	int	i;
 
-	j = 0;
-	len = ft_nbrlen_lng(n);
-	ptr = ft_calloc(len + 1, sizeof(char));
-	ptr[len] = '\0';
+	byte_index = ft_strlen(str);
+	ptr = calloc(byte_index + 1, sizeof(int *));
 	if (!ptr)
 		return (NULL);
-	while (n != 0)
+	byte_index = 0;
+	while (str[byte_index])
 	{
-		rem = n % 16;
-		if (rem < 10)
-			ptr[j++] = 48 + rem;
-		if (rem >= 10 && val != 'X')
-			ptr[j++] = 87 + rem;
-		else if (rem >= 10 && val == 'X')
-			ptr[j++] = 55 + rem;
-		n /= 16;
+		ptr[byte_index] = calloc(sizeof(int), 8);
+		if (!ptr[byte_index])
+			return (NULL);
+		bit_index = 7;
+		i = 0;
+		while (bit_index >= 0)
+		{
+			ptr[byte_index][i++] = (str[byte_index] >> bit_index) & 1;
+			bit_index--;
+		}
+		byte_index++;
 	}
-	ft_strrev(ptr);
 	return (ptr);
 }

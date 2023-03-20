@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   int.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/26 13:02:20 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:54:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	convert_char(va_list* args)
+int	convert_int(va_list *args)
 {
-	char	i;
+	int			val;
+	int			ret;
+	const char	*ptr;
 
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	ret = 0;
+	val = va_arg(*args, int);
+	ptr = (const char *)ft_itoa(val);
+	ret += ft_putstr((char *)ptr);
+	free((void *)ptr);
+	return (ret);
 }

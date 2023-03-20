@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/26 15:28:47 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:55:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
-int	convert_char(va_list* args)
+int	ft_putstr(char *str)
 {
-	char	i;
+	int	ret;
+	int	i;
 
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	ret = 0;
+	i = -1;
+	while (str[++i])
+		ret += ft_putchar(str[i]);
+	return (ret);
 }

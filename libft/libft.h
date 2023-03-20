@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:31:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/11 16:11:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:56:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 typedef struct s_list {
 	void* content;
@@ -31,8 +32,11 @@ int		ft_isprint(int c);
 int		ft_atoi(const char* str);
 void	ft_bzero(void* s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
+int		ft_putchar(int c);
 void	ft_putchar_fd(char c, int fd);
+int		ft_putstr(char* str);
 void	ft_putstr_fd(char* s, int fd);
+void	ft_putstrnbr_fd(char* str, int nbr);
 void	ft_putendl_fd(char* s, int fd);
 int		ft_memcmp(const void* s1, const void* s2, size_t n);
 void	ft_striteri(char* s, void (*f)(unsigned int, char*));
@@ -56,15 +60,6 @@ char* ft_substr(char const* s, unsigned int start, size_t len);
 char* ft_strmapi(char const* s, char (*f)(unsigned int, char));
 char* ft_strnstr(const char* haystack, const char* needle, size_t size);
 /*
-* Printf
-*/
-char* ft_strrev(char* ptr);
-char* ft_dtox(unsigned long n, char val);
-int		ft_nbrlen(int n);
-int		ft_nbrlen_uns(unsigned int n);
-int		ft_nbrlen_lng(unsigned long n);
-char* ft_utoa(unsigned int n);
-/*
 * Linked list
 */
 int		ft_lstsize(t_list* lst);
@@ -78,6 +73,24 @@ void	ft_lstclear(t_list** lst, void (*del)(void*));
 t_list* ft_lstmap(t_list* lst, void* (*f)(void*), void (*del)(void*));
 int	bin_to_char(int** ptr);
 int** char_to_bin(char* str);
-
+/*
+** PRINTF FUNCTIONS
+*/
+char* ft_strrev(char* ptr);
+char* ft_dtox(unsigned long n, char val);
+int		ft_nbrlen(int n);
+int		ft_nbrlen_uns(unsigned int n);
+int		ft_nbrlen_lng(unsigned long n);
+char* ft_utoa(unsigned int n);
+int		convert_char(va_list* args);
+int		convert_str(va_list* args);
+int		convert_int(va_list* args);
+int		convert_ptr(va_list* args, char val);
+int		convert_xes(va_list* args, char val);
+int		convert_u(va_list* args);
+int		is_valid_format(const char* format);
+int		ft_converter(char val, va_list* args);
+int		str_validator(const char* format);
+int		ft_printf(const char* format, ...);
 
 #endif

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   xes.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/31 12:10:37 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:54:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	convert_char(va_list* args)
+int	convert_xes(va_list *args, char val)
 {
-	char	i;
+	unsigned int	ptr;
+	int				ret;
+	char			*c;
 
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	ret = 0;
+	ptr = va_arg(*args, unsigned int);
+	if (ptr == 0)
+		return (ft_putchar('0'));
+	c = ft_dtox(ptr, val);
+	ret += ft_putstr(c);
+	free(c);
+	return (ret);
 }

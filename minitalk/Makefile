@@ -6,39 +6,32 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/01 20:17:29 by doduwole          #+#    #+#              #
-#    Updated: 2023/03/02 17:00:52 by doduwole         ###   ########.fr        #
+#    Updated: 2023/03/19 08:29:02 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-SOURCES = server.c client.c
-OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all: server client
 
-# bonus: server client
+bonus: server client
 
-server: server.o libft
-	$(CC) -o $@ $< -Llibft -lft
+server: server.c libft.a
+	@$(CC) $(CFLAGS) server.c libft/libft.a -o server
 
-client: client.o libft
-	$(CC) -o $@ $< -Llibft -lft
+client: client.c libft.a
+	@$(CC) $(CFLAGS) client.c libft/libft.a -o client
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
-
-libft:
-	make -C libft
+libft.a:
+	make all -C ./libft
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
+	make clean -C libft/
 	
-fclean: clean
-	rm -f server client libft/libft.a
+fclean: 
+	@rm -f server
+	@rm -f client
+	@make fclean -C libft
 
 re: fclean all
-
-.PHONY: all libft clean fclean re

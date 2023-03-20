@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:16:11 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/08 09:10:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/19 02:56:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char* ft_strrev(char* ptr)
+char	*ft_strrev(char *ptr)
 {
 	int	i;
 	int	len;

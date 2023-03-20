@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 06:08:41 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/11 01:31:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:27:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ char* ft_substr(char const* s, unsigned int start, size_t len)
 
 // int	main(void)
 // {
-// 	printf("%s\n", ft_substr("hola", 2, 2));
+// 	ft_printf("%s\n", ft_substr("hola", 2, 2));
 // 	return (0);
 // }

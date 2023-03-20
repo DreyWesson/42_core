@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   ft_converter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/27 19:18:41 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:39:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	convert_char(va_list* args)
+int	ft_converter(char val, va_list *args)
 {
-	char	i;
+	int		i;
 
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	i = 0;
+	if (val == 'c')
+		i = convert_char(args);
+	else if (val == 's')
+		i = convert_str(args);
+	else if (val == 'i' || val == 'd')
+		i = convert_int(args);
+	else if (val == 'p')
+		i = convert_ptr(args, val);
+	else if (val == 'x' || val == 'X')
+		i = convert_xes(args, val);
+	else if (val == 'u')
+		i = convert_u(args);
+	else if (val == '%')
+		i = ft_putchar(val);
+	return (i);
 }

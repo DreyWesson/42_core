@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   ptr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/26 15:47:24 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/19 02:39:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	convert_char(va_list* args)
+int	convert_ptr(va_list *args, char val)
 {
-	char	i;
+	unsigned long	ptr;
+	int				ret;
+	char			*c;
 
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	ret = 0;
+	ptr = va_arg(*args, unsigned long);
+	ret += ft_putstr("0x");
+	if (ptr == 0)
+		return (ft_putchar('0') + ret);
+	c = ft_dtox(ptr, val);
+	ret += ft_putstr(c);
+	free(c);
+	return (ret);
 }

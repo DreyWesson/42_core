@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   ft_putstrnbr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 06:51:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:13 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/02 16:51:14 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/02 17:13:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
-int	convert_char(va_list* args)
+void	ft_putstrnbr_fd(char* str, int nbr)
 {
-	char	i;
-
-	i = (char)va_arg(*args, int);
-	return (ft_putchar(i));
+	ft_putstr_fd(str, 1);
+	ft_putnbr_fd(nbr, 1);
+	ft_putchar_fd('\n', 1);
 }

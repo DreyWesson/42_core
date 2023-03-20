@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:35:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/01/13 09:09:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:45:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	ft_toupper(int c)
 
 // int	main(void)
 // {
-// 	printf("%c", ft_toupper('a'));
+// 	ft_printf("%c", ft_toupper('a'));
 // 	return (0);
 // }
