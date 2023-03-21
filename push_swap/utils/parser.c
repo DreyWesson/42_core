@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 20:48:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 21:53:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,47 @@ void	add_node_tail(t_node** lst, t_node* new)
 	else
 		*lst = new;
 }
+// void ft_print_nodes(t_node* head)
+// {
+// 	if (!head)
+// 		return;
+// 	while (head)
+// 	{
+// 		ft_printf("%d\n", head->content);
+// 		head = head->next;
+// 	}
+// }
+
+long	ft_atoi_lg(const char* str)
+{
+	long	i;
+	long	nbr;
+	int		is_neg;
+
+	i = 0;
+	nbr = 0;
+	is_neg = 0;
+	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
+		i++;
+	if (str[i] != '\0' && str[i] == '-')
+		is_neg = 1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	{
+		nbr = (nbr * 10) + (str[i] - '0');
+		i++;
+	}
+	if (is_neg == 1)
+		return (-nbr);
+	return (nbr);
+}
 
 int	ft_parser(char* str, t_node* head)
 {
 	int	i;
+	long nbr;
 
 	i = 0;
 	if (ft_strchr("+-", str[i]))
@@ -63,7 +100,10 @@ int	ft_parser(char* str, t_node* head)
 			return (0);
 		i++;
 	}
-	ft_printf("<%d>\n", ft_atoi(str));
-	add_node_tail(&head, create_list(ft_atoi(str)));
+	nbr = ft_atoi_lg(str);
+	if (nbr < -2147483648 || nbr > 2147483647)
+		return (0);
+	add_node_tail(&head, create_list(nbr));
+
 	return (1);
 }
