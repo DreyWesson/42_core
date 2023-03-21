@@ -3,5 +3,13 @@
 		"*.ejs": "html",
 		"minitalk.h": "c",
 		"libft.h": "c"
-	}
+	},
+	"cSpell.words": [
+		"lstadd",
+		"lstiter",
+		"lstnew",
+		"lstprint",
+		"lstsize",
+		"pushswap"
+	]
 }

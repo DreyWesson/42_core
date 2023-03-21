@@ -6,32 +6,41 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/01 20:17:29 by doduwole          #+#    #+#              #
-#    Updated: 2023/03/19 08:29:02 by doduwole         ###   ########.fr        #
+#    Updated: 2023/03/21 04:41:19 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+NAME = server client
 
-all: server client
+SRCS = *.c
 
-bonus: server client
+LIBFTDIR = ./libft/
+LIBFT = ./libft/libft.a
 
-server: server.c libft.a
-	@$(CC) $(CFLAGS) server.c libft/libft.a -o server
+RM = rm -rf
 
-client: client.c libft.a
-	@$(CC) $(CFLAGS) client.c libft/libft.a -o client
+all: ${NAME}
 
-libft.a:
-	make all -C ./libft
+bonus: ${NAME}
 
-clean:
-	make clean -C libft/
-	
-fclean: 
-	@rm -f server
-	@rm -f client
-	@make fclean -C libft
+server: server.c ${LIBFT}
+	@$(CC) $(CFLAGS) server.c ${LIBFT} -o server
+
+client: client.c ${LIBFT}
+	@$(CC) $(CFLAGS) client.c ${LIBFT} -o client
+
+${LIBFT}:
+	@make all -C ${LIBFTDIR}
+	@make clean -C ${LIBFTDIR}
+
+clean: 
+	@${MAKE} -C ./libft fclean
+
+fclean: clean
+	@${RM} ${NAME}
 
 re: fclean all
+
+.PHONY: all clean fclean re

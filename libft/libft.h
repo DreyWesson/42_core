@@ -6,12 +6,16 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:31:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/16 12:56:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 05:54:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,6 +35,7 @@ int		ft_toupper(int c);
 int		ft_isprint(int c);
 int		ft_atoi(const char* str);
 void	ft_bzero(void* s, size_t n);
+int		ft_perror(char* str);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_putchar(int c);
 void	ft_putchar_fd(char c, int fd);
@@ -92,5 +97,10 @@ int		is_valid_format(const char* format);
 int		ft_converter(char val, va_list* args);
 int		str_validator(const char* format);
 int		ft_printf(const char* format, ...);
+/*
+** GET_NEXT_LINE FUNCTIONS
+*/
+char	*get_next_line(int fd);
+char	*get_next_line_bn(int fd);
 
 #endif
