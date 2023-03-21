@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 21:53:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:34:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_print_nodes(t_node* head)
 		return;
 	while (head)
 	{
-		ft_printf("%d\n", head->content);
+		ft_printf("content: %d, index: %d\n", head->content, head->index);
 		head = head->next;
 	}
 	// check for duplicates
@@ -45,8 +45,10 @@ int	main(int argc, char** argv)
 {
 	int		i;
 	t_node* head;
+	int idx;
 
 	i = 1;
+	idx = -1;
 	if (argc < 3)
 	{
 		ft_perror("Error\n");
@@ -55,7 +57,7 @@ int	main(int argc, char** argv)
 	head = malloc(sizeof(t_node*));
 	while (i < argc)
 	{
-		if (!ft_parser(argv[i], head))
+		if (!ft_parser(argv[i], head, &idx))
 		{
 			ft_perror("Error\n");
 			return (0);

@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 21:53:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:38:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node* create_list(int content)
+t_node* create_list(int content, int idx)
 {
 	t_node* head;
 
@@ -21,6 +21,7 @@ t_node* create_list(int content)
 		return (NULL);
 	head->content = content;
 	head->next = NULL;
+	head->index = idx;
 	return (head);
 }
 
@@ -49,16 +50,6 @@ void	add_node_tail(t_node** lst, t_node* new)
 	else
 		*lst = new;
 }
-// void ft_print_nodes(t_node* head)
-// {
-// 	if (!head)
-// 		return;
-// 	while (head)
-// 	{
-// 		ft_printf("%d\n", head->content);
-// 		head = head->next;
-// 	}
-// }
 
 long	ft_atoi_lg(const char* str)
 {
@@ -86,7 +77,7 @@ long	ft_atoi_lg(const char* str)
 	return (nbr);
 }
 
-int	ft_parser(char* str, t_node* head)
+int	ft_parser(char* str, t_node* head, int* idx)
 {
 	int	i;
 	long nbr;
@@ -103,7 +94,7 @@ int	ft_parser(char* str, t_node* head)
 	nbr = ft_atoi_lg(str);
 	if (nbr < -2147483648 || nbr > 2147483647)
 		return (0);
-	add_node_tail(&head, create_list(nbr));
-
+	*idx += 1;
+	add_node_tail(&head, create_list(nbr, *idx));
 	return (1);
 }
