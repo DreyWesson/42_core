@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 18:16:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:36:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+typedef struct s_node {
+	int content;
+	struct s_node* next;
+}	t_node;
 
-// int	ft_parser(char* str, int* ptr, int* pos);
-int	ft_parser(char* str, t_list* head);
+
+int	ft_parser(char* str, t_node* head);
 
 #endif

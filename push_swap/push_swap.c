@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 18:18:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:50:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,21 @@
 // [💀] smallest num at the top
 // [💀] separate instructions by a '\n'
 
-// int	main(int argc, char** argv)
-// {
-// 	int		i;
-// 	int* ptr;
-// 	int pos;
-// 	i = 1;
-// 	pos = 0;
-// 	if (argc < 3)
-// 	{
-// 		ft_perror("Error\n");
-// 		return (0);
-// 	}
-// 	ptr = ft_calloc(sizeof(int), (argc - 1));
-// 	while (i < argc)
-// 	{
-// 		if (!ft_parser(argv[i], ptr, &pos))
-// 		{
-// 			ft_perror("Error\n");
-// 			return (0);
-// 		};
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < (argc - 1))
-// 	{
-// 		ft_printf("%d ", ptr[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+void ft_printnodes(t_node* head)
+{
+	if (!head)
+		return;
+	while (head)
+	{
+		ft_printf("%d\n", head->content);
+		head = head->next;
+	}
 
-
+}
 int	main(int argc, char** argv)
 {
 	int		i;
-	t_list* head;
-	int* ptr;
+	t_node* head;
 
 	i = 1;
 	if (argc < 3)
@@ -73,7 +51,7 @@ int	main(int argc, char** argv)
 		ft_perror("Error\n");
 		return (0);
 	}
-	head = (t_list*)ft_calloc(sizeof(t_list*), (argc - 2));
+	head = (t_node*)malloc(sizeof(t_node));
 	while (i < argc)
 	{
 		if (!ft_parser(argv[i], head))
@@ -83,7 +61,6 @@ int	main(int argc, char** argv)
 		}
 		i++;
 	}
-	ptr = head->next->content;
-	ft_printf("%d\n", *ptr);
+	ft_printnodes(head);
 	return (0);
 }
