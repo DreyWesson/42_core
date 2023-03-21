@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/20 16:10:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:29:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ t_list* delete_node(t_list* head, int idx)
 		rest_node = target_node->next->next;
 		target_node->next = rest_node;
 	}
-
-
-
 	MAX--;
 	return (head);
 }
@@ -135,8 +132,8 @@ t_list* bubble_sort(t_list* head)
 
 t_list* insertion_sort(t_list* head)
 {
-	t_list	*current_node;
-	t_list	*iterator_node;
+	t_list* current_node;
+	t_list* iterator_node;
 	int		tmp_val;
 
 	current_node = head;
@@ -145,8 +142,8 @@ t_list* insertion_sort(t_list* head)
 		iterator_node = head;
 		while (iterator_node)
 		{
-			iterator_node = 
-			iterator_node = iterator_node->next;
+			iterator_node =
+				iterator_node = iterator_node->next;
 		}
 		current_node = current_node->next;
 	}

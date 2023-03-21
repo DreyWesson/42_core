@@ -6,13 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 13:14:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:31:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// t_list *head;
 
 // void	ft_lstprint(void *ptr)
 // {
@@ -30,36 +29,60 @@
 // [💀] smallest num at the top
 // [💀] separate instructions by a '\n'
 
+// int	main(int argc, char** argv)
+// {
+// 	int		i;
+// 	int* ptr;
+// 	int pos;
+// 	i = 1;
+// 	pos = 0;
+// 	if (argc < 3)
+// 	{
+// 		ft_perror("Error\n");
+// 		return (0);
+// 	}
+// 	ptr = ft_calloc(sizeof(int), (argc - 1));
+// 	while (i < argc)
+// 	{
+// 		if (!ft_parser(argv[i], ptr, &pos))
+// 		{
+// 			ft_perror("Error\n");
+// 			return (0);
+// 		};
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (i < (argc - 1))
+// 	{
+// 		ft_printf("%d ", ptr[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
 
 int	main(int argc, char** argv)
 {
 	int		i;
-	int* ptr;
-	int pos;
+	t_list** head;
 
+	head = malloc(sizeof(int));
 	i = 1;
-	pos = 0;
 	if (argc < 3)
 	{
 		ft_perror("Error\n");
 		return (0);
 	}
-	ptr = ft_calloc(sizeof(int), (argc - 1));
 	while (i < argc)
 	{
-		// compare string here
-		if (!ft_parser(argv[i], ptr, &pos))
+		if (!ft_parser(argv[i], head))
 		{
 			ft_perror("Error\n");
 			return (0);
 		};
 		i++;
 	}
-	i = 0;
-	while (i < (argc - 1))
-	{
-		ft_printf("%d ", ptr[i]);
-		i++;
-	}
+	ft_printf("%d\n", (*head)->content);
+
 	return (0);
 }

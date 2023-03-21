@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 13:12:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:34:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 
-int	ft_parser(char* str, int* ptr, int* pos);
+// int	ft_parser(char* str, int* ptr, int* pos);
+int	ft_parser(char* str, t_list** stack_a);
 
 #endif
