@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 17:31:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:18:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,26 @@
 int	main(int argc, char** argv)
 {
 	int		i;
-	t_list** head;
+	t_list* head;
+	int* ptr;
 
-	head = malloc(sizeof(int));
 	i = 1;
 	if (argc < 3)
 	{
 		ft_perror("Error\n");
 		return (0);
 	}
+	head = (t_list*)ft_calloc(sizeof(t_list*), (argc - 2));
 	while (i < argc)
 	{
 		if (!ft_parser(argv[i], head))
 		{
 			ft_perror("Error\n");
 			return (0);
-		};
+		}
 		i++;
 	}
-	ft_printf("%d\n", (*head)->content);
-
+	ptr = head->next->content;
+	ft_printf("%d\n", *ptr);
 	return (0);
 }
