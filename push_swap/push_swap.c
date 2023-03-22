@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 00:18:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 00:33:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int	main(int argc, char** argv)
 		ft_perror("Error\n");
 		return (0);
 	}
-	// swap_nodes(stack_a->next, stack_a->next->next);
+	swap_nodes(*stack_a, (*stack_a)->next->next);
 	// push(stack_a, stack_b);
-	// ft_printf("%d\n", (*stack_a)->prev);
+	// ft_printf("%d\n", (*stack_a)->content);
 	ft_print_nodes(stack_a);
 	// ft_print_nodes(stack_b);
 	return (0);
