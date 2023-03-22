@@ -6,12 +6,17 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/21 22:38:16 by doduwole         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/22 12:35:31 by doduwole         ###   ########.fr       */
+>>>>>>> dev
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+<<<<<<< HEAD
 t_node* create_list(int content, int idx)
 {
 	t_node* head;
@@ -76,11 +81,13 @@ long	ft_atoi_lg(const char* str)
 		return (-nbr);
 	return (nbr);
 }
+=======
+>>>>>>> dev
 
 int	ft_parser(char* str, t_node* head, int* idx)
 {
-	int	i;
-	long nbr;
+	int		i;
+	long	nbr;
 
 	i = 0;
 	if (ft_strchr("+-", str[i]))
