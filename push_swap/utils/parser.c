@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 22:50:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 23:17:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_parser(char* str, t_node** head)
 	nbr = ft_atoi_lg(str);
 	if (nbr < -2147483648 || nbr > 2147483647)
 		return (0);
-	add_node_tail(head, create_list(nbr));
+	// add_node_tail(head, create_list(nbr));
+	add_node_head(head, create_list(nbr));
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 22:49:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 23:23:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,8 @@ t_node* ft_last_node(t_node* lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst)
-	{
-		if (!lst->next)
-			return (lst);
+	while (lst->next)
 		lst = lst->next;
-	}
 	return (lst);
 }
 
@@ -72,24 +68,17 @@ void	add_node_tail(t_node** lst, t_node* new)
 	if (*lst)
 	{
 		last_node = ft_last_node(*lst);
-		last_node->next = new;
 		new->prev = last_node;
+		last_node->next = new;
 	}
 	else
-	{
 		*lst = new;
-	}
 }
 
-// void	add_node_head(t_node** lst, t_node* new)
-// {
-// 	t_node* last_node;
-
-// 	if (*lst)
-// 	{
-// 		last_node = ft_last_node(*lst);
-// 		last_node->next = new;
-// 		new->prev = last_node;
-// 	}
-
-// }
+void	add_node_head(t_node** lst, t_node* new_node)
+{
+	new_node->next = *lst;
+	if ((*lst) != NULL)
+		(*lst)->prev = new_node;
+	*lst = new_node;
+}
