@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:54:56 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 00:29:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 00:35:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	swap_nodes(t_node* a, t_node* b)
 	b->content = tmp;
 }
 
-// void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y)
-// {
-// 	swap_nodes(a, b);
-// 	swap_nodes(x, y);
-// }
+void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y)
+{
+	swap_nodes(a, b);
+	swap_nodes(x, y);
+}
 
 // void push(t_node* src, t_node* dest)
 // {
