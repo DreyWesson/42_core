@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 12:56:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:21:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void del_node(t_node** prev_node, t_node* del);
 t_node* create_list(int content);
 t_node* ft_last_node(t_node* lst);
 void	add_node_tail(t_node** lst, t_node* new);
+t_node* del_duplicate_nodes(t_node* head);
 
 #endif
