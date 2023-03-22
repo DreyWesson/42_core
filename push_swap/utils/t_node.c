@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 14:20:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:34:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void ft_print_nodes(t_node* head)
+void	ft_print_nodes(t_node* head)
 {
 	if (!head)
 		return;
@@ -24,7 +24,7 @@ void ft_print_nodes(t_node* head)
 	}
 }
 
-void del_node(t_node** prev_node, t_node* del)
+void	del_node(t_node** prev_node, t_node* del)
 {
 	if (!*prev_node || !del)
 		return;
