@@ -6,21 +6,22 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 16:22:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:49:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_print_nodes(t_node* head)
+void	ft_print_nodes(t_node** head)
 {
+	t_node* tmp;
 	if (!head)
 		return;
-	while (head)
+	tmp = *head;
+	while (tmp)
 	{
-		if (head->prev)
-			ft_printf("%d ", head->content);
-		head = head->next;
+		ft_printf("%d ", tmp->content);
+		tmp = tmp->next;
 	}
 	ft_printf("\n");
 }
@@ -75,5 +76,20 @@ void	add_node_tail(t_node** lst, t_node* new)
 		new->prev = last_node;
 	}
 	else
+	{
 		*lst = new;
+	}
 }
+
+// void	add_node_head(t_node** lst, t_node* new)
+// {
+// 	t_node* last_node;
+
+// 	if (*lst)
+// 	{
+// 		last_node = ft_last_node(*lst);
+// 		last_node->next = new;
+// 		new->prev = last_node;
+// 	}
+
+// }
