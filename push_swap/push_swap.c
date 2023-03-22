@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 12:52:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:57:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ int	main(int argc, char** argv)
 {
 	int		i;
 	t_node* head;
-	int idx;
 
 	i = 1;
-	idx = -1;
 	if (argc < 3)
 	{
 		ft_perror("Error\n");

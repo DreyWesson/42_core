@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 12:49:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:56:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+
 typedef struct s_node {
 	int content;
-	int	index;
 	struct s_node* next;
 	struct s_node* prev;
 }	t_node;

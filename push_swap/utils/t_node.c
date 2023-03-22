@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 12:37:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:58:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_node* create_list(int content)
 	head->content = content;
 	head->next = NULL;
 	head->prev = NULL;
-
 	return (head);
 }
 
