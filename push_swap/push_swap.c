@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 14:54:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:07:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,25 @@ int helper(int argc, char** argv, t_node* head)
 
 int	main(int argc, char** argv)
 {
-	t_node* head;
+	t_node* stack_a;
+	t_node* stack_b;
 
 	if (argc < 3)
 	{
 		ft_perror("Error\n");
 		return (0);
 	}
-	head = (t_node*)malloc(sizeof(t_node));
-	if (!helper(argc, argv, head))
+	stack_a = (t_node*)malloc(sizeof(t_node));
+	stack_b = (t_node*)malloc(sizeof(t_node));
+	(void)stack_b;
+	if (!helper(argc, argv, stack_a))
 	{
 		ft_perror("Error\n");
 		return (0);
 	}
-	ft_print_nodes(head);
-	swap_nodes(head->next, head->next->next);
+	ft_print_nodes(stack_a);
+	swap_nodes(stack_a->next, stack_a->next->next);
 	ft_printf("\n");
-	ft_print_nodes(head);
+	ft_print_nodes(stack_a);
 	return (0);
 }

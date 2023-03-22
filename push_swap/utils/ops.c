@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:54:56 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 15:02:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:05:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y)
 	swap_nodes(a, b);
 	swap_nodes(x, y);
 }
+
 
 // push
 // rotate

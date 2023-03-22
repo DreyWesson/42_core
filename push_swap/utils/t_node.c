@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 14:34:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:19:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void	ft_print_nodes(t_node* head)
 	}
 }
 
-void	del_node(t_node** prev_node, t_node* del)
+t_node* del_node(t_node** prev_node, t_node* del)
 {
 	if (!*prev_node || !del)
-		return;
+		return (NULL);
 	if (*prev_node == del)
 		*prev_node = del->next;
 	if (del->next != NULL)
 		del->next->prev = del->prev;
 	if (del->prev != NULL)
 		del->prev->next = del->next;
-	free(del);
+	return (del);
 }
 
 t_node* create_list(int content)

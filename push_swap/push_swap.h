@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 14:51:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:18:55 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_node {
 int	ft_parser(char* str, t_node* head);
 long	ft_atoi_lg(const char* str);
 void ft_print_nodes(t_node* head);
-void del_node(t_node** prev_node, t_node* del);
+t_node* del_node(t_node** prev_node, t_node* del);
 void	swap_nodes(t_node* a, t_node* b);
 void	add_node_tail(t_node** lst, t_node* new);
 t_node* create_list(int content);
