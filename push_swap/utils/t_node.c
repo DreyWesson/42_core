@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 15:19:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:22:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_print_nodes(t_node* head)
 			ft_printf("%d ", head->content);
 		head = head->next;
 	}
+	ft_printf("\n");
 }
 
 t_node* del_node(t_node** prev_node, t_node* del)
