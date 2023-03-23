@@ -6,21 +6,21 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:17:53 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 15:19:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:25:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node* del_duplicate_nodes(t_node* head)
+t_node* del_duplicate_nodes(t_node* head_ref)
 {
 	t_node* current_node;
 	t_node* iterator_node;
 	t_node* rest_node;
 
-	if (head == NULL || head->next == NULL)
+	if (head_ref == NULL || head_ref->next == NULL)
 		return (NULL);
-	current_node = head;
+	current_node = head_ref;
 	while (current_node)
 	{
 		iterator_node = current_node->next;
@@ -37,5 +37,5 @@ t_node* del_duplicate_nodes(t_node* head)
 		}
 		current_node = current_node->next;
 	}
-	return (head);
+	return (head_ref);
 }

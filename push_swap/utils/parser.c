@@ -6,14 +6,14 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 00:19:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:23:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 
-int	ft_parser(char* str, t_node** head)
+int	ft_parser(char* str, t_node** head_ref)
 {
 	int		i;
 	long	nbr;
@@ -30,7 +30,7 @@ int	ft_parser(char* str, t_node** head)
 	nbr = ft_atoi_lg(str);
 	if (nbr < -2147483648 || nbr > 2147483647)
 		return (0);
-	add_node_tail(head, create_list(nbr));
-	// add_node_head(head, create_list(nbr));
+	add_node_tail(head_ref, create_list(nbr));
+	// add_node_head(head_ref, create_list(nbr));
 	return (1);
 }
