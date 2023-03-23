@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 10:54:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:12:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	add_node_head(t_node** lst, t_node* new);
 /**
  * OPERATIONS
 */
-void push(t_node** src, t_node** dest);
 void	swap_nodes(t_node* a, t_node* b);
+void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y);
+void push(t_node** src, t_node** dest);
 
 #endif

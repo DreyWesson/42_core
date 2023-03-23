@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 10:56:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:19:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ int helper(int argc, char** argv, t_node** head)
 		return (0);
 	return (1);
 }
+void dummystack(t_node** stack)
+{
+	int i = -1;
+	int arr[4] = { 5, 6, 7, 8 };
+	while (++i < 4)
+		add_node_tail(stack, create_list(arr[i]));
+}
 
 int	main(int argc, char** argv)
 {
@@ -48,27 +55,22 @@ int	main(int argc, char** argv)
 	}
 	stack_a = (t_node**)malloc(sizeof(t_node));
 	stack_b = (t_node**)malloc(sizeof(t_node));
-	// *stack_a = NULL;
-	// *stack_b = NULL;
-	// (void)stack_b;
 	if (!helper(argc, argv, stack_a))
 	{
 		ft_perror("Error\n");
 		return (0);
 	}
-	int i = 0;
-	int arr[3] = { 1,2,3 };
-	while (i < 3)
-	{
-		add_node_tail(stack_b, create_list(arr[i]));
-		i++;
-	}
+	dummystack(stack_b);
 
-	// swap_nodes(*stack_a, (*stack_a)->next->next);
-	push(stack_a, stack_b);
+	// push(stack_a, stack_b);
 	ft_print_nodes(stack_a);
 	ft_print_nodes(stack_b);
-	// ft_printf("%d\n", (*stack_a)->prev->content);
-
+	// free here
 	return (0);
 }
+// TEST ACTIONS
+	// swap_nodes(*stack_a, (*stack_a)->next); <= sa
+	// swap_nodes(*stack_b, (*stack_b)->next); <= sb
+	// double_swap(*stack_a, (*stack_a)->next, *stack_b, (*stack_b)->next); <= sa + sb
+	// push(stack_a, stack_b);  <= pa
+	// push(stack_b, stack_a);  <= pb

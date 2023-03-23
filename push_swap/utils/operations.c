@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops.c                                              :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:54:56 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 10:56:28 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:09:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,20 @@ void push(t_node** src, t_node** dest)
 
 	deleted_node = del_node(src, *src);
 	deleted_content = deleted_node->content;
-	// free(deleted_node);
-	// add_node_tail(dest, create_list(deleted_content));
+	free(deleted_node);
 	add_node_head(dest, create_list(deleted_content));
 }
-// push
+
+// void double_push(t_node** src, t_node** dest)
+// {
+
+// }
+
 // rotate
+// void rotate()
+// {
+
+// }
 // double rotate
 // reverse rotate
 // double reverse rotate
