@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:02:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:28:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	main(int argc, char** argv)
 		return (0);
 	}
 	dummystack(stack_b);
-	double_rotate(stack_a, stack_b);
 	ft_print_nodes(stack_a);
 	ft_print_nodes(stack_b);
 	// free here
@@ -75,3 +74,6 @@ int	main(int argc, char** argv)
 	// push(stack_b, stack_a);  <= pb
 	// rotate(stack_a); <= ra
 	// rotate(stack_b); <= rb
+	// double_rotate(stack_a, stack_b);
+	// reverse_rotate(stack_a);
+	// double_reverse(stack_a, stack_b);
