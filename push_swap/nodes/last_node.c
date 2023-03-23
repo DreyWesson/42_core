@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   last_node.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:44:08 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/23 13:39:08 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/23 13:39:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-int	ft_parser(char* str, t_node** head_ref)
+t_node* ft_last_node(t_node* head_ref)
 {
-	int		i;
-	long	nbr;
-
-	i = 0;
-	if (ft_strchr("+-", str[i]))
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	nbr = ft_atoi_lg(str);
-	if (nbr < -2147483648 || nbr > 2147483647)
-		return (0);
-	add_node_tail(head_ref, create_node(nbr));
-	// add_node_head(head_ref, create_node(nbr));
-	return (1);
+	if (!head_ref)
+		return (NULL);
+	while (head_ref->next)
+		head_ref = head_ref->next;
+	return (head_ref);
 }

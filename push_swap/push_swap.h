@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:27:28 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:43:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ long	ft_atoi_lg(const char* str);
 void ft_print_nodes(t_node** head_ref);
 t_node* del_node(t_node** prev_node, t_node* del);
 void	add_node_tail(t_node** lst, t_node* new_node);
-t_node* create_list(int value);
+t_node* create_node(int value);
 t_node* ft_last_node(t_node* head_ref);
 t_node* del_duplicate_nodes(t_node** head_ref);
 void	add_node_head(t_node** head_ref, t_node* new_node);

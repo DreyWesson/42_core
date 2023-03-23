@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 17:03:35 by doduwole          #+#    #+#              #
-#    Updated: 2023/03/21 12:50:23 by doduwole         ###   ########.fr        #
+#    Updated: 2023/03/23 13:42:20 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
-SRCS = *.c utils/*.c
+SRCS = *.c utils/*.c operations/*.c nodes/*.c
 
 LIBFTDIR = ./libft/
 LIBFT = ./libft/libft.a

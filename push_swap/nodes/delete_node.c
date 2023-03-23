@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   delete_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:44:08 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/23 13:37:07 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/23 13:37:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-int	ft_parser(char* str, t_node** head_ref)
+t_node* del_node(t_node** prev_node, t_node* target_node)
 {
-	int		i;
-	long	nbr;
-
-	i = 0;
-	if (ft_strchr("+-", str[i]))
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	nbr = ft_atoi_lg(str);
-	if (nbr < -2147483648 || nbr > 2147483647)
-		return (0);
-	add_node_tail(head_ref, create_node(nbr));
-	// add_node_head(head_ref, create_node(nbr));
-	return (1);
+	if (!*prev_node || !target_node)
+		return (NULL);
+	if (*prev_node == target_node)
+		*prev_node = target_node->next;
+	if (target_node->next != NULL)
+		target_node->next->prev = target_node->prev;
+	if (target_node->prev != NULL)
+		target_node->prev->next = target_node->next;
+	return (target_node);
 }
