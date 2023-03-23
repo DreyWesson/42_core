@@ -6,17 +6,20 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 16:48:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:04:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
 int	main(int argc, char** argv)
 {
 	t_node** stack_a;
 	t_node** stack_b;
+	int stack_size;
 
+	stack_size = 0;
 	if (argc < 3)
 	{
 		ft_perror("Error\n");
@@ -24,15 +27,17 @@ int	main(int argc, char** argv)
 	}
 	stack_a = (t_node**)malloc(sizeof(t_node));
 	stack_b = (t_node**)malloc(sizeof(t_node));
-	if (!validator(argc, argv, stack_a))
+	if (!validator(argc, argv, stack_a, &stack_size))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
 		ft_perror("Error\n");
 		return (0);
 	}
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a, &stack_size))
 		return (0);
+	ft_printf("%d\n", stack_size);
+
 	ft_print_nodes(stack_a);
 	return (0);
 }
