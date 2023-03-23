@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   dummy_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 15:16:10 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/23 15:15:05 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/23 15:15:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_parser(char* str, t_node** head_ref)
+void dummystack(t_node** stack)
 {
-	int		i;
-	long	nbr;
-
-	i = 0;
-	if (ft_strchr("+-", str[i]))
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	nbr = ft_atoi_lg(str);
-	if (nbr < -2147483648 || nbr > 2147483647)
-		return (0);
-	add_node_tail(head_ref, create_node(nbr));
-	return (1);
+	int i = -1;
+	int arr[4] = { 5, 6, 7, 8 };
+	while (++i < 4)
+		add_node_tail(stack, create_node(arr[i]));
 }

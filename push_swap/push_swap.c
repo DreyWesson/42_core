@@ -6,31 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:46:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:46:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int helper(int argc, char** argv, t_node** head)
-{
-	int		i;
-
-	i = 0;
-	while (++i < argc)
-		if (!ft_parser(argv[i], head))
-			return (0);
-	if (!del_duplicate_nodes(head)->next->next)
-		return (0);
-	return (1);
-}
-void dummystack(t_node** stack)
-{
-	int i = -1;
-	int arr[4] = { 5, 6, 7, 8 };
-	while (++i < 4)
-		add_node_tail(stack, create_node(arr[i]));
-}
 
 int	main(int argc, char** argv)
 {
@@ -44,8 +24,10 @@ int	main(int argc, char** argv)
 	}
 	stack_a = (t_node**)malloc(sizeof(t_node));
 	stack_b = (t_node**)malloc(sizeof(t_node));
-	if (!helper(argc, argv, stack_a))
+	if (!validator(argc, argv, stack_a))
 	{
+		free_stack(stack_a);
+		free_stack(stack_b);
 		ft_perror("Error\n");
 		return (0);
 	}
@@ -53,6 +35,8 @@ int	main(int argc, char** argv)
 	ft_print_nodes(stack_a);
 	ft_print_nodes(stack_b);
 	// free here
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }
 // TEST ACTIONS
