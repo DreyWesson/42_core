@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:17:53 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 11:27:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:35:55 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_node* del_duplicate_nodes(t_node** head_ref)
 		iterator_node = current_node->next;
 		while (iterator_node)
 		{
-			if (current_node->content == iterator_node->content)
+			if (current_node->value == iterator_node->value)
 			{
 				rest_node = iterator_node->next;
 				free(del_node(&iterator_node->prev, iterator_node));

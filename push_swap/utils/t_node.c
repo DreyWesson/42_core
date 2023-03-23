@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:32:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 11:23:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:34:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_print_nodes(t_node** head_ref)
 	tmp = *head_ref;
 	while (tmp)
 	{
-		ft_printf("%d ", tmp->content);
+		ft_printf("%d ", tmp->value);
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
@@ -39,14 +39,14 @@ t_node* del_node(t_node** prev_node, t_node* target_node)
 	return (target_node);
 }
 
-t_node* create_list(int content)
+t_node* create_list(int value)
 {
 	t_node* head;
 
 	head = (t_node*)malloc(sizeof(t_node));
 	if (!head)
 		return (NULL);
-	head->content = content;
+	head->value = value;
 	head->next = NULL;
 	head->prev = NULL;
 	return (head);
@@ -61,18 +61,18 @@ t_node* ft_last_node(t_node* head_ref)
 	return (head_ref);
 }
 
-void	add_node_tail(t_node** head_ref, t_node* new)
+void	add_node_tail(t_node** head_ref, t_node* new_node)
 {
 	t_node* last_node;
 
 	if (*head_ref)
 	{
 		last_node = ft_last_node(*head_ref);
-		new->prev = last_node;
-		last_node->next = new;
+		new_node->prev = last_node;
+		last_node->next = new_node;
 	}
 	else
-		*head_ref = new;
+		*head_ref = new_node;
 }
 
 void	add_node_head(t_node** head_ref, t_node* new_node)
