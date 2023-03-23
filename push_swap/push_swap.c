@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 11:19:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:26:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int helper(int argc, char** argv, t_node** head)
 	while (++i < argc)
 		if (!ft_parser(argv[i], head))
 			return (0);
-	if (!del_duplicate_nodes(*head)->next->next)
+	if (!del_duplicate_nodes(head)->next->next)
 		return (0);
 	return (1);
 }
