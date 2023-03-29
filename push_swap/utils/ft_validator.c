@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 22:36:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:33:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int validator(int argc, char** argv, t_node** head)
 	while (++i < argc)
 		if (!ft_parser(argv[i], head))
 			return (0);
-	if (!del_duplicate_nodes(head)->next->next)
+	if (check_duplicates(head))
 		return (0);
 	return (1);
 }

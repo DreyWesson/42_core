@@ -6,22 +6,16 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:34:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 10:15:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:18:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void push(t_node** src_ref, t_node** dest_ref, int stack_size, char* tag)
+void push(t_node** src_ref, t_node** dest_ref, char* tag)
 {
 	int deleted_value;
 	t_node* deleted_node;
-
-	if (stack_size <= node_length(dest_ref))
-	{
-		ft_printf("Stackoverflow\n");
-		return;
-	}
 
 	deleted_node = del_node(src_ref, *src_ref);
 	deleted_value = deleted_node->value;
