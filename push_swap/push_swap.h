@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 17:19:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 20:26:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ typedef struct s_node {
 	struct s_node* next;
 	struct s_node* prev;
 }	t_node;
-
+/**
+ * UTILS FUNCTIONS
+*/
 int	ft_parser(char* str, t_node** head_ref);
 long	ft_atoi_lg(const char* str);
 int validator(int argc, char** argv, t_node** head);
 int is_sorted(t_node** head_ref);
 void dummystack(t_node** stack);
+int* find_min_max(t_node** head_ref);
 /**
  * LINKEDLIST
 */
