@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_node.c                                       :+:      :+:    :+:   */
+/*   node_length.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 13:36:32 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 09:47:19 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/29 10:06:17 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/29 10:13:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_print_nodes(t_node** head_ref)
+int node_length(t_node** head_ref)
 {
 	t_node* tmp;
+	int i;
 
+	i = 0;
 	if (!head_ref)
-		return;
+		return (0);
 	tmp = *head_ref;
 	while (tmp)
 	{
-		ft_printf("%d ", tmp->value);
 		tmp = tmp->next;
+		i++;
 	}
-	ft_printf("\n");
+	return (i);
 }

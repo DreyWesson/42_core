@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 22:37:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 10:12:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ t_node* ft_last_node(t_node* head_ref);
 t_node* del_duplicate_nodes(t_node** head_ref);
 void	add_node_head(t_node** head_ref, t_node* new_node);
 void free_stack(t_node** stack);
+int node_length(t_node** head_ref);
 /**
  * OPERATIONS
 */
-void	swap_nodes(t_node* a, t_node* b);
+void	swap_nodes(t_node* a, t_node* b, char* tag);
 void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y);
-void push(t_node** src, t_node** dest);
+void push(t_node** src, t_node** dest, int stack_size, char* tag);
 void rotate(t_node** head_ref);
 void double_rotate(t_node** a, t_node** b);
 void reverse_rotate(t_node** head_ref);

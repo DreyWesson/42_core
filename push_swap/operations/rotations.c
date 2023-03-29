@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 15:16:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/24 08:31:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void rotate(t_node** head_ref)
 	free(deleted_node);
 	add_node_tail(head_ref, create_node(deleted_value));
 }
+
 void double_rotate(t_node** a, t_node** b)
 {
 	rotate(a);
