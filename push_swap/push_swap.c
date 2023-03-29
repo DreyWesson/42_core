@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 14:18:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:45:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,4 @@ int	main(int argc, char** argv)
 	// double_reverse(stack_a, stack_b);
 	// ft_printf("Is Sorted");
 	// ft_printf("%d\n", stack_size);
-//  1 2 3 5 4
+	//  1 2 3 5 4
