@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 10:26:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 10:32:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y);
 void push(t_node** src, t_node** dest, int stack_size, char* tag);
 void rotate(t_node** head_ref, char* tag);
 void double_rotate(t_node** a, t_node** b);
-void reverse_rotate(t_node** head_ref);
+void reverse_rotate(t_node** head_ref, char* tag);
 void double_reverse(t_node** a, t_node** b);
 
 #endif
