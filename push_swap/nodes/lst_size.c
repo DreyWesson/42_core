@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   lst_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 16:40:53 by doduwole         ###   ########.fr       */
+/*   Created: 2023/03/29 16:46:02 by doduwole          #+#    #+#             */
+/*   Updated: 2023/03/29 16:56:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int is_sorted(t_node** head_ref)
+int lst_size(t_node** head_ref)
 {
 	t_node* tmp;
+	int size;
 
 	if (!head_ref)
 		return (0);
+	size = 0;
 	tmp = *head_ref;
 	while (tmp)
 	{
-		if (tmp->prev && tmp->prev->value > tmp->value)
-			return (0);
+		size++;
 		tmp = tmp->next;
 	}
-	return (1);
+	return (size);
 }
