@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 16:57:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:16:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ int	main(int argc, char** argv)
 	if (is_sorted(stack_a))
 		return (0);
 	// stack_size = lst_size(stack_a);
+	sort_three_max(stack_a);
 
 	dummystack(stack_b);
 
 	ft_print_nodes(stack_a);
-	ft_print_nodes(stack_b);
+	// ft_print_nodes(stack_b);
 	return (0);
 }
 // TEST ACTIONS

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 16:47:46 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:19:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void rotate(t_node** head_ref, char* tag);
 void double_rotate(t_node** a, t_node** b);
 void reverse_rotate(t_node** head_ref, char* tag);
 void double_reverse(t_node** a, t_node** b);
+/**
+ * SORT FUNCTIONS
+*/
+void sort_three_max(t_node** head_ref);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 23:42:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 16:50:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:22:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void sort_three_max(t_node** head_ref)
 {
 	if (is_sorted(head_ref))
 		return;
+
+	if (lst_size(head_ref) == 2)
+		return swap_nodes(*head_ref, (*head_ref)->next, "sa");
+
 
 	// if (/* condition */)
 	// {
