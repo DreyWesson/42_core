@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 23:42:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 17:51:46 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:00:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,3 @@ void sort_three_max(t_node** head_ref)
 		reverse_rotate(head_ref, "rra");
 	sort_three_max(head_ref);
 }
-// ✅ 3 2 1
-// ✅ 3 1 2
-// ✅ 2 1 3
-// ✅ 2 3 1
-// ✅ 1 2 3
-// ✅ 1 3 2
