@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/24 08:31:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/03/29 10:26:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void rotate(t_node** head_ref)
+void rotate(t_node** head_ref, char* tag)
 {
 	int deleted_value;
 	t_node* deleted_node;
@@ -21,12 +21,15 @@ void rotate(t_node** head_ref)
 	deleted_value = deleted_node->value;
 	free(deleted_node);
 	add_node_tail(head_ref, create_node(deleted_value));
+	if (tag[0])
+		ft_printf("%s\n", tag);
 }
 
 void double_rotate(t_node** a, t_node** b)
 {
-	rotate(a);
-	rotate(b);
+	rotate(a, "");
+	rotate(b, "");
+	ft_printf("rr\n");
 }
 
 void reverse_rotate(t_node** head_ref)
