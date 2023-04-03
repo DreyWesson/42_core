@@ -6,12 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 17:16:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:54:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	main(int argc, char** argv)
 {
@@ -36,27 +35,24 @@ int	main(int argc, char** argv)
 	}
 	if (is_sorted(stack_a))
 		return (0);
-	// stack_size = lst_size(stack_a);
-	sort_three_max(stack_a);
 
-	dummystack(stack_b);
-
+	sort_router(stack_a, stack_b);
 	ft_print_nodes(stack_a);
-	// ft_print_nodes(stack_b);
+	ft_print_nodes(stack_b);
 	return (0);
 }
 // TEST ACTIONS
-	// dummystack(stack_b);
-	// swap_nodes(*stack_a, (*stack_a)->next); <= sa
-	// swap_nodes(*stack_b, (*stack_b)->next); <= sb
-	// double_swap(*stack_a, (*stack_a)->next, *stack_b, (*stack_b)->next); <= sa + sb
-	// push(stack_a, stack_b);  <= pa
-	// push(stack_b, stack_a);  <= pb
-	// rotate(stack_a); <= ra
-	// rotate(stack_b); <= rb
-	// double_rotate(stack_a, stack_b);
-	// reverse_rotate(stack_a);
-	// double_reverse(stack_a, stack_b);
-	// ft_printf("Is Sorted");
-	// ft_printf("%d\n", stack_size);
-	//  1 2 3 5 4
+// dummystack(stack_b);
+// swap_nodes(*stack_a, (*stack_a)->next); <= sa
+// swap_nodes(*stack_b, (*stack_b)->next); <= sb
+// double_swap(*stack_a, (*stack_a)->next, *stack_b, (*stack_b)->next); <= sa + sb
+// push(stack_a, stack_b);  <= pa
+// push(stack_b, stack_a);  <= pb
+// rotate(stack_a); <= ra
+// rotate(stack_b); <= rb
+// double_rotate(stack_a, stack_b);
+// reverse_rotate(stack_a);
+// double_reverse(stack_a, stack_b);
+// ft_printf("Is Sorted");
+// ft_printf("%d\n", stack_size);
+// 1 2 3 5 4

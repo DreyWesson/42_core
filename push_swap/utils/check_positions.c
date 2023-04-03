@@ -6,39 +6,50 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 19:44:20 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/29 22:01:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/03 13:15:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int* check_position(t_node** head_ref, int max, int min)
+static int** check_position(t_node** head_ref, int max, int min)
 {
 	t_node* tmp;
-	int* ptr;
+	int** ptr;
+	int mid;
 	int size;
 
 	size = 0;
-	ptr = (int*)malloc(sizeof(int) * 3);
+	ptr = (int**)malloc(sizeof(int*) * 3);
+	while (size < 3)
+	{
+		ptr[size] = (int*)malloc(sizeof(int) * 2);
+		size++;
+	}
+	size = 0;
 	tmp = *head_ref;
+	mid = lst_size(head_ref) / 2;
+	ptr[1][0] = mid;
+
 	while (tmp)
 	{
-		if (tmp->value == max)
-			ptr[2] = size;
-		if (tmp->value == min)
-			ptr[0] = size;
+		if (tmp->value == max) {
+			ptr[2][0] = size;
+			ptr[2][1] = tmp->value;
+		}
+		if (tmp->value == min) {
+			ptr[0][0] = size;
+			ptr[0][1] = tmp->value;
+		}
+		if (size == mid)
+			ptr[1][1] = tmp->value;
 		size++;
 		tmp = tmp->next;
 	}
-	size = lst_size(head_ref);
-	if (size % 2)
-		ptr[1] = size / 2;
-	else
-		ptr[1] = (size / 2) + 1;
 	return (ptr);
 }
 
-int* find_min_max(t_node** head_ref)
+int** find_min_max(t_node** head_ref)
 {
 	long min;
 	long max;
