@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 23:42:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/06 10:39:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:53:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,55 +68,59 @@ void repeat_reverse(t_node** x, int num, char* ptr)
 void sort_more(t_node** stack_a, t_node** stack_b, int num)
 {
 	int** ptr;
-	int min_val;
-	int mid_val;
-	int max_val;
+	int rr_counter;
+	int ra_counter;
 
-
+	rr_counter = 0;
+	ra_counter = 0;
 	repeat_push(stack_a, stack_b, num - 3, "pb");
 	sort_three_max(stack_a);
-	ptr = find_min_max(stack_a);
-	min_val = ptr[0][1];
-	mid_val = ptr[1][1];
-	max_val = ptr[2][1];
-
 	while (*stack_b)
 	{
-		if ((*stack_b)->value > max_val)
+		ptr = find_min_max(stack_a);
+		if ((*stack_b)->value > ptr[2][1])
 		{
 			push(stack_b, stack_a, "pa");
 			rotate(stack_a, "ra");
 		}
-		else if ((*stack_b)->value < min_val)
+		else if ((*stack_b)->value < ptr[0][1])
 		{
-			ft_printf("MIN\n");
 			push(stack_b, stack_a, "pa");
 		}
-		else if ((*stack_b)->value > mid_val && (*stack_b)->value < max_val)
+		else if ((*stack_b)->value > ptr[1][1] && (*stack_b)->value < ptr[2][1])
 		{
-			// while loop to reverse till the value is lesser
-			reverse_rotate(stack_a, "rra");
+			while ((*stack_b)->value > (*stack_a)->value)
+			{
+				reverse_rotate(stack_a, "rra");
+				rr_counter++;
+			}
 			push(stack_b, stack_a, "pa");
+			repeat_reverse(stack_a, rr_counter, "rra");
 		}
-		else if ((*stack_b)->value > min_val && (*stack_b)->value < mid_val)
+		else if ((*stack_b)->value > ptr[0][1] && (*stack_b)->value < ptr[1][1])
 		{
-
+			while ((*stack_b)->value > (*stack_a)->value)
+			{
+				rotate(stack_a, "ra");
+				ra_counter++;
+			}
 			push(stack_b, stack_a, "pa");
-			swap_nodes(*stack_a, (*stack_a)->next, "sa");
+			repeat_reverse(stack_a, ra_counter, "rra");
 		}
 	}
+	ft_printf("%d %d\n", ra_counter, rr_counter);
 	ptr = find_min_max(stack_a);
-	if (is_sorted(stack_a))
+	if (ptr[0][0] == 0)
 		return;
 	if (ptr[0][0] > ptr[1][0])
 	{
 		while (ptr[0][0] != 0)
 		{
-			reverse_rotate(stack_a, "ra");
+			reverse_rotate(stack_a, "rra");
 			ptr = find_min_max(stack_a);
 		}
 	}
-	else
+	else if (ptr[0][0] <= ptr[1][0])
 	{
 		while (ptr[0][0] != 0)
 		{

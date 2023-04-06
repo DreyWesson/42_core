@@ -2,7 +2,8 @@
 	"files.associations": {
 		"*.ejs": "html",
 		"minitalk.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"push_swap.h": "c"
 	},
 	"cSpell.words": [
 		"lstadd",
