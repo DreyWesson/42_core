@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/06 15:51:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:01:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_node {
 /**
  * UTILS FUNCTIONS
 */
-int	ft_parser(char* str, t_node** head_ref);
+int		ft_parser(char* str, t_node** head_ref);
 long	ft_atoi_lg(const char* str);
 int validator(int argc, char** argv, t_node** head);
 int is_sorted(t_node** head_ref);
@@ -52,6 +52,12 @@ void rotate(t_node** head_ref, char* tag);
 void double_rotate(t_node** a, t_node** b);
 void reverse_rotate(t_node** head_ref, char* tag);
 void double_reverse(t_node** a, t_node** b);
+/**
+ * REPEATERS
+*/
+void repeat_push(t_node** x, t_node** y, int num, char* ptr);
+void repeat_push(t_node** x, t_node** y, int num, char* ptr);
+void repeat_reverse(t_node** x, int num, char* ptr);
 /**
  * SORT FUNCTIONS
 */
