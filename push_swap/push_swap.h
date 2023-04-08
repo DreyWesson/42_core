@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/08 07:44:56 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:16:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ typedef struct s_node {
 	struct s_node* next;
 	struct s_node* prev;
 }	t_node;
+
+typedef struct s_node_details {
+	int pos;
+	int value;
+	struct s_node* node;
+}	t_node_details;
 /**
  * UTILS FUNCTIONS
 */
@@ -28,7 +34,7 @@ long	ft_atoi_lg(const char* str);
 int validator(int argc, char** argv, t_node** head);
 int is_sorted(t_node** head_ref);
 void dummystack(t_node** stack);
-int** find_min_max(t_node** head_ref);
+// int** find_min_max(t_node** head_ref);
 void sort_router(t_node** stack_a, t_node** stack_b);
 /**
  * LINKEDLIST
@@ -42,6 +48,11 @@ int		check_duplicates(t_node** head_ref);
 void	add_node_head(t_node** head_ref, t_node* new_node);
 void free_stack(t_node** stack);
 int lst_size(t_node** head_ref);
+void special_nodes(t_node** stack_a, t_node_details** min_details,
+	t_node_details** max_details, t_node_details** mid_details);
+t_node_details* max_node_details(t_node** head_ref);
+t_node_details* min_node_details(t_node** head_ref);
+t_node_details* mid_node_details(t_node** head_ref);
 /**
  * OPERATIONS
 */

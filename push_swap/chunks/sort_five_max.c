@@ -6,70 +6,75 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/08 07:45:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:22:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void sort_five_handler(t_node** stack_a, t_node** stack_b, int** ptr, int rr_counter)
+void pusher(t_node** stack_a, t_node** stack_b)
 {
-	if ((*stack_b)->value > ptr[2][1])
+	// t_node* tmp;
+
+	t_node_details* min;
+	t_node_details* max;
+	t_node_details* mid;
+
+	special_nodes(stack_a, &min, &max, &mid);
+	if (!min->node->prev
+		&& ((*stack_b)->value < min->value || (*stack_b)->value > max->value))
+		push(stack_b, stack_a, "pa");
+	else if (min->node->prev)
 	{
-		push(stack_b, stack_a, "pa");
-		// rotate(stack_a, "ra");
-	}
-	else if ((*stack_b)->value < ptr[0][1])
-		push(stack_b, stack_a, "pa");
-	else if ((*stack_b)->value > ptr[1][1] && (*stack_b)->value < ptr[2][1])
-	{
-		while ((*stack_b)->value > (*stack_a)->value)
-		{
-			reverse_rotate(stack_a, "rra");
-			rr_counter++;
-		}
-		push(stack_b, stack_a, "pa");
-		repeat_reverse(stack_a, rr_counter, "rra");
-	}
-	else if ((*stack_b)->value > ptr[0][1] && (*stack_b)->value < ptr[1][1])
-	{
-		while ((*stack_b)->value > (*stack_a)->value)
-			rotate(stack_a, "ra");
-		push(stack_b, stack_a, "pa");
+		// find spot
+		// while (min_val_node || tmp)
+		// {
+		// 	if (min_val_node->prev->value < (*stack_b)->value
+		// 		&& min_val_node->value >(*stack_b)->value)
+		// 	{
+		// 	}
+		// 	min_pos--;
+		// 	min_val_node = min_val_node->next;
+		// 	tmp = tmp->next;
+		// }
+		// if (min_val_node->prev->value > )
+		// {
+		// 	/* code */
+		// }
 	}
 }
+
 void re_sort(t_node** stack_a)
 {
-	int** ptr;
+	t_node_details* min;
+	t_node_details* max;
+	t_node_details* mid;
 
-	ptr = find_min_max(stack_a);
-	if (ptr[0][0] > ptr[1][0])
+	special_nodes(stack_a, &min, &max, &mid);
+	if (min->pos > mid->pos)
 	{
-		while (ptr[0][0] != 0)
+		while (min->pos != 0)
 		{
 			reverse_rotate(stack_a, "rra");
-			ptr = find_min_max(stack_a);
+			special_nodes(stack_a, &min, &max, &mid);
 		}
 	}
-	else if (ptr[0][0] <= ptr[1][0])
+	else if (min->pos <= mid->pos)
 	{
-		while (ptr[0][0] != 0)
+		while (min->pos != 0)
 		{
 			rotate(stack_a, "ra");
-			ptr = find_min_max(stack_a);
+			special_nodes(stack_a, &min, &max, &mid);
 		}
 	}
 }
 
 void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 {
-	int** ptr;
-
 	repeat_push(stack_a, stack_b, threshold_num, "pb");
 	sort_three_max(stack_a);
-	ptr = find_min_max(stack_a);
 	while (*stack_b)
-		sort_five_handler(stack_a, stack_b, ptr, 0);
+		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		return;
 	re_sort(stack_a);
