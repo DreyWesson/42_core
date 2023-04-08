@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/07 15:25:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/08 07:45:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void re_sort(t_node** stack_a)
 	}
 }
 
-void sort_more(t_node** stack_a, t_node** stack_b, int num)
+void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 {
 	int** ptr;
 
-	repeat_push(stack_a, stack_b, num - 3, "pb");
+	repeat_push(stack_a, stack_b, threshold_num, "pb");
 	sort_three_max(stack_a);
 	ptr = find_min_max(stack_a);
 	while (*stack_b)

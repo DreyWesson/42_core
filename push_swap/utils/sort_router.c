@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:03:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/06 09:29:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/08 07:45:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void sort_router(t_node** stack_a, t_node** stack_b)
 	if (stack_size <= 3)
 		sort_three_max(stack_a);
 	else if (stack_size > 3)
-		sort_more(stack_a, stack_b, stack_size);
+		sort_more(stack_a, stack_b, stack_size - 3);
 }
