@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/09 14:35:08 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/09 16:09:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int fastforward(t_node* min_node, t_node** stack_b, char* found)
+int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
 {
 	t_node* tmp;
 	int size;
@@ -30,9 +30,12 @@ int fastforward(t_node* min_node, t_node** stack_b, char* found)
 		size++;
 		tmp = tmp->next;
 	}
+	(void)stack_a;
+	// printf("fastforward: %d, found: %c, b-top: %d\n", size, *found, (*stack_b)->value);
+	// ft_print_nodes(stack_a);
 	return (size);
 }
-int rewind_node(t_node* min_node, t_node** stack_b, char* found)
+int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
 {
 	t_node* tmp;
 	int size;
@@ -50,64 +53,72 @@ int rewind_node(t_node* min_node, t_node** stack_b, char* found)
 		size++;
 		tmp = tmp->prev;
 	}
+	(void)stack_a;
+	// printf("rewind: %d, found: %c, b-top: %d\n", size, *found, (*stack_b)->value);
+	// ft_print_nodes(stack_a);
 	return (size);
+}
+
+void move_picker(t_node** stack, int target_pos, int mid_pos)
+{
+	int size;
+
+	size = lst_size(stack);
+	// printf("target_pos: %d, mid_pos: %d\n", target_pos, mid_pos);
+	if (target_pos <= mid_pos)
+	{
+		repeat_rotate(stack, target_pos, "ra");
+	}
+	else if (target_pos > mid_pos)
+	{
+		repeat_reverse(stack, size - target_pos, "rra");
+	}
 }
 
 void pusher(t_node** stack_a, t_node** stack_b)
 {
 	t_node_details* min;
 	t_node_details* mid;
+	t_node_details* max;
 	int pos;
 	char found;
-	int size;
 
 	found = 'n';
-	min = min_node_details(stack_a);
-	mid = mid_node_details(stack_a);
+	special_nodes(stack_a, &min, &mid, &max);
 	pos = 1;
-	pos += fastforward(min->node, stack_b, &found);
-	size = lst_size(stack_a);
-
+	pos += fastforward(min->node, stack_b, &found, stack_a);
 	if (min->node->prev && found != 'y')
-		pos += rewind_node(min->node, stack_b, &found);
-
+		pos += rewind_node(min->node, stack_b, &found, stack_a);
 	if (found == 'y')
 	{
-		if (pos <= mid->pos)
-			repeat_rotate(stack_a, pos, "ra");
-		else if (pos > mid->pos)
-			repeat_reverse(stack_a, size - pos, "rra");
+		move_picker(stack_a, pos, mid->pos);
 	}
 	else
 	{
-		if (min->pos <= mid->pos)
-			repeat_rotate(stack_a, min->pos, "ra");
-		else if (min->pos > mid->pos)
-			repeat_reverse(stack_a, size - min->pos, "rra");
+		if ((*stack_b)->value > max->value || (*stack_b)->value < min->value)
+		{
+			move_picker(stack_a, min->pos, mid->pos);
+		}
+		push(stack_b, stack_a, "pa");
 	}
-	push(stack_b, stack_a, "pa");
-	ft_print_nodes(stack_a);
+	// ft_print_nodes(stack_a);
 }
 
 void re_sort(t_node** stack_a)
 {
 	t_node_details* min;
 	t_node_details* mid;
-	int size;
 
 	min = min_node_details(stack_a);
 	mid = mid_node_details(stack_a);
-	size = lst_size(stack_a);
-	if (min->pos <= mid->pos)
-		repeat_rotate(stack_a, min->pos, "ra");
-	else
-		repeat_reverse(stack_a, size - min->pos, "rra");
+	move_picker(stack_a, min->pos, mid->pos);
 }
 
 void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 {
 	// check if sorted cyclically
 	repeat_push(stack_a, stack_b, threshold_num, "pb");
+	// if 3 is in order in a cyclical way skip
 	sort_three_max(stack_a);
 	while (*stack_b)
 		pusher(stack_a, stack_b);
