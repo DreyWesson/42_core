@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/09 13:14:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:35:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int fastforward(t_node* min_node, t_node** stack_b, char* found)
 		if (tmp->value < (*stack_b)->value
 			&& (*stack_b)->value < tmp->next->value)
 		{
-			// printf("-> %d %d %d\n", tmp->value, (*stack_b)->value, tmp->next->value);
 			*found = 'y';
 			break;
 		}
@@ -40,7 +39,7 @@ int rewind_node(t_node* min_node, t_node** stack_b, char* found)
 
 	size = 0;
 	tmp = min_node;
-	while (tmp->next)
+	while (tmp->prev)
 	{
 		if (tmp->prev->value < (*stack_b)->value
 			&& (*stack_b)->value < tmp->value)
@@ -70,19 +69,21 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	size = lst_size(stack_a);
 
 	if (min->node->prev && found != 'y')
-	{
 		pos += rewind_node(min->node, stack_b, &found);
-	}
-	// printf("pos: %d mid_pos: %d\n", pos, mid->pos);
-	printf("found: %c", found);
-	if (pos <= mid->pos && found == 'y')
+
+	if (found == 'y')
 	{
-		// printf("1st half\n");
-		repeat_rotate(stack_a, pos, "ra");
+		if (pos <= mid->pos)
+			repeat_rotate(stack_a, pos, "ra");
+		else if (pos > mid->pos)
+			repeat_reverse(stack_a, size - pos, "rra");
 	}
-	else if (pos > mid->pos && found == 'y')
+	else
 	{
-		repeat_reverse(stack_a, size - pos, "rra");
+		if (min->pos <= mid->pos)
+			repeat_rotate(stack_a, min->pos, "ra");
+		else if (min->pos > mid->pos)
+			repeat_reverse(stack_a, size - min->pos, "rra");
 	}
 	push(stack_b, stack_a, "pa");
 	ft_print_nodes(stack_a);
@@ -98,18 +99,14 @@ void re_sort(t_node** stack_a)
 	mid = mid_node_details(stack_a);
 	size = lst_size(stack_a);
 	if (min->pos <= mid->pos)
-	{
 		repeat_rotate(stack_a, min->pos, "ra");
-	}
 	else
-	{
 		repeat_reverse(stack_a, size - min->pos, "rra");
-	}
-
 }
 
 void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 {
+	// check if sorted cyclically
 	repeat_push(stack_a, stack_b, threshold_num, "pb");
 	sort_three_max(stack_a);
 	while (*stack_b)
