@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/09 22:10:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/10 08:37:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
+int fastforward(t_node* min_node, t_node** stack_b, char* found)
 {
 	t_node* tmp;
 	int size;
@@ -30,9 +30,6 @@ int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_
 		size++;
 		tmp = tmp->next;
 	}
-	(void)stack_a;
-	// ft_print_nodes(stack_a);
-	// printf("fastforward: %d, found: %c, b-top: %d\n", size, *found, (*stack_b)->value);
 	return (size);
 }
 
@@ -53,7 +50,7 @@ int rest_node(t_node** head_ref, int num)
 	return (size);
 }
 
-int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
+int rewind_node(t_node* min_node, t_node** stack_b, char* found)
 {
 	t_node* tmp;
 	int size;
@@ -71,9 +68,6 @@ int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_
 		size++;
 		tmp = tmp->prev;
 	}
-	(void)stack_a;
-	// ft_print_nodes(stack_a);
-	// printf("rewind: %d, found: %c, b-top: %d\n", size, *found, (*stack_b)->value);
 	return (size);
 }
 
@@ -97,21 +91,19 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	char found;
 
 	found = 'n';
-	if (is_cyclic(stack_a))
-	{
-		printf("Is cyclic sorted\n");
-	}
 	special_nodes(stack_a, &min, &mid, &max);
+	// ft_print_nodes(stack_a);
 	pos = 1;
-	pos += fastforward(min->node, stack_b, &found, stack_a);
+	pos += fastforward(min->node, stack_b, &found);
 	if (min->node->prev && found != 'y')
-		pos += rewind_node(min->node, stack_b, &found, stack_a);
+		pos += rewind_node(min->node, stack_b, &found);
 	else if (min->node->prev && found == 'y')
 		pos += rest_node(stack_a, min->value);
 	if (found == 'y')
 		move_picker(stack_a, pos, mid->pos);
 	else
 	{
+		//******REFACTOR******: to else if
 		if ((*stack_b)->value > max->value || (*stack_b)->value < min->value)
 			move_picker(stack_a, min->pos, mid->pos);
 	}
@@ -131,10 +123,9 @@ void re_sort(t_node** stack_a)
 
 void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 {
-	// check if sorted cyclically
-	repeat_push(stack_a, stack_b, threshold_num, "pb");
-	// if 3 is in order in a cyclical way skip
-	sort_three_max(stack_a);
+	push_unsorted_only(stack_a, stack_b, lst_size(stack_a), "pb");
+	if (lst_size(stack_a) == threshold_num)
+		sort_three_max(stack_a, 'y');
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
