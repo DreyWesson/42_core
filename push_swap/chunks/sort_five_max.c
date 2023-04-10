@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/09 19:17:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:10:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_
 		tmp = tmp->prev;
 	}
 	(void)stack_a;
-	ft_print_nodes(stack_a);
+	// ft_print_nodes(stack_a);
 	// printf("rewind: %d, found: %c, b-top: %d\n", size, *found, (*stack_b)->value);
 	return (size);
 }
@@ -97,6 +97,10 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	char found;
 
 	found = 'n';
+	if (is_cyclic(stack_a))
+	{
+		printf("Is cyclic sorted\n");
+	}
 	special_nodes(stack_a, &min, &mid, &max);
 	pos = 1;
 	pos += fastforward(min->node, stack_b, &found, stack_a);
@@ -123,7 +127,6 @@ void re_sort(t_node** stack_a)
 	min = min_node_details(stack_a);
 	mid = mid_node_details(stack_a);
 	move_picker(stack_a, min->pos, mid->pos);
-
 }
 
 void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
