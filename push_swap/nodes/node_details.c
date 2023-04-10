@@ -90,7 +90,7 @@ t_node_details* mid_node_details(t_node** head_ref)
 void special_nodes(t_node** stack_a, t_node_details** min_details,
 	t_node_details** mid_details, t_node_details** max_details)
 {
-	*mid_details = mid_node_details(stack_a);
 	*min_details = min_node_details(stack_a);
+	*mid_details = mid_node_details(stack_a);
 	*max_details = max_node_details(stack_a);
 }
