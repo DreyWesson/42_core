@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/11 21:21:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/11 21:30:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,47 +95,22 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	ft_print_nodes(stack_a);
 	if (min->node->prev && found != 'y')
 		pos += rewind_node(min->node, stack_b, &found, stack_a);
-
-
 	if (found == 'y')
-	{
 		move_picker(stack_a, pos, mid->pos);
-		push(stack_b, stack_a, "pa");
-	}
 	else
 	{
 		if ((*stack_b)->value > max->value)
 		{
-
-			if (ft_last_node(*stack_a)->value == max->value)
-			{
-				push(stack_b, stack_a, "pa");
-			}
-			else {
+			if (ft_last_node(*stack_a)->value != max->value)
 				move_picker(stack_a, target_pos(stack_a, max->value), mid->pos);
-				push(stack_b, stack_a, "pa");
-
-			}
 		}
 		else if ((*stack_b)->value < min->value)
 		{
-
-			if ((*stack_a)->value == min->value)
-			{
-				push(stack_b, stack_a, "pa");
-			}
-			else {
+			if ((*stack_a)->value != min->value)
 				move_picker(stack_a, target_pos(stack_a, max->value), mid->pos);
-				push(stack_b, stack_a, "pa");
-			}
-		}
-		else if (((*stack_a)->value > (*stack_b)->value) && ((*stack_b)->value > ft_last_node(*stack_a)->value))
-		{
-			push(stack_b, stack_a, "pa");
 		}
 	}
-	// push(stack_b, stack_a, "pa");
-	// ft_print_nodes(stack_a);
+	push(stack_b, stack_a, "pa");
 }
 
 void re_sort(t_node** stack_a)
