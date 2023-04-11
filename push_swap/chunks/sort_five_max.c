@@ -6,33 +6,34 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/10 20:42:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/11 11:53:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int rest_node(t_node* min_node)
+int target_pos(t_node** stack_a, int target_value)
 {
 	t_node* tmp;
 	int size;
 
 	size = 0;
-	tmp = min_node;
-	while (tmp->prev)
+	tmp = *stack_a;
+	while (tmp->next)
 	{
 		size++;
-		tmp = tmp->prev;
+		if (target_value == tmp->value)
+			break;
+		tmp = tmp->next;
 	}
+	printf("->size: %d\n", size);
 	return (size);
 }
 
-int fastforward(t_node* min_node, t_node** stack_b, char* found)
+int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
 {
 	t_node* tmp;
-	int size;
 
-	size = 0;
 	tmp = min_node;
 	while (tmp->next)
 	{
@@ -42,46 +43,35 @@ int fastforward(t_node* min_node, t_node** stack_b, char* found)
 			*found = 'y';
 			break;
 		}
-		size++;
 		tmp = tmp->next;
 	}
 	if (*found != 'y')
 		return (0);
-	// if you found it from what position are you counting from
-	// if min pos is zero return size
-	if (min_node_details(&min_node)->pos != 0)
-	{
-		size += (size + rest_node(min_node));
-	}
-
-	return (size);
-
+	printf("==fwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
+	ft_print_nodes(stack_a);
+	return (target_pos(stack_a, tmp->value));
 }
 
-int rewind_node(t_node* min_node, t_node** stack_b, char* found)
+int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
 {
 	t_node* tmp;
-	int size;
-	int half_total;
 
-	size = 0;
-	half_total = 0;
 	tmp = min_node;
 	while (tmp->prev)
 	{
-		if (*found != 'y')
-			size++;
 		if (tmp->prev->value < (*stack_b)->value
 			&& (*stack_b)->value < tmp->value)
 		{
 			*found = 'y';
+			break;
 		}
-		half_total++;
 		tmp = tmp->prev;
 	}
 	if (*found != 'y')
-		size = 0;
-	return (half_total - size);
+		return (0);
+	printf("==rwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
+	ft_print_nodes(stack_a);
+	return (target_pos(stack_a, tmp->value) - 1);
 }
 
 void move_picker(t_node** stack, int target_pos, int mid_pos)
@@ -105,17 +95,33 @@ void pusher(t_node** stack_a, t_node** stack_b)
 
 	found = 'n';
 	special_nodes(stack_a, &min, &mid, &max);
-	pos = 1;
-	pos += fastforward(min->node, stack_b, &found);
+	pos = 0;
+	pos += fastforward(min->node, stack_b, &found, stack_a);
+	ft_print_nodes(stack_a);
+	printf("pos: %d, min_pos: %d\n", pos, min->pos);
 	if (min->node->prev && found != 'y')
 	{
-		pos += rewind_node(min->node, stack_b, &found);
+		pos += rewind_node(min->node, stack_b, &found, stack_a);
 	}
+	// if 0: check if the value is lesser than min or greater than max
+	// can it fit between head and tail
+	// if (pos == 0)
+	// {
+	// 	if ((*stack_b)->value < min->value || (*stack_b)->value > max->value)
+	// 	{
+	// 	}
+	// 	printf("last_node val: %d\n", ft_last_node(stack_a)->value);
+	// 	if (((*stack_a)->value < (*stack_b)->value) && ((*stack_b)->value > ft_last_node(stack_a)->value))
+	// 	{
+	// 		push(stack_a, stack_b, "pa");
+	// 	}
+
+	// }
+
 	if (found == 'y')
 	{
 		move_picker(stack_a, pos, mid->pos);
-		// conditions if found
-		// calculate position
+		push(stack_b, stack_a, "pa");
 	}
 	else
 	{
@@ -124,10 +130,27 @@ void pusher(t_node** stack_a, t_node** stack_b)
 		// its higher than maximum
 		// or it should be between head and tail
 			//******REFACTOR******: to else if
+
 		if ((*stack_b)->value > max->value || (*stack_b)->value < min->value)
-			move_picker(stack_a, min->pos, mid->pos);
+		{
+			// ft_print_nodes(stack_a);
+			move_picker(stack_a, target_pos(stack_a, min->value) - 1, mid->pos);
+			// printf("Problem\n");
+			push(stack_b, stack_a, "pa");
+
+		}
+		else if (((*stack_a)->value > (*stack_b)->value) && ((*stack_b)->value > ft_last_node(*stack_a)->value))
+		{
+			// printf("######## a-top: %d, b-top: %d, max_val: %d, min_val: %d tail: %d\n", (*stack_a)->value, (*stack_b)->value, max->value, min->value, ft_last_node(*stack_a)->value);
+			// push(stack_a, stack_b, "pa");
+			push(stack_b, stack_a, "pa");
+
+		}
+		// else
+		// 	move_picker(stack_a, min->pos, mid->pos);
+
 	}
-	push(stack_b, stack_a, "pa");
+	// push(stack_b, stack_a, "pa");
 	// ft_print_nodes(stack_a);
 }
 
