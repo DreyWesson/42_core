@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 16:29:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 20:04:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int validate_forward(t_node* min_node, int* size, t_node** stack_a)
 	t_node* tmp;
 
 	tmp = min_node;
-	while (tmp)
+	while (tmp->next)
 	{
 		size++;
 		if (tmp->next && tmp->value > tmp->next->value)
 			break;
 		tmp = tmp->next;
 	}
+	// printf("HERE %d\n", tmp->value);
 
-	// printf("HERE %d\n", ft_last_node(*stack_a)->prev->next->value);
 	if (ft_last_node(*stack_a)->value == tmp->value)
 		return (1);
 	return (0);
@@ -51,14 +51,16 @@ int validate_backward(t_node* min_node, int* size, t_node** stack_a)
 {
 	t_node* tmp;
 
-	tmp = min_node;
-	while (tmp)
+	tmp = min_node->prev;
+	while (tmp->prev)
 	{
 		*size += 1;
 		if (tmp->value < tmp->prev->value)
 			break;
+		printf("-> %d\n", tmp->value);
 		tmp = tmp->prev;
 	}
+
 	if ((*stack_a)->value == tmp->value)
 		return (1);
 	return (0);
@@ -72,10 +74,10 @@ int is_cyclic(t_node** stack_a)
 	min = min_node_details(stack_a);
 	size = 0;
 	if (min->node->next) {
-		printf("@@@HERE\n");
 		if (!validate_forward(min->node, &size, stack_a))
 			return (0);
 	}
+	printf("is cyclic \n");
 	if (min->node->prev) {
 		if (!validate_backward(min->node, &size, stack_a))
 			return (0);

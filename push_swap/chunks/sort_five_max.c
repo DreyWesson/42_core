@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 16:24:56 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:36:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	special_nodes(stack_a, &min, &mid, &max);
 	pos = 0;
 	pos += fastforward(min->node, stack_b, &found, stack_a);
-	ft_print_nodes(stack_a);
+	// ft_print_nodes(stack_a);
 	if (min->node->prev && found != 'y')
 		pos += rewind_node(min->node, stack_b, &found, stack_a);
 	if (found == 'y')
@@ -127,12 +127,13 @@ void re_sort(t_node** stack_a)
 
 void sort_more(t_node** stack_a, t_node** stack_b, int leftover)
 {
-	leftover = push_unsorted_only(stack_a, stack_b, lst_size(stack_a), "pb");
-	printf("sort_more: %d \t %d\n", (lst_size(stack_a) - 1), leftover);
-	if ((lst_size(stack_a) - 1) == leftover)
-		sort_three_max(stack_a, 'y');
-	// repeat_push(stack_a, stack_b, leftover, "pb");
-	// sort_three_max(stack_a, 'n');
+	(void)leftover;
+	push_unsorted_only(stack_a, stack_b, "pb");
+	printf("sort_more: %d\n", leftover);
+	if (lst_size(stack_a) == 3 && !is_sorted(stack_a)) {
+		cy_three_max(stack_a);
+	}
+
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))

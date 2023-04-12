@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 16:25:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:35:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ void	repeat_reverse(t_node** x, int num, char* ptr)
 	}
 }
 
-int	push_unsorted_only(t_node** x, t_node** y, int lst_size, char* ptr)
+void	push_unsorted_only(t_node** x, t_node** y, char* ptr)
 {
-	int	i;
-	int	min_pos;
-	int leftover;
+	int	last_3;
+	t_node* tmp;
 
-	i = 0;
-	leftover = lst_size - 1;
-	min_pos = min_node_details(x)->pos;
-	while (i < (lst_size - 3))
+	tmp = *x;
+	last_3 = ft_last_node(*x)->prev->prev->value;
+	while (tmp)
 	{
-		if (min_pos != 0 && is_cyclic(x))
+		// printf("leftover %d\n", leftover);
+		if (tmp->value == last_3)
+			break;
+		if (is_cyclic(x))
 			break;
 		push(x, y, ptr);
-		i++;
-		leftover--;
+		printf("unsorted %d %d\n", last_3, tmp->value);
+		tmp = tmp->next;
 	}
-	return (leftover);
 }
