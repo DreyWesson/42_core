@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/10 08:08:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:25:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,22 @@ void	repeat_reverse(t_node** x, int num, char* ptr)
 	}
 }
 
-void	push_unsorted_only(t_node** x, t_node** y, int lst_size, char* ptr)
+int	push_unsorted_only(t_node** x, t_node** y, int lst_size, char* ptr)
 {
 	int	i;
 	int	min_pos;
+	int leftover;
 
 	i = 0;
+	leftover = lst_size - 1;
 	min_pos = min_node_details(x)->pos;
-	while (i < lst_size - 3)
+	while (i < (lst_size - 3))
 	{
 		if (min_pos != 0 && is_cyclic(x))
 			break;
 		push(x, y, ptr);
 		i++;
+		leftover--;
 	}
+	return (leftover);
 }

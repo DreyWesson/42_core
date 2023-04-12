@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/10 07:11:17 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:29:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,61 +28,60 @@ int is_sorted(t_node** head_ref)
 	return (1);
 }
 
-
-t_node* validate_forward(t_node* min_node, int* size)
+int validate_forward(t_node* min_node, int* size, t_node** stack_a)
 {
 	t_node* tmp;
-	t_node* tmp2;
 
 	tmp = min_node;
 	while (tmp)
 	{
+		size++;
 		if (tmp->next && tmp->value > tmp->next->value)
 			break;
-		*size += 1;
-		tmp2 = tmp;
 		tmp = tmp->next;
 	}
-	return (tmp2);
+
+	// printf("HERE %d\n", ft_last_node(*stack_a)->prev->next->value);
+	if (ft_last_node(*stack_a)->value == tmp->value)
+		return (1);
+	return (0);
 }
 
-
-t_node* validate_backward(t_node_details* min_node, int* size)
+int validate_backward(t_node* min_node, int* size, t_node** stack_a)
 {
 	t_node* tmp;
-	t_node* tmp2;
 
-	if (min_node->pos == 0)
-		return (NULL);
-	tmp = min_node->node->prev;
+	tmp = min_node;
 	while (tmp)
 	{
-		if (tmp->prev && tmp->prev->value > tmp->value)
-			break;
 		*size += 1;
-		tmp2 = tmp;
+		if (tmp->value < tmp->prev->value)
+			break;
 		tmp = tmp->prev;
 	}
-	return (tmp2);
+	if ((*stack_a)->value == tmp->value)
+		return (1);
+	return (0);
 }
 
 int is_cyclic(t_node** stack_a)
 {
 	static int size;
 	t_node_details* min;
-	t_node* head;
-	t_node* tail;
 
 	min = min_node_details(stack_a);
 	size = 0;
-	head = validate_forward(min->node, &size);
-	tail = validate_backward(min, &size);
-	if (size == (lst_size(stack_a)))
-	{
-		if (min->pos != 0 && head->value > tail->value)
+	if (min->node->next) {
+		printf("@@@HERE\n");
+		if (!validate_forward(min->node, &size, stack_a))
 			return (0);
-		return (1);
 	}
-	return (0);
+	if (min->node->prev) {
+		if (!validate_backward(min->node, &size, stack_a))
+			return (0);
+	}
+	if ((*stack_a)->value < ft_last_node(*stack_a)->value)
+		return (0);
+	return (1);
 }
 

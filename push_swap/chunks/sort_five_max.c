@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/11 21:30:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:24:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int target_pos(t_node** stack_a, int target_value)
 	return (size);
 }
 
-int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
+int fastforward(t_node* min_node, t_node** stack_b,
+	char* found, t_node** stack_a)
 {
 	t_node* tmp;
 
@@ -49,7 +50,8 @@ int fastforward(t_node* min_node, t_node** stack_b, char* found, t_node** stack_
 	return (target_pos(stack_a, tmp->value));
 }
 
-int rewind_node(t_node* min_node, t_node** stack_b, char* found, t_node** stack_a)
+int rewind_node(t_node* min_node, t_node** stack_b,
+	char* found, t_node** stack_a)
 {
 	t_node* tmp;
 
@@ -123,13 +125,14 @@ void re_sort(t_node** stack_a)
 	move_picker(stack_a, min->pos, mid->pos);
 }
 
-void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
+void sort_more(t_node** stack_a, t_node** stack_b, int leftover)
 {
-	// push_unsorted_only(stack_a, stack_b, lst_size(stack_a), "pb");
-	// if (lst_size(stack_a) == threshold_num)
-	// 	sort_three_max(stack_a, 'y');
-	repeat_push(stack_a, stack_b, threshold_num, "pb");
-	sort_three_max(stack_a, 'n');
+	leftover = push_unsorted_only(stack_a, stack_b, lst_size(stack_a), "pb");
+	printf("sort_more: %d \t %d\n", (lst_size(stack_a) - 1), leftover);
+	if ((lst_size(stack_a) - 1) == leftover)
+		sort_three_max(stack_a, 'y');
+	// repeat_push(stack_a, stack_b, leftover, "pb");
+	// sort_three_max(stack_a, 'n');
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
@@ -137,8 +140,6 @@ void sort_more(t_node** stack_a, t_node** stack_b, int threshold_num)
 	re_sort(stack_a);
 }
 // printf("pos: %d, min_pos: %d\n", pos, min->pos);
-
 // printf("==fwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
 // printf("==rwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
-
 // printf("=======> a-top: %d, b-top: %d, max_val: %d, min_val: %d tail: %d, target_pos: %d\n", (*stack_a)->value, (*stack_b)->value, max->value, min->value, ft_last_node(*stack_a)->value, target_pos(stack_a, min->value) - 1);
