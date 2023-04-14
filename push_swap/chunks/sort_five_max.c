@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/14 09:38:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:56:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void pusher(t_node** stack_a, t_node** stack_b)
 	special_nodes(stack_a, &min, &mid, &max);
 	pos = 0;
 	pos += fastforward(min->node, stack_b, &found, stack_a);
-	// ft_print_nodes(stack_a);
 	if (min->node->prev && found != 'y')
 		pos += rewind_node(min->node, stack_b, &found, stack_a);
 	if (found == 'y')
@@ -125,14 +124,11 @@ void re_sort(t_node** stack_a)
 	move_picker(stack_a, min->pos, mid->pos);
 }
 
-void sort_more(t_node** stack_a, t_node** stack_b, int leftover)
+void sort_more(t_node** stack_a, t_node** stack_b)
 {
-	(void)leftover;
 	push_unsorted_only(stack_a, stack_b, "pb");
 	if (lst_size(stack_a) == 3 && !is_sorted(stack_a) && !is_cyclic(stack_a))
 		sort_three_max(stack_a, 'y');
-	// repeat_push(stack_a, stack_b, lst_size(stack_a) - 3, "pb");
-	// sort_three_max(stack_a);
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))

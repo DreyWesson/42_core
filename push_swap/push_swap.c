@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/06 19:35:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:13:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char** argv)
 	t_node** stack_b;
 
 	if (argc < 3)
-	{
-		ft_perror("Error\n");
 		return (0);
-	}
 	stack_a = (t_node**)malloc(sizeof(t_node*));
 	stack_b = (t_node**)malloc(sizeof(t_node*));
 	if (!validator(argc, argv, stack_a))
@@ -34,7 +31,7 @@ int	main(int argc, char** argv)
 	if (is_sorted(stack_a))
 		return (0);
 	sort_router(stack_a, stack_b);
-	ft_print_nodes(stack_a);
+	// ft_print_nodes(stack_a);
 	return (0);
 }
 // TEST ACTIONS

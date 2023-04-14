@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/14 09:56:55 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:00:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int validate_backward(t_node* min_node, t_node** stack_a)
 	{
 		if (tmp->value < tmp->prev->value)
 			break;
-		// printf("-> %d\n", tmp->value);
 		tmp = tmp->prev;
 	}
 	if ((*stack_a)->value == tmp->value)
@@ -70,18 +69,15 @@ int is_cyclic(t_node** stack_a)
 	{
 		if ((*stack_a)->value < ft_last_node(*stack_a)->value || (*stack_a)->value == min->value)
 			return (0);
-		// printf("back2back is cyclic \n");
 	}
-	if (min->node->next) {
-		if (!validate_forward(min->node, stack_a))
-			return (0);
-		// printf("forward is cyclic \n");
-	}
-	if (min->node->prev) {
-		if (!validate_backward(min->node, stack_a))
-			return (0);
-		// printf("backward is cyclic \n");
-	}
+	// if (min->node->next) {
+	if (!validate_forward(min->node, stack_a))
+		return (0);
+	// }
+	// if (min->node->prev) {
+	if (!validate_backward(min->node, stack_a))
+		return (0);
+	// }
 	return (1);
 }
 
