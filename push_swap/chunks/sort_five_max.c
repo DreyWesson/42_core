@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 17:36:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:38:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,10 @@ void sort_more(t_node** stack_a, t_node** stack_b, int leftover)
 {
 	(void)leftover;
 	push_unsorted_only(stack_a, stack_b, "pb");
-	printf("sort_more: %d\n", leftover);
-	if (lst_size(stack_a) == 3 && !is_sorted(stack_a)) {
-		cy_three_max(stack_a);
-	}
-
+	if (lst_size(stack_a) == 3 && !is_sorted(stack_a) && !is_cyclic(stack_a))
+		sort_three_max(stack_a, 'y');
+	// repeat_push(stack_a, stack_b, lst_size(stack_a) - 3, "pb");
+	// sort_three_max(stack_a);
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))

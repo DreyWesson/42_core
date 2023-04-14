@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 19:35:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:26:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,8 @@ void	push_unsorted_only(t_node** x, t_node** y, char* ptr)
 	last_3 = ft_last_node(*x)->prev->prev->value;
 	while (tmp)
 	{
-		// printf("leftover %d\n", leftover);
-		if (tmp->value == last_3)
-			break;
-		if (is_cyclic(x))
+		if (is_cyclic(x) || (*x)->value == last_3)
 			break;
 		push(x, y, ptr);
-		printf("unsorted %d %d\n", last_3, tmp->value);
-		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:51:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/12 17:10:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:39:26 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void mover(t_node** head_ref, int mid_val, int prev_val, int next_val)
 		swap_nodes(*head_ref, (*head_ref)->next, "sa");
 }
 
-void sort_three_max(t_node** head_ref)
+void sort_three_max(t_node** head_ref, char check_cyclic)
 {
 	int prev_val;
 	t_node* mid_node;
 	int next_val;
 
-	if (is_sorted(head_ref))
+	if (is_sorted(head_ref) || (check_cyclic == 'y' && is_cyclic(head_ref)))
 		return;
 	if (lst_size(head_ref) == 2)
 		return (swap_nodes(*head_ref, (*head_ref)->next, "sa"));
@@ -46,22 +46,5 @@ void sort_three_max(t_node** head_ref)
 	prev_val = mid_node->prev->value;
 	next_val = mid_node->next->value;
 	mover(head_ref, mid_node->value, prev_val, next_val);
-	sort_three_max(head_ref);
-}
-
-void cy_three_max(t_node** head_ref)
-{
-	int prev_val;
-	t_node* mid_node;
-	int next_val;
-
-	if (is_sorted(head_ref))
-		return;
-	if (lst_size(head_ref) == 2)
-		return (swap_nodes(*head_ref, (*head_ref)->next, "sa"));
-	mid_node = mid_node_details(head_ref)->node;
-	prev_val = mid_node->prev->value;
-	next_val = mid_node->next->value;
-	mover(head_ref, mid_node->value, prev_val, next_val);
-	sort_three_max(head_ref);
+	sort_three_max(head_ref, check_cyclic);
 }
