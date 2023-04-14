@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/14 08:10:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:56:55 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,22 @@ int is_cyclic(t_node** stack_a)
 	t_node_details* min;
 
 	min = min_node_details(stack_a);
+	if (min->node->next && min->node->prev)
+	{
+		if ((*stack_a)->value < ft_last_node(*stack_a)->value || (*stack_a)->value == min->value)
+			return (0);
+		// printf("back2back is cyclic \n");
+	}
 	if (min->node->next) {
 		if (!validate_forward(min->node, stack_a))
 			return (0);
+		// printf("forward is cyclic \n");
 	}
-	// printf("forward is cyclic \n");
 	if (min->node->prev) {
 		if (!validate_backward(min->node, stack_a))
 			return (0);
+		// printf("backward is cyclic \n");
 	}
-	// printf("backward is cyclic \n");
-	if ((*stack_a)->value < ft_last_node(*stack_a)->value)
-		return (0);
-	// printf("back2back is cyclic \n");
 	return (1);
 }
 
