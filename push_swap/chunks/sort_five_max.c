@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/14 11:56:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:57:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,9 @@ void re_sort(t_node** stack_a)
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
 	push_unsorted_only(stack_a, stack_b, "pb");
-	if (lst_size(stack_a) == 3 && !is_sorted(stack_a) && !is_cyclic(stack_a))
+	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a))) {
 		sort_three_max(stack_a, 'y');
+	}
 	while (*stack_b)
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
