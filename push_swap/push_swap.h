@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 13:56:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:07:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,9 @@ void	push_unsorted_only(t_node** x, t_node** y, char* ptr);
 void sort_three_max(t_node** head_ref, char check_cyclic);
 void sort_more(t_node** stack_a, t_node** stack_b);
 int* bubble_sort(int* ptr, int size);
+/**
+ * COST FUNCTIONS
+*/
+void exit_cost(t_node** stack);
 
 #endif

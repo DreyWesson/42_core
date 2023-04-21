@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 14:19:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:11:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,27 @@ void re_sort(t_node** stack_a)
 	move_picker(stack_a, min->pos, mid->pos);
 }
 
+void calibrator(t_node** head_ref)
+{
+	t_node* tmp;
+	int i;
+
+	if (!head_ref)
+		return;
+	i = 0;
+	tmp = *head_ref;
+	while (tmp)
+	{
+		tmp->list_idx = i;
+		tmp = tmp->next;
+		i++;
+	}
+}
+
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
 	handle_indexing(stack_a);
-
+	// ft_print_nodes(stack_a, 'v');
 	// ✅ check num of values in position
 		// ✅ if more than three then dont push those
 		// ✅ else push all until 3
@@ -138,6 +155,12 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	// 🔴 after every push check if list is sorted cyclically or default sorted
 
 	push_unsorted_only(stack_a, stack_b, "pb");
+	// re-evaluate list_idx
+	calibrator(stack_b);
+	exit_cost(stack_b);
+
+	// ft_print_nodes(stack_b, 'v');
+
 	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
 		sort_three_max(stack_a, 'y');
 	while (*stack_b && (is_cyclic(stack_a) || is_sorted(stack_a)))
