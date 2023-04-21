@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dummy_stack.c                                      :+:      :+:    :+:   */
+/*   bubble_sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 15:15:05 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 15:15:23 by doduwole         ###   ########.fr       */
+/*   Created: 2023/04/21 10:17:39 by doduwole          #+#    #+#             */
+/*   Updated: 2023/04/21 10:39:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void dummystack(t_node** stack)
+
+int* bubble_sort(int* ptr, int size)
 {
-	int i = -1;
-	int arr[4] = { 5, 6, 7, 8 };
-	while (++i < 4)
-		add_node_tail(stack, create_node(arr[i]));
+	int i;
+	int j;
+	int cache;
+
+	i = 0;
+	j = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (ptr[i] < ptr[j])
+			{
+				cache = ptr[i];
+				ptr[i] = ptr[j];
+				ptr[j] = cache;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (ptr);
 }

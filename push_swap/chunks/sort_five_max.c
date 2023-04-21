@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/15 14:57:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:47:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,18 +124,50 @@ void re_sort(t_node** stack_a)
 	move_picker(stack_a, min->pos, mid->pos);
 }
 
+void slot_idx(t_node** stack_a)
+{
+	int* ptr;
+	t_node* tmp;
+	int i;
+
+	i = 0;
+	tmp = *stack_a;
+	ptr = (int*)ft_calloc(sizeof(int), lst_size(stack_a));
+	while (tmp)
+	{
+		ptr[i] = tmp->value;
+		tmp = tmp->next;
+		i++;
+	}
+	bubble_sort(ptr, lst_size(stack_a));
+	tmp = *stack_a;
+	while (tmp)
+	{
+		i = 0;
+		while (i < lst_size(stack_a))
+		{
+			if (tmp->value == ptr[i])
+				tmp->order_idx = i + 1;
+			i++;
+		}
+		tmp = tmp->next;
+	}
+	free(ptr);
+}
+
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
+	handle_indexing(stack_a);
 	push_unsorted_only(stack_a, stack_b, "pb");
-	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a))) {
+	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
 		sort_three_max(stack_a, 'y');
-	}
-	while (*stack_b)
+	while (*stack_b && (is_cyclic(stack_a) || is_sorted(stack_a)))
 		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		return;
 	re_sort(stack_a);
 }
+
 // printf("pos: %d, min_pos: %d\n", pos, min->pos);
 // printf("==fwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
 // printf("==rwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);

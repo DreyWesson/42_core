@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:38:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:45:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:16:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node* create_node(int value)
+t_node* create_node(int value, int i)
 {
 	t_node* head;
 
@@ -20,6 +20,11 @@ t_node* create_node(int value)
 	if (!head)
 		return (NULL);
 	head->value = value;
+	head->list_idx = i;
+	head->target_cost = 0;
+	head->total_cost = 0;
+	head->exit_cost = 0;
+	head->order_idx = 0;
 	head->next = NULL;
 	head->prev = NULL;
 	return (head);

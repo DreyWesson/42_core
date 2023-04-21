@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 15:16:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:17:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_parser(char* str, t_node** head_ref)
+int	ft_parser(char* str, t_node** head_ref, int idx)
 {
 	int		i;
 	long	nbr;
@@ -29,6 +29,6 @@ int	ft_parser(char* str, t_node** head_ref)
 	nbr = ft_atoi_lg(str);
 	if (nbr < -2147483648 || nbr > 2147483647)
 		return (0);
-	add_node_tail(head_ref, create_node(nbr));
+	add_node_tail(head_ref, create_node(nbr, idx));
 	return (1);
 }

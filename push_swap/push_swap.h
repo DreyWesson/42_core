@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/14 11:55:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:46:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 typedef struct s_node {
 	int value;
+	int order_idx;
+	int list_idx;
+	int exit_cost;
+	int target_cost;
+	int total_cost;
 	struct s_node* next;
 	struct s_node* prev;
 }	t_node;
@@ -30,21 +35,21 @@ typedef struct s_node_details {
 /**
  * UTILS FUNCTIONS
 */
-int		ft_parser(char* str, t_node** head_ref);
+int		ft_parser(char* str, t_node** head_ref, int i);
 long	ft_atoi_lg(const char* str);
 int validator(int argc, char** argv, t_node** head);
 int is_sorted(t_node** head_ref);
 int is_cyclic(t_node** stack_a);
-void dummystack(t_node** stack);
 // int** find_min_max(t_node** head_ref);
 void sort_router(t_node** stack_a, t_node** stack_b);
+void handle_indexing(t_node** stack_a);
 /**
  * LINKEDLIST
 */
-void ft_print_nodes(t_node** head_ref);
+void	ft_print_nodes(t_node** head_ref, char* ptr);
 t_node* del_node(t_node** prev_node, t_node* target_node);
 void	add_node_tail(t_node** lst, t_node* new_node);
-t_node* create_node(int value);
+t_node* create_node(int value, int idx);
 t_node* ft_last_node(t_node* head_ref);
 int		check_duplicates(t_node** head_ref);
 void	add_node_head(t_node** head_ref, t_node* new_node);
@@ -77,5 +82,6 @@ void	push_unsorted_only(t_node** x, t_node** y, char* ptr);
 */
 void sort_three_max(t_node** head_ref, char check_cyclic);
 void sort_more(t_node** stack_a, t_node** stack_b);
+int* bubble_sort(int* ptr, int size);
 
 #endif
