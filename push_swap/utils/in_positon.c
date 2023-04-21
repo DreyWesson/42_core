@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_node.c                                       :+:      :+:    :+:   */
+/*   in_positon.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 13:36:32 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 14:00:41 by doduwole         ###   ########.fr       */
+/*   Created: 2023/04/21 13:47:17 by doduwole          #+#    #+#             */
+/*   Updated: 2023/04/21 14:05:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_print_nodes(t_node** head_ref, char ptr)
+int in_position(t_node** stack_a)
 {
 	t_node* tmp;
+	int i;
 
-	if (!head_ref)
-		return;
-	tmp = *head_ref;
+	i = 0;
+	tmp = *stack_a;
 	while (tmp)
 	{
-		if (ptr == 'v')
-			ft_printf("value:%d\norder_idx:%d\nlist_idx:%d\nexit_cost:%d\ntarget_cost:%d\ntotal_cost%d\n\n", tmp->value, tmp->order_idx, tmp->list_idx, tmp->exit_cost, tmp->target_cost, tmp->total_cost);
-		else
-			ft_printf("%d ", tmp->value);
-
+		if (tmp->list_idx == tmp->order_idx)
+			i++;
 		tmp = tmp->next;
 	}
-	ft_printf("\n");
+	return (i);
 }

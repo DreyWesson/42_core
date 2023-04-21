@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 12:49:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:19:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,16 @@ void re_sort(t_node** stack_a)
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
 	handle_indexing(stack_a);
+
+	// ✅ check num of values in position
+		// ✅ if more than three then dont push those
+		// ✅ else push all until 3
+	// 🔴 calc exit cost of each from stack_b
+	// 🔴 calc target cost of each
+	// 🔴 check total cost of each by comparing the exit and target cost
+	// 🔴 check opportunity to perform double ops if eit and target share same sign
+	// 🔴 after every push check if list is sorted cyclically or default sorted
+
 	push_unsorted_only(stack_a, stack_b, "pb");
 	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
 		sort_three_max(stack_a, 'y');

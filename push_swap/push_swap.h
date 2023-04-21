@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 12:46:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:56:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ int is_cyclic(t_node** stack_a);
 // int** find_min_max(t_node** head_ref);
 void sort_router(t_node** stack_a, t_node** stack_b);
 void handle_indexing(t_node** stack_a);
+int in_position(t_node** stack_a);
 /**
  * LINKEDLIST
 */
-void	ft_print_nodes(t_node** head_ref, char* ptr);
+void	ft_print_nodes(t_node** head_ref, char ptr);
 t_node* del_node(t_node** prev_node, t_node* target_node);
 void	add_node_tail(t_node** lst, t_node* new_node);
 t_node* create_node(int value, int idx);
