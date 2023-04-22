@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 14:20:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/22 17:35:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,21 @@ void	repeat_reverse(t_node** x, int num, char* ptr)
 
 void pick_sorted(t_node** stack_a, t_node** stack_b)
 {
-	t_node* tmp;
+	int last_val;
 
-	tmp = *stack_a;
-	while (tmp)
+	last_val = ft_last_node(*stack_a)->value;
+	while (*stack_a)
 	{
-		if (tmp->list_idx == tmp->order_idx)
+		if ((*stack_a)->value == last_val)
 		{
-			tmp = tmp->next;
-			rotate(&tmp, "ra");
+			if ((*stack_a)->list_idx != (*stack_a)->order_idx)
+				push(stack_a, stack_b, "pb");
+			break;
 		}
+		if ((*stack_a)->list_idx == (*stack_a)->order_idx)
+			rotate(stack_a, "ra");
 		else
-			push(&tmp, stack_b, "pb");
+			push(stack_a, stack_b, "pb");
 	}
 }
 
@@ -71,7 +74,11 @@ void	push_unsorted_only(t_node** x, t_node** y, char* ptr)
 	t_node* tmp;
 
 	if (in_position(x) > 3)
-		return pick_sorted(x, y);
+	{
+		printf("in position\n");
+		pick_sorted(x, y);
+		return;
+	}
 	tmp = *x;
 	last_3 = ft_last_node(*x)->prev->prev->value;
 	while (tmp)
