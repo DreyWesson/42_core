@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 22:06:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:19:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,25 @@ void priority(t_node** stack_b)
 			printf("Wadda hell\n");
 		tmp = tmp->next;
 	}
+}
+
+t_node	*highest_priority(t_node **stack_b)
+{
+	int		nbr;
+	t_node	*tmp;
+	t_node	*highest;
+
+	nbr = 2147483647;
+	tmp = *stack_b;
+
+	while (tmp)
+	{
+		if (tmp->priority < nbr)
+		{
+			highest = tmp;
+			nbr = tmp->priority;
+		}
+		tmp = tmp->next;
+	}
+	return (highest);
 }

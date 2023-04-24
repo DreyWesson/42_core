@@ -6,6 +6,7 @@
 		"push_swap.h": "c"
 	},
 	"cSpell.words": [
+		"libft",
 		"lstadd",
 		"lstiter",
 		"lstnew",

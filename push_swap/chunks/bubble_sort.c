@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                             :+:      :+:    :+:   */
+/*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:17:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 10:39:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:08:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int* bubble_sort(int* ptr, int size)
+int	*bubble_sort(int *ptr, int size)
 {
-	int i;
-	int j;
-	int cache;
+	int	i;
+	int	j;
+	int	cache;
 
 	i = 0;
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 22:17:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:14:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,21 @@ void end_to_end(t_node** stack_a, t_node* exiting_node, char* found)
 		exiting_node->target_cost = 0;
 		*found = 'y';
 	}
+}
+
+int	target_pos(t_node **stack_a, int target_value)
+{
+	t_node	*tmp;
+	int		size;
+
+	size = 0;
+	tmp = *stack_a;
+	while (tmp->next)
+	{
+		size++;
+		if (target_value == tmp->value)
+			break;
+		tmp = tmp->next;
+	}
+	return (size);
 }
