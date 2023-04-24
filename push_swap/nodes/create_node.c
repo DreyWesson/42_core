@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:38:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 07:38:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:03:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_node* create_node(int value, int i)
 	head->list_idx = i;
 	head->target_cost = 0;
 	head->priority = 0;
+	head->optimized = 0;
 	head->exit_cost = 0;
 	head->order_idx = 0;
 	head->next = NULL;

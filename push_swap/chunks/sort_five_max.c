@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 06:26:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:13:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,15 @@ void re_calibrator(t_node** head_ref)
 		i++;
 	}
 }
-
+void reconfigure(t_node** stack_a, t_node** stack_b)
+{
+	re_calibrator(stack_b);
+	re_calibrator(stack_a);
+	exit_cost(stack_b);
+	target_cost(stack_a, stack_b);
+	optimize(stack_b);
+	priority(stack_b);
+}
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
 	handle_indexing(stack_a);
@@ -153,13 +161,9 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	// 🔴 after every push check if list is sorted cyclically or default sorted
 
 	push_unsorted_only(stack_a, stack_b, "pb");
-	// ft_print_nodes(stack_a, ' ');
-	// ft_print_nodes(stack_b, ' ');
-	// re-evaluate list_idx
-	re_calibrator(stack_b);
-	re_calibrator(stack_a);
-	exit_cost(stack_b);
-	target_cost(stack_a, stack_b);
+	reconfigure(stack_a, stack_b);
+	ft_print_nodes(stack_b, 'v');
+
 
 	// ft_print_nodes(stack_a, 'v');
 	// ft_print_nodes(stack_b, 'v');
