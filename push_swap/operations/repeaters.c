@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 15:35:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:10:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	repeat_rotate(t_node** x, int num, char* ptr)
+void	repeat_rotate(t_node **x, int num, char *ptr)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ void	repeat_rotate(t_node** x, int num, char* ptr)
 	}
 }
 
-void	repeat_push(t_node** x, t_node** y, int num, char* ptr)
+void	repeat_push(t_node **x, t_node **y, int num, char *ptr)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ void	repeat_push(t_node** x, t_node** y, int num, char* ptr)
 	}
 }
 
-void	repeat_reverse(t_node** x, int num, char* ptr)
+void	repeat_reverse(t_node **x, int num, char *ptr)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void	repeat_reverse(t_node** x, int num, char* ptr)
 	}
 }
 
-void repeat_double_rotate(t_node** x, t_node** y, int num)
+void repeat_double_rotate(t_node **x, t_node **y, int num)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ void repeat_double_rotate(t_node** x, t_node** y, int num)
 	}
 }
 
-void repeat_double_reverse(t_node** x, t_node** y, int num)
+void repeat_double_reverse(t_node **x, t_node **y, int num)
 {
 	while (num < 0)
 	{
