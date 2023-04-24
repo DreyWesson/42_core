@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 16:55:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:11:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,8 @@ t_node* highest_priority(t_node** stack_b)
 			highest = tmp;
 			nbr = tmp->priority;
 		}
-		if (tmp->priority == nbr && (tmp->optimized != 0 || tmp->value > highest->value))
-		{
-			highest = tmp;
-			nbr = tmp->priority;
-		}
 		tmp = tmp->next;
 	}
-
-
 	return (highest);
 }
 
@@ -112,6 +105,7 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	int num;
 
 	push_unsorted_only(stack_a, stack_b, "pb");
+
 	while (*stack_b)
 	{
 		reconfigure(stack_a, stack_b);
@@ -163,4 +157,5 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 			break;
 	}
 	re_sort(stack_a);
+	// ft_print_nodes(stack_a, ' ');
 }

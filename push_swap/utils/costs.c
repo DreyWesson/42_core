@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 16:56:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:05:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void optimize(t_node** stack_b)
 			else
 				tmp->optimized = tmp->exit_cost;
 		}
+		else if ((tmp->exit_cost > 0 && tmp->target_cost < 0) || (tmp->exit_cost < 0 && tmp->target_cost > 0))
+			tmp->optimized = 0;
+
 		tmp = tmp->next;
 	}
 }
