@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 12:20:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:50:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,15 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	// ✅ calc target cost of each
 	// ✅ check total cost of each by comparing the exit and target cost
 	// ✅ check opportunity to perform double ops if eit and target share same sign
-
-	// 🔴 after every push check if list is sorted cyclically or default sorted	 AND reconfigure properties
-
-
+	// ✅ after every push check if list is sorted cyclically or default sorted	 AND reconfigure properties
 	push_unsorted_only(stack_a, stack_b, "pb");
-	// if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
-	// 	sort_three_max(stack_a, 'y');
-	int num;
 
+	int num;
 	while (*stack_b)
 	{
 		reconfigure(stack_a, stack_b);
+		// ft_print_nodes(stack_a, ' ');
+		ft_print_nodes(stack_b, 'v');
 		highest = highest_priority(stack_b);
 		if (highest->optimized != 0)
 		{
@@ -143,11 +140,6 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 				repeat_double_reverse(stack_a, stack_b, num);
 				highest->exit_cost -= (num * -1);
 				highest->target_cost -= (num * -1);
-				// if ((*stack_a)->exit_cost < (*stack_a)->target_cost)
-				// 	repeat_reverse(stack_b, (*stack_b)->exit_cost + (num * -1), "rrb");
-				// else
-				// 	repeat_reverse(stack_a, (*stack_b)->target_cost - num, "rra");
-				// push(stack_b, stack_a, "pa");
 			}
 		}
 
@@ -161,6 +153,8 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 		else if (highest->target_cost < 0)
 			repeat_reverse(stack_a, highest->target_cost, "rra");
 		push(stack_b, stack_a, "pa");
+		// ft_print_nodes(stack_a, 'v');
+		// ft_print_nodes(stack_b, 'v');
 		if (!is_sorted(stack_a) && !is_cyclic(stack_a))
 		{
 			printf("Something is wrong with sorting\n");
@@ -169,7 +163,7 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	}
 
 
-	ft_print_nodes(stack_a, ' ');
+	// ft_print_nodes(stack_a, ' ');
 
 	if (is_sorted(stack_a))
 		return;
@@ -177,8 +171,3 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	ft_print_nodes(stack_a, ' ');
 
 }
-
-// printf("pos: %d, min_pos: %d\n", pos, min->pos);
-// printf("==fwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
-// printf("==rwd==>size: %d, target: %d\n", target_pos(stack_a, tmp->value), tmp->value);
-// printf("=======> a-top: %d, b-top: %d, max_val: %d, min_val: %d tail: %d, target_pos: %d\n", (*stack_a)->value, (*stack_b)->value, max->value, min->value, ft_last_node(*stack_a)->value, target_pos(stack_a, min->value) - 1);

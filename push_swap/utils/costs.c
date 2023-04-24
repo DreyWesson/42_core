@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 10:10:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:08:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,19 @@ void optimize(t_node** stack_b)
 	tmp = *stack_b;
 	while (tmp)
 	{
-		if ((tmp->exit_cost >= 0 && tmp->target_cost >= 0)
-			|| (tmp->exit_cost <= 0 && tmp->target_cost <= 0))
+		if (tmp->exit_cost > 0 && tmp->target_cost > 0)
 		{
 			if (tmp->exit_cost <= tmp->target_cost)
 				tmp->optimized = tmp->exit_cost;
 			else
 				tmp->optimized = tmp->target_cost;
+		}
+		else if (tmp->exit_cost < 0 && tmp->target_cost < 0)
+		{
+			if (tmp->exit_cost <= tmp->target_cost)
+				tmp->optimized = tmp->target_cost;
+			else
+				tmp->optimized = tmp->exit_cost;
 		}
 		tmp = tmp->next;
 	}
