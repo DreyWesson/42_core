@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 16:37:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:17:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void min_max_handler(t_node** stack_a, t_node* exiting_node, char* found)
 			exiting_node->target_cost = details->min->node->list_idx;
 		*found = 'y';
 	}
+	free(details);
 }
 
-void fwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details)
+void fwd(t_node** stack_a, t_node* exiting_node,
+	char* found, t_details* details)
 {
 	t_node* tmp;
 	int mid_pos;

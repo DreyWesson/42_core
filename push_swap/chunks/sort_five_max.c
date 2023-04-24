@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 18:11:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:49:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void re_sort(t_node** stack_a)
 	min = min_node_details(stack_a);
 	mid = mid_node_details(stack_a);
 	move_picker(stack_a, min->pos, mid->pos);
+	free(min);
+	free(mid);
 }
 
 void re_calibrator(t_node** head_ref)
@@ -105,7 +107,6 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	int num;
 
 	push_unsorted_only(stack_a, stack_b, "pb");
-
 	while (*stack_b)
 	{
 		reconfigure(stack_a, stack_b);
@@ -127,7 +128,6 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 				highest->target_cost += (num * -1);
 			}
 		}
-
 		if (highest->exit_cost > 0)
 		{
 			repeat_rotate(stack_b, highest->exit_cost, "rb");
@@ -138,7 +138,6 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 			repeat_reverse(stack_b, highest->exit_cost * -1, "rrb");
 			highest->exit_cost = 0;
 		}
-
 		if (highest->target_cost > 0)
 		{
 			repeat_rotate(stack_a, highest->target_cost, "ra");
@@ -149,10 +148,8 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 			repeat_reverse(stack_a, highest->target_cost * -1, "rra");
 			highest->target_cost = 0;
 		}
-
 		if (highest->exit_cost == 0 && highest->target_cost == 0)
 			push(stack_b, stack_a, "pa");
-
 		if (!is_sorted(stack_a) && !is_cyclic(stack_a))
 			break;
 	}

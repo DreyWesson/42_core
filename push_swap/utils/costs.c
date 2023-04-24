@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 18:05:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:06:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void target_cost(t_node** stack_a, t_node** stack_b)
 			rwd(stack_a, tmp, &found, details);
 		tmp = tmp->next;
 	}
+	free(details);
 }
 
 void optimize(t_node** stack_b)
