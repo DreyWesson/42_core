@@ -12,7 +12,6 @@
 
 #include "../push_swap.h"
 
-
 int* bubble_sort(int* ptr, int size)
 {
 	int i;

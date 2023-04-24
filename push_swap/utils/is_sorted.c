@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:43:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/15 15:02:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:57:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int is_cyclic(t_node** stack_a)
 		return (0);
 	if (min->node->prev && !validate_backward(min->node, stack_a))
 		return (0);
-	// printf("Here\n");
 	return (1);
 }
 

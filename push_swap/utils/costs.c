@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 14:08:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:56:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,45 @@ void priority(t_node** stack_b)
 	tmp = *stack_b;
 	while (tmp)
 	{
-		if (tmp->exit_cost >= 0 && tmp->target_cost >= 0)
+		if (tmp->exit_cost > 0 && tmp->target_cost > 0)
 		{
 			if (tmp->exit_cost >= tmp->target_cost)
 				tmp->priority = tmp->exit_cost;
-			else
+			else if (tmp->target_cost > tmp->exit_cost)
 				tmp->priority = tmp->target_cost;
+			else
+				printf("-> Trouble A <-\n");
 		}
-		else if (tmp->exit_cost <= 0 && tmp->target_cost <= 0)
+		else if (tmp->exit_cost < 0 && tmp->target_cost < 0)
 		{
 			if (tmp->exit_cost <= tmp->target_cost)
-				tmp->priority = tmp->exit_cost;
+				tmp->priority = tmp->exit_cost * -1;
+			else if (tmp->exit_cost > tmp->target_cost)
+				tmp->priority = tmp->target_cost * -1;
 			else
-				tmp->priority = tmp->target_cost;
+				printf("-> Trouble B <-\n");
 		}
-		else if (tmp->exit_cost < 0 && tmp->target_cost > 0) {
-
+		else if (tmp->exit_cost < 0 && tmp->target_cost > 0)
+		{
 			tmp->priority = (-1 * tmp->exit_cost) + tmp->target_cost;
 		}
-		else if (tmp->exit_cost > 0 && tmp->target_cost < 0) {
-
-			tmp->priority = (-1 * tmp->target_cost) + tmp->exit_cost;
+		else if (tmp->exit_cost > 0 && tmp->target_cost < 0)
+		{
+			tmp->priority = tmp->exit_cost + (-1 * tmp->target_cost);
+		}
+		else if (tmp->exit_cost == 0)
+		{
+			if (tmp->target_cost >= 0)
+				tmp->priority = tmp->target_cost;
+			else
+				tmp->priority = tmp->target_cost * -1;
+		}
+		else if (tmp->target_cost == 0)
+		{
+			if (tmp->exit_cost >= 0)
+				tmp->priority = tmp->exit_cost;
+			else
+				tmp->priority = tmp->exit_cost * -1;
 		}
 		else
 			printf("Wadda hell\n");

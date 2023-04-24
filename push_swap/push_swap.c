@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/15 15:01:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:57:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,3 @@ int	main(int argc, char** argv)
 	// ft_print_nodes(stack_a);
 	return (0);
 }
-// TEST ACTIONS
-// dummystack(stack_b);
-// swap_nodes(*stack_a, (*stack_a)->next); <= sa
-// swap_nodes(*stack_b, (*stack_b)->next); <= sb
-// double_swap(*stack_a, (*stack_a)->next, *stack_b, (*stack_b)->next); <= sa + sb
-// push(stack_a, stack_b);  <= pa
-// push(stack_b, stack_a);  <= pb
-// rotate(stack_a); <= ra
-// rotate(stack_b); <= rb
-// double_rotate(stack_a, stack_b);
-// reverse_rotate(stack_a);
-// double_reverse(stack_a, stack_b);
-// ft_printf("Is Sorted");
-// ft_printf("%d\n", stack_size);
-// 1 2 3 5 4

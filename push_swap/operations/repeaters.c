@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 11:45:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:35:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void repeat_double_rotate(t_node** x, t_node** y, int num)
 
 void repeat_double_reverse(t_node** x, t_node** y, int num)
 {
-	while (num <= 0)
+	while (num < 0)
 	{
 		double_reverse(x, y);
 		num++;

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 11:55:55 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:37:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void fwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details
 			if (tmp->list_idx <= mid_pos)
 				exiting_node->target_cost = tmp->next->list_idx;
 			else
-				exiting_node->target_cost = tmp->list_idx - size;
+				exiting_node->target_cost = tmp->list_idx - size + 1;
 			break;
 		}
 		tmp = tmp->next;
