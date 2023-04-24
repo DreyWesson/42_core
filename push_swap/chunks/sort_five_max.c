@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 09:13:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:20:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,48 +29,6 @@ int target_pos(t_node** stack_a, int target_value)
 	return (size);
 }
 
-int fastforward(t_node* min_node, t_node** stack_b,
-	char* found, t_node** stack_a)
-{
-	t_node* tmp;
-
-	tmp = min_node;
-	while (tmp->next)
-	{
-		if (tmp->value < (*stack_b)->value
-			&& (*stack_b)->value < tmp->next->value)
-		{
-			*found = 'y';
-			break;
-		}
-		tmp = tmp->next;
-	}
-	if (*found != 'y')
-		return (0);
-	return (target_pos(stack_a, tmp->value));
-}
-
-int rewind_node(t_node* min_node, t_node** stack_b,
-	char* found, t_node** stack_a)
-{
-	t_node* tmp;
-
-	tmp = min_node;
-	while (tmp->prev)
-	{
-		if (tmp->prev->value < (*stack_b)->value
-			&& (*stack_b)->value < tmp->value)
-		{
-			*found = 'y';
-			break;
-		}
-		tmp = tmp->prev;
-	}
-	if (*found != 'y')
-		return (0);
-	return (target_pos(stack_a, tmp->value) - 1);
-}
-
 void move_picker(t_node** stack, int target_pos, int mid_pos)
 {
 	int size;
@@ -80,36 +38,6 @@ void move_picker(t_node** stack, int target_pos, int mid_pos)
 		repeat_rotate(stack, target_pos, "ra");
 	else if (target_pos > mid_pos)
 		repeat_reverse(stack, size - target_pos, "rra");
-}
-
-void pusher(t_node** stack_a, t_node** stack_b)
-{
-	t_details* details;
-	int pos;
-	char found;
-
-	found = 'n';
-	details = special_nodes(stack_a);
-	pos = 0;
-	pos += fastforward(details->min->node, stack_b, &found, stack_a);
-	if (details->min->node->prev && found != 'y')
-		pos += rewind_node(details->min->node, stack_b, &found, stack_a);
-	if (found == 'y')
-		move_picker(stack_a, pos, details->mid->pos);
-	else
-	{
-		if ((*stack_b)->value > details->max->value)
-		{
-			if (ft_last_node(*stack_a)->value != details->max->value)
-				move_picker(stack_a, target_pos(stack_a, details->max->value), details->mid->pos);
-		}
-		else if ((*stack_b)->value < details->min->value)
-		{
-			if ((*stack_a)->value != details->min->value)
-				move_picker(stack_a, target_pos(stack_a, details->max->value), details->mid->pos);
-		}
-	}
-	push(stack_b, stack_a, "pa");
 }
 
 void re_sort(t_node** stack_a)
@@ -138,6 +66,7 @@ void re_calibrator(t_node** head_ref)
 		i++;
 	}
 }
+
 void reconfigure(t_node** stack_a, t_node** stack_b)
 {
 	re_calibrator(stack_b);
@@ -147,34 +76,106 @@ void reconfigure(t_node** stack_a, t_node** stack_b)
 	optimize(stack_b);
 	priority(stack_b);
 }
+
+t_node* highest_priority(t_node** stack_b)
+{
+	int nbr;
+	t_node* tmp;
+	t_node* highest;
+
+	nbr = 2147483647;
+	tmp = *stack_b;
+
+	while (tmp)
+	{
+		if (tmp->priority < nbr)
+		{
+			highest = tmp;
+			nbr = tmp->priority;
+		}
+		if (tmp->priority == nbr && tmp->optimized > 0)
+		{
+			highest = tmp;
+			nbr = tmp->priority;
+		}
+		tmp = tmp->next;
+	}
+	return (highest);
+}
+
 void sort_more(t_node** stack_a, t_node** stack_b)
 {
+	t_node* highest;
 	handle_indexing(stack_a);
-	// ft_print_nodes(stack_a, 'v');
+
 	// ✅ check num of values in position
 		// ✅ if more than three then dont push those
 		// ✅ else push all until 3
 	// ✅ calc exit cost of each from stack_b
-	// 🔴 calc target cost of each
-	// 🔴 check total cost of each by comparing the exit and target cost
-	// 🔴 check opportunity to perform double ops if eit and target share same sign
-	// 🔴 after every push check if list is sorted cyclically or default sorted
+	// ✅ calc target cost of each
+	// ✅ check total cost of each by comparing the exit and target cost
+	// ✅ check opportunity to perform double ops if eit and target share same sign
+
+	// 🔴 after every push check if list is sorted cyclically or default sorted	 AND reconfigure properties
+
 
 	push_unsorted_only(stack_a, stack_b, "pb");
-	reconfigure(stack_a, stack_b);
-	ft_print_nodes(stack_b, 'v');
+	// if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
+	// 	sort_three_max(stack_a, 'y');
+	int num;
+
+	while (*stack_b)
+	{
+		reconfigure(stack_a, stack_b);
+		highest = highest_priority(stack_b);
+		if (highest->optimized != 0)
+		{
+			if (highest->optimized > 0)
+			{
+				num = highest->optimized;
+				repeat_double_rotate(stack_a, stack_b, num);
+				highest->exit_cost -= num;
+				highest->target_cost -= num;
+			}
+			else
+			{
+				num = highest->optimized;
+				repeat_double_reverse(stack_a, stack_b, num);
+				highest->exit_cost -= (num * -1);
+				highest->target_cost -= (num * -1);
+				// if ((*stack_a)->exit_cost < (*stack_a)->target_cost)
+				// 	repeat_reverse(stack_b, (*stack_b)->exit_cost + (num * -1), "rrb");
+				// else
+				// 	repeat_reverse(stack_a, (*stack_b)->target_cost - num, "rra");
+				// push(stack_b, stack_a, "pa");
+			}
+		}
+
+		if (highest->exit_cost >= 0)
+			repeat_rotate(stack_b, highest->exit_cost, "rb");
+		else if (highest->exit_cost < 0)
+			repeat_reverse(stack_b, highest->exit_cost, "rrb");
+
+		if (highest->target_cost >= 0)
+			repeat_rotate(stack_a, highest->target_cost, "ra");
+		else if (highest->target_cost < 0)
+			repeat_reverse(stack_a, highest->target_cost, "rra");
+		push(stack_b, stack_a, "pa");
+		if (!is_sorted(stack_a) && !is_cyclic(stack_a))
+		{
+			printf("Something is wrong with sorting\n");
+			break;
+		}
+	}
 
 
-	// ft_print_nodes(stack_a, 'v');
-	// ft_print_nodes(stack_b, 'v');
+	ft_print_nodes(stack_a, ' ');
 
-	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))
-		sort_three_max(stack_a, 'y');
-	while (*stack_b && (is_cyclic(stack_a) || is_sorted(stack_a)))
-		pusher(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		return;
 	re_sort(stack_a);
+	ft_print_nodes(stack_a, ' ');
+
 }
 
 // printf("pos: %d, min_pos: %d\n", pos, min->pos);

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/22 19:47:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:45:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,39 +48,23 @@ void	repeat_reverse(t_node** x, int num, char* ptr)
 	}
 }
 
-void pick_sorted(t_node** stack_a, t_node** stack_b)
+void repeat_double_rotate(t_node** x, t_node** y, int num)
 {
-	int last_val;
+	int	i;
 
-	last_val = ft_last_node(*stack_a)->value;
-	while (*stack_a)
+	i = 0;
+	while (i < num)
 	{
-		if ((*stack_a)->value == last_val)
-		{
-			if ((*stack_a)->list_idx != (*stack_a)->order_idx)
-				push(stack_a, stack_b, "pb");
-			break;
-		}
-		if ((*stack_a)->list_idx == (*stack_a)->order_idx)
-			rotate(stack_a, "ra");
-		else
-			push(stack_a, stack_b, "pb");
+		double_rotate(x, y);
+		i++;
 	}
 }
 
-void	push_unsorted_only(t_node** x, t_node** y, char* ptr)
+void repeat_double_reverse(t_node** x, t_node** y, int num)
 {
-	int	last_3;
-	t_node* tmp;
-
-	if (in_position(x) > 3)
-		return pick_sorted(x, y);
-	tmp = *x;
-	last_3 = ft_last_node(*x)->prev->prev->value;
-	while (tmp)
+	while (num <= 0)
 	{
-		if (is_cyclic(x) || (*x)->value == last_3)
-			break;
-		push(x, y, ptr);
+		double_reverse(x, y);
+		num++;
 	}
 }

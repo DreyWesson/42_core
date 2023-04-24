@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 09:03:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:21:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_node {
 	int list_idx;
 	int exit_cost;
 	int target_cost;
-	int priority;
 	int optimized;
+	int priority;
 	struct s_node* next;
 	struct s_node* prev;
 }	t_node;
@@ -56,6 +56,7 @@ void end_to_end(t_node** stack_a, t_node* exiting_node, char* found);
 int rwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
 void fwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
 void min_max_handler(t_node** stack_a, t_node* exiting_node, char* found);
+void move_picker(t_node** stack, int target_pos, int mid_pos);
 /**
  * LINKEDLIST
 */
@@ -79,9 +80,11 @@ void	swap_nodes(t_node* a, t_node* b, char* tag);
 void	double_swap(t_node* a, t_node* b, t_node* x, t_node* y);
 void push(t_node** src, t_node** dest, char* tag);
 void rotate(t_node** head_ref, char* tag);
-void double_rotate(t_node** a, t_node** b);
 void reverse_rotate(t_node** head_ref, char* tag);
+void double_rotate(t_node** a, t_node** b);
 void double_reverse(t_node** a, t_node** b);
+void repeat_double_reverse(t_node** x, t_node** y, int num);
+void repeat_double_rotate(t_node** x, t_node** y, int num);
 /**
  * REPEATERS
 */

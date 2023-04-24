@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 09:10:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:10:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void priority(t_node** stack_b)
 				tmp->priority = tmp->exit_cost;
 			else
 				tmp->priority = tmp->target_cost;
-			printf("higher exit higher target\n");
-
 		}
 		else if (tmp->exit_cost <= 0 && tmp->target_cost <= 0)
 		{
@@ -93,18 +91,14 @@ void priority(t_node** stack_b)
 				tmp->priority = tmp->exit_cost;
 			else
 				tmp->priority = tmp->target_cost;
-			printf("lower exit lower target\n");
 		}
 		else if (tmp->exit_cost < 0 && tmp->target_cost > 0) {
 
 			tmp->priority = (-1 * tmp->exit_cost) + tmp->target_cost;
-			printf("lower exit higher target\n");
 		}
 		else if (tmp->exit_cost > 0 && tmp->target_cost < 0) {
 
 			tmp->priority = (-1 * tmp->target_cost) + tmp->exit_cost;
-			printf("higher exit lower target\n");
-
 		}
 		else
 			printf("Wadda hell\n");
