@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:18:41 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:44:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:52:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_converter(char val, va_list* args)
+int	ft_converter(char val, va_list *args)
 {
 	int		i;
 

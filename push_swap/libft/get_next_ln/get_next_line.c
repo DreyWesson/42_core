@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:59:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/20 21:03:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:50:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_concat_chunks(char	**line, char	**chunk)
 		*line = tmp;
 	}
 }
+
 char	*ft_splitln(char	**str)
 {
 	char	*line;

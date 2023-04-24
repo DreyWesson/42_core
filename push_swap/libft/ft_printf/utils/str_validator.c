@@ -6,16 +6,16 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:20:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:53:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	str_validator(const char* format)
+int	str_validator(const char *format)
 {
 	int		i;
-	char* str;
+	char	*str;
 
 	if (!format[0])
 		return ('\0');

@@ -6,17 +6,17 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:10:37 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:52:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	convert_xes(va_list* args, char val)
+int	convert_xes(va_list *args, char val)
 {
 	unsigned int	ptr;
 	int				ret;
-	char* c;
+	char			*c;
 
 	ret = 0;
 	ptr = va_arg(*args, unsigned int);
