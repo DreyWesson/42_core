@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:37:07 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/22 19:49:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:56:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node* del_node(t_node** prev_node, t_node* target_node)
+t_node	*del_node(t_node **prev_node, t_node *target_node)
 {
 	if (!*prev_node || !target_node)
 		return (NULL);

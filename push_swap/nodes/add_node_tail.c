@@ -6,15 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:39:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 13:40:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:55:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	add_node_tail(t_node** head_ref, t_node* new_node)
+void	add_node_tail(t_node **head_ref, t_node *new_node)
 {
-	t_node* last_node;
+	t_node	*last_node;
 
 	if (*head_ref)
 	{

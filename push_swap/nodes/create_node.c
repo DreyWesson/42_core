@@ -6,17 +6,17 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:38:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 08:03:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:55:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node* create_node(int value, int i)
+t_node	*create_node(int value, int i)
 {
-	t_node* head;
+	t_node	*head;
 
-	head = (t_node*)malloc(sizeof(t_node));
+	head = (t_node *)malloc(sizeof(t_node));
 	if (!head)
 		return (NULL);
 	head->value = value;
