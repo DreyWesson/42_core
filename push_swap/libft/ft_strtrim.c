@@ -6,15 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 21:24:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 11:20:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:47:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char* ft_strtrim(char const* s1, char const* set);
+char	*ft_strtrim(char const *s1, char const *set);
 
-static int ft_char_in_set(char c, char const* set)
+static	int	ft_char_in_set(char c, char const *set)
 {
 	size_t	i;
 
@@ -28,9 +28,9 @@ static int ft_char_in_set(char c, char const* set)
 	return (0);
 }
 
-char* ft_strtrim(char const* s1, char const* set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char* str;
+	char	*str;
 	size_t	i;
 	size_t	start;
 	size_t	end;

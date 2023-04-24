@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:03:37 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/19 10:25:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:36:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	bin_to_char(int** ptr)
+int	bin_to_char(int **ptr)
 {
 	static char		c;
 	int				byte_idx;
@@ -31,7 +31,7 @@ int	bin_to_char(int** ptr)
 			else if (val == 0)
 				c <<= 1;
 			bit_idx++;
-		ft_printf("%d\n", c);
+			ft_printf("%d\n", c);
 		}
 		byte_idx++;
 	}

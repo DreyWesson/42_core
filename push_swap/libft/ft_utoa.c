@@ -6,15 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:20:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/08 09:10:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:48:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char* ft_utoa(unsigned int n)
+char	*ft_utoa(unsigned int n)
 {
-	char* ptr;
+	char	*ptr;
 	int		len;
 
 	len = ft_nbrlen_uns(n);

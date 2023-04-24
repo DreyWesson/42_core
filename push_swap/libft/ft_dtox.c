@@ -6,16 +6,16 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:02:35 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/08 13:28:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:43:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 
-char* ft_dtox(unsigned long n, char val)
+char	*ft_dtox(unsigned long n, char val)
 {
-	char* ptr;
+	char			*ptr;
 	int				len;
 	unsigned long	rem;
 	int				j;
