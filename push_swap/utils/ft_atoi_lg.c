@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:34:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/22 12:34:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:29:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi_lg(const char* str)
+long	ft_atoi_lg(const char *str)
 {
 	long	i;
 	long	nbr;
@@ -20,7 +20,7 @@ long	ft_atoi_lg(const char* str)
 	nbr = 0;
 	is_neg = 0;
 	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
+			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
 		i++;
 	if (str[i] != '\0' && str[i] == '-')
 		is_neg = 1;

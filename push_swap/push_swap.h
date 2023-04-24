@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 23:20:42 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:40:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ void sort_router(t_node** stack_a, t_node** stack_b);
 void handle_indexing(t_node** stack_a);
 int in_position(t_node** stack_a);
 int target_pos(t_node** stack_a, int target_value);
-void end_to_end(t_node** stack_a, t_node* exiting_node, char* found);
-int rwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
-void fwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
+void head_to_tail(t_node** stack_a, t_node* exiting_node, char* found);
+int spring(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
+void waterfall(t_node** stack_a, t_node* exiting_node, char* found, t_details* details);
 void min_max_handler(t_node** stack_a, t_node* exiting_node, char* found);
 void move_picker(t_node** stack, int target_pos, int mid_pos);
+void target_zero(t_node *tmp);
+void exit_zero(t_node *tmp);
+void	both_negative(t_node *tmp);
+void	both_positive(t_node *tmp);
 /**
  * LINKEDLIST
 */

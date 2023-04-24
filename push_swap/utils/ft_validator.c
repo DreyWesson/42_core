@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 12:15:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:30:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int validator(int argc, char** argv, t_node** head)
+int	validator(int argc, char **argv, t_node **head)
 {
 	int		i;
 

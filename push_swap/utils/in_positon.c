@@ -6,16 +6,16 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:47:17 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 14:05:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:30:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int in_position(t_node** stack_a)
+int	in_position(t_node **stack_a)
 {
-	t_node* tmp;
-	int i;
+	t_node	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = *stack_a;

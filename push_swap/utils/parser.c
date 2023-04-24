@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:48:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 12:17:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:33:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_parser(char* str, t_node** head_ref, int idx)
+int	ft_parser(char *str, t_node **head_ref, int idx)
 {
 	int		i;
 	long	nbr;
