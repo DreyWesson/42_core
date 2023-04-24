@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:36:32 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 14:00:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:27:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_print_nodes(t_node** head_ref, char ptr)
 	while (tmp)
 	{
 		if (ptr == 'v')
-			ft_printf("value:%d\norder_idx:%d\nlist_idx:%d\nexit_cost:%d\ntarget_cost:%d\ntotal_cost%d\n\n", tmp->value, tmp->order_idx, tmp->list_idx, tmp->exit_cost, tmp->target_cost, tmp->total_cost);
+			ft_printf("value: %d\norder_idx: %d\nlist_idx: %d\nexit_cost: %d\ntarget_cost: %d\ntotal_cost: %d\n\n", tmp->value, tmp->order_idx, tmp->list_idx, tmp->exit_cost, tmp->target_cost, tmp->total_cost);
 		else
 			ft_printf("%d ", tmp->value);
 

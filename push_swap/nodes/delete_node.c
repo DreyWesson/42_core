@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:37:07 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/23 15:02:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/22 19:49:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ t_node* del_node(t_node** prev_node, t_node* target_node)
 		target_node->next->prev = target_node->prev;
 	if (target_node->prev != NULL)
 		target_node->prev->next = target_node->next;
+	target_node->next = NULL;
+	target_node->prev = NULL;
 	return (target_node);
 }

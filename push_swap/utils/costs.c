@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/21 21:48:48 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 07:39:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,51 +29,68 @@ void exit_cost(t_node** stack)
 	}
 }
 
-char fwd(t_node** stack_a, t_node* exiting_node)
+void min_max_handler(t_node** stack_a, t_node* exiting_node, char* found)
+{
+
+	t_details* details;
+
+	details = special_nodes(stack_a);
+	if ((exiting_node->value < details->min->node->value)
+		|| (exiting_node->value > details->max->node->value))
+	{
+		if (details->min->pos > details->mid->pos)
+			exiting_node->target_cost = details->min->node->list_idx - lst_size(stack_a);
+		else
+			exiting_node->target_cost = details->min->node->list_idx;
+		*found = 'y';
+	}
+}
+
+
+
+void fwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details)
 {
 	t_node* tmp;
 	int mid_pos;
 	int size;
-	char found;
 
-	tmp = min_node_details(stack_a)->node;
-	mid_pos = mid_node_details(stack_a)->pos;
+	tmp = details->min->node;
+	mid_pos = details->mid->pos;
 	size = lst_size(stack_a);
-	found = 'n';
-	while (tmp)
+	*found = 'n';
+	while (tmp->next)
 	{
 		if (tmp->value < exiting_node->value
 			&& exiting_node->value < tmp->next->value)
 		{
-			found = 'y';
+			*found = 'y';
 			if (tmp->list_idx <= mid_pos)
-				exiting_node->target_cost = tmp->list_idx;
+				exiting_node->target_cost = tmp->next->list_idx;
 			else
 				exiting_node->target_cost = tmp->list_idx - size;
 			break;
 		}
 		tmp = tmp->next;
 	}
-	return (found);
 }
 
-int rwd(t_node** stack_a, t_node* exiting_node)
+int rwd(t_node** stack_a, t_node* exiting_node, char* found, t_details* details)
 {
 	t_node* tmp;
 	int mid_pos;
 	int size;
-	char found;
 
-	found = 'n';
-	tmp = min_node_details(stack_a)->node;
-	mid_pos = mid_node_details(stack_a)->pos;
+	*found = 'n';
+	tmp = details->min->node;
+	mid_pos = details->mid->pos;
 	size = lst_size(stack_a);
+	*found = 'n';
 	while (tmp->prev)
 	{
 		if (tmp->prev->value < exiting_node->value
 			&& exiting_node->value < tmp->value)
 		{
-			found = 'y';
+			*found = 'y';
 			if (tmp->list_idx <= mid_pos)
 				exiting_node->target_cost = tmp->list_idx;
 			else
@@ -82,39 +99,40 @@ int rwd(t_node** stack_a, t_node* exiting_node)
 		}
 		tmp = tmp->prev;
 	}
-	return (found);
+	return (target_pos(stack_a, tmp->value) - 1);
+}
+
+void end_to_end(t_node** stack_a, t_node* exiting_node, char* found)
+{
+	t_node* last_node;
+
+	last_node = ft_last_node(*stack_a);
+	if (last_node->value < exiting_node->value && exiting_node->value < (*stack_a)->value)
+	{
+		exiting_node->target_cost = 0;
+		*found = 'y';
+	}
 }
 
 void target_cost(t_node** stack_a, t_node** stack_b)
 {
 	char found;
-	// t_node* tmp;
-	t_node* exiting_node;
-	t_node_details* max;
-	t_node_details* min;
-	t_node* last_node;
+	t_node* tmp;
+	t_details* details;
 
-	// tmp = *stack_a;
-	exiting_node = *stack_b;
-	max = max_node_details(stack_a);
-	min = min_node_details(stack_a);
-	last_node = ft_last_node(*stack_a);
-	while (exiting_node)
+	tmp = *stack_b;
+
+	details = special_nodes(stack_a);
+	while (tmp)
 	{
-		if (max->value < exiting_node->value || min->value < exiting_node->value)
-		{
-			exiting_node->target_cost = min->node->list_idx;
-			return;
-		}
-		found = fwd(stack_a, exiting_node);
-		if (found == 'y')
-			return;
-		found = rwd(stack_a, exiting_node);
-		if (found == 'y')
-			return;
-		if (exiting_node->value < (*stack_a)->value
-			&& exiting_node->value > last_node->value)
-			exiting_node->target_cost = 0;
-		exiting_node = exiting_node->next;
+		found = 'n';
+		end_to_end(stack_a, tmp, &found);
+		if (found != 'y')
+			min_max_handler(stack_a, tmp, &found);
+		if (found != 'y')
+			fwd(stack_a, tmp, &found, details);
+		if (found != 'y')
+			rwd(stack_a, tmp, &found, details);
+		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/22 17:35:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/24 06:26:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,29 @@ void move_picker(t_node** stack, int target_pos, int mid_pos)
 
 void pusher(t_node** stack_a, t_node** stack_b)
 {
-	t_node_details* min;
-	t_node_details* mid;
-	t_node_details* max;
+	t_details* details;
 	int pos;
 	char found;
 
 	found = 'n';
-	special_nodes(stack_a, &min, &mid, &max);
+	details = special_nodes(stack_a);
 	pos = 0;
-	pos += fastforward(min->node, stack_b, &found, stack_a);
-	if (min->node->prev && found != 'y')
-		pos += rewind_node(min->node, stack_b, &found, stack_a);
+	pos += fastforward(details->min->node, stack_b, &found, stack_a);
+	if (details->min->node->prev && found != 'y')
+		pos += rewind_node(details->min->node, stack_b, &found, stack_a);
 	if (found == 'y')
-		move_picker(stack_a, pos, mid->pos);
+		move_picker(stack_a, pos, details->mid->pos);
 	else
 	{
-		if ((*stack_b)->value > max->value)
+		if ((*stack_b)->value > details->max->value)
 		{
-			if (ft_last_node(*stack_a)->value != max->value)
-				move_picker(stack_a, target_pos(stack_a, max->value), mid->pos);
+			if (ft_last_node(*stack_a)->value != details->max->value)
+				move_picker(stack_a, target_pos(stack_a, details->max->value), details->mid->pos);
 		}
-		else if ((*stack_b)->value < min->value)
+		else if ((*stack_b)->value < details->min->value)
 		{
-			if ((*stack_a)->value != min->value)
-				move_picker(stack_a, target_pos(stack_a, max->value), mid->pos);
+			if ((*stack_a)->value != details->min->value)
+				move_picker(stack_a, target_pos(stack_a, details->max->value), details->mid->pos);
 		}
 	}
 	push(stack_b, stack_a, "pa");
@@ -124,7 +122,7 @@ void re_sort(t_node** stack_a)
 	move_picker(stack_a, min->pos, mid->pos);
 }
 
-void calibrator(t_node** head_ref)
+void re_calibrator(t_node** head_ref)
 {
 	t_node* tmp;
 	int i;
@@ -155,14 +153,15 @@ void sort_more(t_node** stack_a, t_node** stack_b)
 	// 🔴 after every push check if list is sorted cyclically or default sorted
 
 	push_unsorted_only(stack_a, stack_b, "pb");
-	ft_print_nodes(stack_a, ' ');
-	ft_print_nodes(stack_b, ' ');
-	// re-evaluate list_idx
-	// calibrator(stack_b);
-	// exit_cost(stack_b);
-	// target_cost(stack_a, stack_b);
-
 	// ft_print_nodes(stack_a, ' ');
+	// ft_print_nodes(stack_b, ' ');
+	// re-evaluate list_idx
+	re_calibrator(stack_b);
+	re_calibrator(stack_a);
+	exit_cost(stack_b);
+	target_cost(stack_a, stack_b);
+
+	// ft_print_nodes(stack_a, 'v');
 	// ft_print_nodes(stack_b, 'v');
 
 	if (lst_size(stack_a) == 3 && (!is_sorted(stack_a) && !is_cyclic(stack_a)))

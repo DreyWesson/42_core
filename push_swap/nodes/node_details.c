@@ -87,10 +87,13 @@ t_node_details* mid_node_details(t_node** head_ref)
 	return (node_details);
 }
 
-void special_nodes(t_node** stack_a, t_node_details** min_details,
-	t_node_details** mid_details, t_node_details** max_details)
+t_details* special_nodes(t_node** stack_a)
 {
-	*min_details = min_node_details(stack_a);
-	*mid_details = mid_node_details(stack_a);
-	*max_details = max_node_details(stack_a);
+	t_details* all;
+
+	all = (t_details*)malloc(sizeof(t_details));
+	all->min = min_node_details(stack_a);
+	all->mid = mid_node_details(stack_a);
+	all->max = max_node_details(stack_a);
+	return (all);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:53:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/22 17:35:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/22 19:47:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ void	push_unsorted_only(t_node** x, t_node** y, char* ptr)
 	t_node* tmp;
 
 	if (in_position(x) > 3)
-	{
-		printf("in position\n");
-		pick_sorted(x, y);
-		return;
-	}
+		return pick_sorted(x, y);
 	tmp = *x;
 	last_3 = ft_last_node(*x)->prev->prev->value;
 	while (tmp)
