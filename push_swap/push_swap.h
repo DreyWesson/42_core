@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 06:48:56 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:40:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int					is_sorted(t_node **head_ref);
 int					is_cyclic(t_node **stack_a);
 void				sort_router(t_node **stack_a, t_node **stack_b);
 void				handle_indexing(t_node **stack_a);
-int					in_position(t_node **stack_a);
 int					target_pos(t_node **stack_a, int target_value);
 void				target_zero(t_node *tmp);
 void				exit_zero(t_node *tmp);
