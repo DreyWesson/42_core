@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 00:55:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 06:48:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_details {
 	t_node_details	*mid;
 	t_node_details	*max;
 }	t_details;
+
 /**
  * UTILS FUNCTIONS
 */
@@ -51,6 +52,10 @@ void				sort_router(t_node **stack_a, t_node **stack_b);
 void				handle_indexing(t_node **stack_a);
 int					in_position(t_node **stack_a);
 int					target_pos(t_node **stack_a, int target_value);
+void				target_zero(t_node *tmp);
+void				exit_zero(t_node *tmp);
+void				both_negative(t_node *tmp);
+void				both_positive(t_node *tmp);
 void				head_to_tail(t_node **stack_a,
 						t_node *exiting_node, char *found);
 int					spring(t_node **stack_a, t_node *exiting_node,
@@ -61,22 +66,18 @@ void				min_max_handler(t_node **stack_a,
 						t_node *exiting_node, char *found);
 void				move_picker(t_node **stack, int target_pos,
 						int mid_pos);
-void				target_zero(t_node *tmp);
-void				exit_zero(t_node *tmp);
-void				both_negative(t_node *tmp);
-void				both_positive(t_node *tmp);
 /**
  * LINKEDLIST
 */
 void				ft_print_nodes(t_node **head_ref, char ptr);
-t_node				*del_node(t_node **prev_node, t_node *target_node);
 void				add_node_tail(t_node **lst, t_node *new_node);
-t_node				*create_node(int value, int idx);
-t_node				*ft_last_node(t_node *head_ref);
 int					check_duplicates(t_node** head_ref);
 void				add_node_head(t_node **head_ref, t_node *new_node);
 void				free_stack(t_node **stack);
 int					lst_size(t_node **head_ref);
+t_node				*create_node(int value, int idx);
+t_node				*del_node(t_node **prev_node, t_node *target_node);
+t_node				*ft_last_node(t_node *head_ref);
 t_details			*special_nodes(t_node **stack_a);
 t_node_details		*max_node_details(t_node **head_ref);
 t_node_details		*min_node_details(t_node **head_ref);

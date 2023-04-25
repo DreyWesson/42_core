@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 23:33:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:33:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ void	sort_more(t_node **stack_a, t_node **stack_b)
 		double_opportunity(highest, num, stack_a, stack_b);
 		exit_moves(highest, stack_b);
 		target_moves(highest, stack_a);
-		if (highest->exit_cost == 0 && highest->target_cost == 0)
-			push(stack_b, stack_a, "pa");
+		push(stack_b, stack_a, "pa");
 		if (!is_sorted(stack_a) && !is_cyclic(stack_a))
 			break ;
 	}
