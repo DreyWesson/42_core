@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 09:47:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:38:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,32 @@ void	move_picker(t_node **stack, int target_pos, int mid_pos)
 void	double_opportunity(t_node *highest, int num,
 			t_node **stack_a, t_node **stack_b)
 {
+	(void)num;
 	if (highest->optimized != 0)
 	{
 		if (highest->optimized > 0)
-		{
-			num = highest->optimized;
-			repeat_double_rotate(stack_a, stack_b, num);
-			highest->exit_cost -= num;
-			highest->target_cost -= num;
-		}
+			helper(highest, stack_a, stack_b, 'r');
 		else if (highest->optimized < 0)
-		{
-			num = highest->optimized;
-			repeat_double_reverse(stack_a, stack_b, num);
-			highest->exit_cost += (num * -1);
-			highest->target_cost += (num * -1);
-		}
+			helper(highest, stack_a, stack_b, '\0');
 	}
 }
 
 void	exit_moves(t_node *highest, t_node **stack_b)
 {
 	if (highest->exit_cost > 0)
-	{
 		repeat_rotate(stack_b, highest->exit_cost, "rb");
-		highest->exit_cost = 0;
-	}
 	else if (highest->exit_cost < 0)
-	{
 		repeat_reverse(stack_b, highest->exit_cost * -1, "rrb");
-		highest->exit_cost = 0;
-	}
+	highest->exit_cost = 0;
 }
 
 void	target_moves(t_node *highest, t_node **stack_a)
 {
 	if (highest->target_cost > 0)
-	{
 		repeat_rotate(stack_a, highest->target_cost, "ra");
-		highest->target_cost = 0;
-	}
 	else if (highest->target_cost < 0)
-	{
 		repeat_reverse(stack_a, highest->target_cost * -1, "rra");
-		highest->target_cost = 0;
-	}
+	highest->target_cost = 0;
 }
 
 void	sort_more(t_node **stack_a, t_node **stack_b)

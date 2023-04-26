@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 09:46:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:40:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void				min_max_handler(t_node **stack_a,
 						t_node *exiting_node, char *found);
 void				move_picker(t_node **stack, int target_pos,
 						int mid_pos);
+void				helper(t_node *highest, t_node **stack_a,
+						t_node **stack_b, char ptr);
 /**
  * LINKEDLIST
 */
