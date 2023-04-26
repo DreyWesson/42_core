@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 09:22:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 23:36:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:05:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char* str)
+int	ft_atoi(const char *str)
 {
 	long	i;
 	long	nbr;

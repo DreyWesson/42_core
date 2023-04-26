@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:33:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 00:11:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:12:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	swap_nodes(t_node *a, t_node *b, char *tag)
 	b->value = tmp;
 	if (tag[0])
 		ft_printf("%s\n", tag);
-
 }
 
 void	double_swap(t_node *a, t_node *b, t_node *x, t_node *y)

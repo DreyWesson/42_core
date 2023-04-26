@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:47:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 23:51:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:07:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	convert_ptr(va_list *args, char val)
 {
 	unsigned long	ptr;
 	int				ret;
-	char	*c;
+	char			*c;
 
 	ret = 0;
 	ptr = va_arg(*args, unsigned long);

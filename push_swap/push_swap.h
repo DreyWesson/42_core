@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 17:40:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:46:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void				repeat_double_rotate(t_node **x, t_node **y, int num);
 void				repeat_push(t_node **x, t_node **y, int num, char *ptr);
 void				repeat_rotate(t_node **x, int num, char *ptr);
 void				repeat_reverse(t_node **x, int num, char *ptr);
-void				push_unsorted_only(t_node **x, t_node **y, char *ptr);
 /**
  * SORT FUNCTIONS
 */

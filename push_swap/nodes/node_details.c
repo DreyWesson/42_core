@@ -14,9 +14,9 @@
 
 t_node_details	*max_node_details(t_node	**head_ref)
 {
-	long 			max;
-	int 			pos;
-	t_node 			*tmp;
+	long			max;
+	int				pos;
+	t_node			*tmp;
 	t_node_details	*node_details;
 
 	max = -2147483648;

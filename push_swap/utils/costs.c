@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 06:42:56 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:12:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	target_cost(t_node **stack_a, t_node **stack_b)
 	t_details	*details;
 
 	tmp = *stack_b;
-
 	details = special_nodes(stack_a);
 	while (tmp)
 	{
@@ -77,7 +76,6 @@ void	optimize(t_node **stack_b)
 		else if ((tmp->exit_cost > 0 && tmp->target_cost < 0)
 			|| (tmp->exit_cost < 0 && tmp->target_cost > 0))
 			tmp->optimized = 0;
-
 		tmp = tmp->next;
 	}
 }
@@ -113,7 +111,6 @@ t_node	*highest_priority(t_node **stack_b)
 
 	nbr = 2147483647;
 	tmp = *stack_b;
-
 	while (tmp)
 	{
 		if (tmp->priority < nbr)
