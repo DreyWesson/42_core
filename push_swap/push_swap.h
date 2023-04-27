@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:11:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:17:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void				exit_zero(t_node *tmp);
 void				both_negative(t_node *tmp);
 void				both_positive(t_node *tmp);
 void				head_to_tail(t_node **stack_a,
-						t_node *exiting_node, char *found);
+						t_node *exiting_node,
+						char *found, t_node *last_node);
 void				spring(t_node *exiting_node,
 						char *found, t_details *details, int size);
 void				waterfall(t_node *exiting_node,

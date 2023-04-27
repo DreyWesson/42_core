@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:12:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:17:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ void	target_cost(t_node **stack_a, t_node **stack_b)
 	t_node		*tmp;
 	t_details	*details;
 	int size;
+	t_node	*last_node;
 
+	last_node = ft_last_node(*stack_a);
 	tmp = *stack_b;
 	details = special_nodes(stack_a);
 	size = lst_size(stack_a);
-
 	while (tmp)
 	{
 		found = 'n';
-		head_to_tail(stack_a, tmp, &found);
+		head_to_tail(stack_a, tmp, &found, last_node);
 		if (found != 'y')
 			min_max_handler(tmp, &found, size, details);
 		if (found != 'y')

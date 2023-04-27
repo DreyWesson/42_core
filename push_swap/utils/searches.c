@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:13:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:16:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ void	spring(t_node *exiting_node,
 	}
 }
 
-void	head_to_tail(t_node **stack_a, t_node *exiting_node, char *found)
+void	head_to_tail(t_node **stack_a, t_node *exiting_node, char *found, t_node *last_node)
 {
-	t_node	*last_node;
+	// t_node	*last_node;
 
-	last_node = ft_last_node(*stack_a);
+	// last_node = ft_last_node(*stack_a);
 	if (last_node->value < exiting_node->value
 		&& exiting_node->value < (*stack_a)->value)
 	{
