@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:36:32 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 23:16:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:37:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_print_nodes(t_node **head_ref, char ptr)
 	ft_printf("\n");
 }
 	// if (ptr == 'v')
-	// 	ft_printf("value: %d\norder_idx: %d\nlist_idx: %d\nexit_cost: %d\ntarget_cost: %d\noptimized:%d\npriority: %d\n\n",
+	// 	ft_printf("value: %d\norder_idx: %d\nlist_idx: %d\nexit_cost:
+	// %d\ntarget_cost: %d\noptimized:%d\npriority: %d\n\n",
 	// 	tmp->value,tmp->order_idx, tmp->list_idx,
 	// 	tmp->exit_cost,tmp->target_cost, tmp->optimized, tmp->priority);
 	// else

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:16:37 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:30:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:32:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ void	re_calibrator(t_node **head_ref)
 
 void	reconfigure(t_node **stack_a, t_node **stack_b)
 {
-	int size;
-	int size2;
+	int			size;
+	int			size2;
 	t_details	*details;
-	int		mid_pos;
-
-
+	int			mid_pos;
 
 	re_calibrator(stack_b);
 	re_calibrator(stack_a);
