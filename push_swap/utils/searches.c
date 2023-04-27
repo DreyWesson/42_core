@@ -6,23 +6,23 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 11:48:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:05:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	min_max_handler(t_node **stack_a, t_node *exiting_node, char *found)
+void	min_max_handler(t_node **stack_a, t_node *exiting_node, char *found, int size)
 {
 	t_details	*details;
-
+	
 	details = special_nodes(stack_a);
 	if ((exiting_node->value < details->min->node->value)
 		|| (exiting_node->value > details->max->node->value))
 	{
 		if (details->min->pos > details->mid->pos)
 			exiting_node->target_cost
-				= details->min->node->list_idx - lst_size(stack_a);
+				= details->min->node->list_idx - size;
 		else
 			exiting_node->target_cost = details->min->node->list_idx;
 		*found = 'y';
@@ -30,16 +30,14 @@ void	min_max_handler(t_node **stack_a, t_node *exiting_node, char *found)
 	free(details);
 }
 
-void	waterfall(t_node **stack_a, t_node *exiting_node,
-	char *found, t_details *details)
+void	waterfall(t_node *exiting_node,
+	char *found, t_details *details, int size)
 {
 	t_node	*tmp;
 	int		mid_pos;
-	int		size;
 
 	tmp = details->min->node;
 	mid_pos = details->mid->pos;
-	size = lst_size(stack_a);
 	*found = 'n';
 	while (tmp->next)
 	{
@@ -57,17 +55,15 @@ void	waterfall(t_node **stack_a, t_node *exiting_node,
 	}
 }
 
-int	spring(t_node **stack_a, t_node *exiting_node,
-	char *found, t_details *details)
+void	spring(t_node *exiting_node,
+	char *found, t_details *details, int size)
 {
 	t_node	*tmp;
 	int		mid_pos;
-	int		size;
 
 	*found = 'n';
 	tmp = details->min->node;
 	mid_pos = details->mid->pos;
-	size = lst_size(stack_a);
 	*found = 'n';
 	while (tmp->prev)
 	{
@@ -83,7 +79,6 @@ int	spring(t_node **stack_a, t_node *exiting_node,
 		}
 		tmp = tmp->prev;
 	}
-	return (target_pos(stack_a, tmp->value) - 1);
 }
 
 void	head_to_tail(t_node **stack_a, t_node *exiting_node, char *found)
@@ -97,21 +92,4 @@ void	head_to_tail(t_node **stack_a, t_node *exiting_node, char *found)
 		exiting_node->target_cost = 0;
 		*found = 'y';
 	}
-}
-
-int	target_pos(t_node **stack_a, int target_value)
-{
-	t_node	*tmp;
-	int		size;
-
-	size = 0;
-	tmp = *stack_a;
-	while (tmp->next)
-	{
-		size++;
-		if (target_value == tmp->value)
-			break ;
-		tmp = tmp->next;
-	}
-	return (size);
 }

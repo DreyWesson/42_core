@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 11:48:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:05:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,18 @@ int					is_sorted(t_node **head_ref);
 int					is_cyclic(t_node **stack_a);
 void				sort_router(t_node **stack_a, t_node **stack_b);
 void				handle_indexing(t_node **stack_a);
-int					target_pos(t_node **stack_a, int target_value);
 void				target_zero(t_node *tmp);
 void				exit_zero(t_node *tmp);
 void				both_negative(t_node *tmp);
 void				both_positive(t_node *tmp);
 void				head_to_tail(t_node **stack_a,
 						t_node *exiting_node, char *found);
-int					spring(t_node **stack_a, t_node *exiting_node,
-						char *found, t_details *details);
-void				waterfall(t_node **stack_a, t_node *exiting_node,
-						char *found, t_details *details);
+void				spring(t_node *exiting_node,
+						char *found, t_details *details, int size);
+void				waterfall(t_node *exiting_node,
+						char *found, t_details *details, int size);
 void				min_max_handler(t_node **stack_a,
-						t_node *exiting_node, char *found);
+						t_node *exiting_node, char *found, int size);
 void				move_picker(t_node **stack, int target_pos,
 						int mid_pos);
 void				helper(t_node *highest, t_node **stack_a,
