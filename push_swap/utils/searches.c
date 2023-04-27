@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 09:06:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:48:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ void	waterfall(t_node **stack_a, t_node *exiting_node,
 		{
 			*found = 'y';
 			if (tmp->next->list_idx <= mid_pos)
-			{
 				exiting_node->target_cost = tmp->next->list_idx;
-				// printf("----->%d / %d\n", tmp->list_idx, mid_pos);
-			}
 			else
-			{
 				exiting_node->target_cost = tmp->list_idx - size + 1;
-			// printf("======>%d\n", tmp->list_idx - size + 1);
-			}
 			break ;
 		}
 		tmp = tmp->next;
@@ -82,17 +76,9 @@ int	spring(t_node **stack_a, t_node *exiting_node,
 		{
 			*found = 'y';
 			if (tmp->list_idx <= mid_pos)
-			{
 				exiting_node->target_cost = tmp->list_idx;
-			// printf("----->%d\n", tmp->list_idx);
-
-			}
 			else
-			{
 				exiting_node->target_cost = tmp->list_idx - size;
-			// printf("======>%d\n", tmp->list_idx - lst_size(stack_a));
-
-			}
 			break ;
 		}
 		tmp = tmp->prev;

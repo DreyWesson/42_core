@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 23:16:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:21:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	if (is_sorted(stack_a))
 		return (0);
 	sort_router(stack_a, stack_b);
-	// ft_print_nodes(stack_a, ' ');
 	free_both(stack_a, stack_b);
 	return (0);
 }
