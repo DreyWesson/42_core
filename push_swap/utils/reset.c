@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:16:37 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/25 00:34:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 22:57:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	reconfigure(t_node **stack_a, t_node **stack_b)
 	re_calibrator(stack_a);
 	exit_cost(stack_b);
 	target_cost(stack_a, stack_b);
+	// ft_print_nodes(stack_a, ' ');
+	// ft_print_nodes(stack_b, 'v');
 	optimize(stack_b);
 	priority(stack_b);
 }

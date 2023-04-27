@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 10:46:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/26 23:14:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ void	exit_cost(t_node **stack)
 {
 	int		mid_pos;
 	t_node	*tmp;
+	int size;
 
 	mid_pos = mid_node_details(stack)->pos;
 	tmp = *stack;
+	size = lst_size(stack);
 	while (tmp)
 	{
 		if (tmp->list_idx <= mid_pos)
 			tmp->exit_cost = tmp->list_idx;
 		else
-			tmp->exit_cost = tmp->list_idx - lst_size(stack);
+			tmp->exit_cost = tmp->list_idx - size;
 		tmp = tmp->next;
 	}
 }
@@ -73,8 +75,7 @@ void	optimize(t_node **stack_b)
 			else
 				tmp->optimized = tmp->exit_cost;
 		}
-		else if ((tmp->exit_cost > 0 && tmp->target_cost < 0)
-			|| (tmp->exit_cost < 0 && tmp->target_cost > 0))
+		else 
 			tmp->optimized = 0;
 		tmp = tmp->next;
 	}
