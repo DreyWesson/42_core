@@ -6,21 +6,17 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:17:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:31:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	exit_cost(t_node **stack)
+void	exit_cost(t_node **stack, int size, int mid_pos)
 {
-	int		mid_pos;
 	t_node	*tmp;
-	int size;
 
-	mid_pos = mid_node_details(stack)->pos;
 	tmp = *stack;
-	size = lst_size(stack);
 	while (tmp)
 	{
 		if (tmp->list_idx <= mid_pos)
@@ -31,18 +27,14 @@ void	exit_cost(t_node **stack)
 	}
 }
 
-void	target_cost(t_node **stack_a, t_node **stack_b)
+void	target_cost(t_node **stack_a, t_node **stack_b, t_details *details, int size)
 {
 	char		found;
 	t_node		*tmp;
-	t_details	*details;
-	int size;
 	t_node	*last_node;
 
 	last_node = ft_last_node(*stack_a);
 	tmp = *stack_b;
-	details = special_nodes(stack_a);
-	size = lst_size(stack_a);
 	while (tmp)
 	{
 		found = 'n';
