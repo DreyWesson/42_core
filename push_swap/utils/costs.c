@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:03:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:12:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	target_cost(t_node **stack_a, t_node **stack_b)
 		found = 'n';
 		head_to_tail(stack_a, tmp, &found);
 		if (found != 'y')
-			min_max_handler(stack_a, tmp, &found, size);
+			min_max_handler(tmp, &found, size, details);
 		if (found != 'y')
 			waterfall(tmp, &found, details, size);
 		if (found != 'y')

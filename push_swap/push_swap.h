@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:05:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:11:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void				spring(t_node *exiting_node,
 						char *found, t_details *details, int size);
 void				waterfall(t_node *exiting_node,
 						char *found, t_details *details, int size);
-void				min_max_handler(t_node **stack_a,
-						t_node *exiting_node, char *found, int size);
+void				min_max_handler(t_node *exiting_node,
+						char *found, int size, t_details *details);
 void				move_picker(t_node **stack, int target_pos,
 						int mid_pos);
 void				helper(t_node *highest, t_node **stack_a,

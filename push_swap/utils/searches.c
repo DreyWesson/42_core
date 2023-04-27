@@ -6,17 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:59:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:05:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:13:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	min_max_handler(t_node **stack_a, t_node *exiting_node, char *found, int size)
+void	min_max_handler(t_node *exiting_node, char *found,
+	int size, t_details *details)
 {
-	t_details	*details;
-	
-	details = special_nodes(stack_a);
 	if ((exiting_node->value < details->min->node->value)
 		|| (exiting_node->value > details->max->node->value))
 	{
@@ -27,7 +25,6 @@ void	min_max_handler(t_node **stack_a, t_node *exiting_node, char *found, int si
 			exiting_node->target_cost = details->min->node->list_idx;
 		*found = 'y';
 	}
-	free(details);
 }
 
 void	waterfall(t_node *exiting_node,

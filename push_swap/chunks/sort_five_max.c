@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 10:07:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:12:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ void	move_picker(t_node **stack, int target_pos, int mid_pos)
 		repeat_reverse(stack, size - target_pos, "rra");
 }
 
-void	double_opportunity(t_node *highest, int num,
+void	double_opportunity(t_node *highest,
 			t_node **stack_a, t_node **stack_b)
 {
-	(void)num;
 	if (highest->optimized != 0)
 	{
 		if (highest->optimized > 0)
@@ -57,9 +56,9 @@ void	target_moves(t_node *highest, t_node **stack_a)
 void	sort_more(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*highest;
-	int		num;
+	// int		num;
 
-	num = 0;
+	// num = 0;
 	handle_indexing(stack_a);
 	repeat_push(stack_a, stack_b, lst_size(stack_a) - 3, "pb");
 	if (!is_sorted(stack_a) && !is_cyclic(stack_a))
@@ -68,7 +67,7 @@ void	sort_more(t_node **stack_a, t_node **stack_b)
 	{
 		reconfigure(stack_a, stack_b);
 		highest = highest_priority(stack_b, stack_a);
-		double_opportunity(highest, num, stack_a, stack_b);
+		double_opportunity(highest, stack_a, stack_b);
 		exit_moves(highest, stack_b);
 		target_moves(highest, stack_a);
 		push(stack_b, stack_a, "pa");
