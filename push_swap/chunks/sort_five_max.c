@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 23:15:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:07:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sort_more(t_node **stack_a, t_node **stack_b)
 	while (*stack_b)
 	{
 		reconfigure(stack_a, stack_b);
-		highest = highest_priority(stack_b);
+		highest = highest_priority(stack_b, stack_a);
 		double_opportunity(highest, num, stack_a, stack_b);
 		exit_moves(highest, stack_b);
 		target_moves(highest, stack_a);

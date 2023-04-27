@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 10:40:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:08:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void				exit_cost(t_node **stack);
 void				target_cost(t_node **stack_a, t_node **stack_b);
 void				priority(t_node **stack_b);
 void				optimize(t_node **stack_b);
-t_node				*highest_priority(t_node **stack_b);
+t_node				*highest_priority(t_node **stack_b, t_node **stack_a);
 /**
  * RESET FUNCTIONS
 */

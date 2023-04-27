@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 23:14:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:19:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	priority(t_node **stack_b)
 	}
 }
 
-t_node	*highest_priority(t_node **stack_b)
+t_node	*highest_priority(t_node **stack_b, t_node **stack_a)
 {
 	int		nbr;
 	t_node	*tmp;
@@ -118,6 +118,16 @@ t_node	*highest_priority(t_node **stack_b)
 		{
 			highest = tmp;
 			nbr = tmp->priority;
+		}
+		if (tmp->priority == nbr && tmp->value > (*stack_a)->value && highest->value < tmp->value)
+		{
+			highest = tmp;
+			nbr = tmp->priority;
+		}
+		else if (tmp->priority == nbr && tmp->value < (*stack_a)->value && highest->value > tmp->value)
+		{
+			highest = tmp;
+			nbr = tmp->priority;	
 		}
 		tmp = tmp->next;
 	}
