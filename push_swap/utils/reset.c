@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:16:37 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:32:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:34:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	reconfigure(t_node **stack_a, t_node **stack_b)
 	target_cost(stack_a, stack_b, details, size);
 	optimize(stack_b);
 	priority(stack_b);
+	// free(details);
 }
