@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:12:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:38:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	target_moves(t_node *highest, t_node **stack_a)
 void	sort_more(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*highest;
-	// int		num;
 
-	// num = 0;
 	handle_indexing(stack_a);
 	repeat_push(stack_a, stack_b, lst_size(stack_a) - 3, "pb");
 	if (!is_sorted(stack_a) && !is_cyclic(stack_a))
