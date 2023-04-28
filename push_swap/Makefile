@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 17:03:35 by doduwole          #+#    #+#              #
-#    Updated: 2023/04/06 19:05:15 by doduwole         ###   ########.fr        #
+#    Updated: 2023/04/28 07:09:54 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,17 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
-SRCS = *.c utils/*.c operations/*.c nodes/*.c chunks/*.c
+BONUS = checker
+BONUS_MAIN = ./checker/checker.c
 
-LIBFTDIR = ./libft/
-LIBFT = ./libft/libft.a
+SRCS =		src/*.c \
+			src/utils/*.c \
+			src/operations/*.c \
+			src/nodes/*.c \
+			src/chunks/*.c
+
+LIBFTDIR = ./inc/libft/
+LIBFT = ./inc/libft/libft.a
 
 RM = rm -rf
 
@@ -30,11 +37,18 @@ ${LIBFT}:
 	@make all -C ${LIBFTDIR}
 	@make clean -C ${LIBFTDIR}
 
+bonus: ${BONUS}
+
+${BONUS_MAIN}: ${SRCS} ${BONUS_MAIN} ${LIBFT}
+	@${CC} ${CFLAGS} ${SRCS} ${BONUS_MAIN} ${LIBFT} -o ${BONUS}
+
+
 clean: 
 	@${MAKE} -C ./libft fclean
 
 fclean: clean
 	@${RM} ${NAME}
+	@${RM} ${BONUS}
 
 re: fclean all
 
