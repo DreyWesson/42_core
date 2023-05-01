@@ -6,18 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:36:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/28 06:59:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:43:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-
-void	free_both(t_node **x, t_node **y)
-{
-	free_stack(x);
-	free_stack(y);
-}
 
 int	main(int argc, char **argv)
 {

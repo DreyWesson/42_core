@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stack.c                                       :+:      :+:    :+:   */
+/*   print_results.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 15:13:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/01 11:43:52 by doduwole         ###   ########.fr       */
+/*   Created: 2023/05/01 15:50:27 by doduwole          #+#    #+#             */
+/*   Updated: 2023/05/01 15:53:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	free_stack(t_node **head_ref)
+void	print_result(t_node **a, t_node **b)
 {
-	t_node	*tmp;
-
-	if (!head_ref)
-		return ;
-	while (*head_ref)
-	{
-		tmp = (*head_ref)->next;
-		free(*head_ref);
-		*head_ref = tmp;
-	}
-}
-
-void	free_both(t_node **x, t_node **y)
-{
-	free_stack(x);
-	free_stack(y);
+	if (is_sorted(a) && !*b)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }

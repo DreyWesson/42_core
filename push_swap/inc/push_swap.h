@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:49:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/27 12:30:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:51:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef struct s_node_details {
 	int				value;
 	struct s_node	*node;
 }	t_node_details;
+
+typedef struct s_stacks {
+	struct s_node	**stack_a;
+	struct s_node	**stack_b;
+}	t_stacks;
 
 typedef struct s_details {
 	t_node_details	*min;
@@ -68,6 +73,7 @@ void				move_picker(t_node **stack, int target_pos,
 void				helper(t_node *highest, t_node **stack_a,
 						t_node **stack_b, char ptr);
 void				highest_helper(t_node **highest, t_node *tmp, int *nbr);
+void				print_result(t_node **a, t_node **b);
 /**
  * LINKEDLIST
 */
@@ -84,24 +90,28 @@ t_details			*special_nodes(t_node **stack_a);
 t_node_details		*max_node_details(t_node **head_ref);
 t_node_details		*min_node_details(t_node **head_ref);
 t_node_details		*mid_node_details(t_node **head_ref);
+void				free_both(t_node **x, t_node **y);
 /**
  * OPERATIONS
 */
-void				swap_nodes(t_node *a, t_node *b, char *tag);
-void				double_swap(t_node *a, t_node *b, t_node *x, t_node *y);
-void				push(t_node **src, t_node **dest, char *tag);
-void				rotate(t_node **head_ref, char *tag);
-void				reverse_rotate(t_node **head_ref, char *tag);
-void				double_rotate(t_node **a, t_node **b);
-void				double_reverse(t_node **a, t_node **b);
-void				repeat_double_reverse(t_node **x, t_node **y, int num);
-void				repeat_double_rotate(t_node **x, t_node **y, int num);
+void				swap_nodes(t_node *a, t_node *b, char *tag, int output);
+void				double_swap(t_node *a, t_node *b, int output);
+void				push(t_node **src, t_node **dest, char *tag, int output);
+void				rotate(t_node **head_ref, char *tag, int output);
+void				reverse_rotate(t_node **head_ref, char *tag, int output);
+void				double_rotate(t_node **a, t_node **b, int output);
+void				double_reverse(t_node **a, t_node **b, int output);
+void				repeat_double_reverse(t_node **x, t_node **y,
+						int num, int output);
+void				repeat_double_rotate(t_node **x, t_node **y,
+						int num, int output);
 /**
  * REPEATERS
 */
-void				repeat_push(t_node **x, t_node **y, int num, char *ptr);
-void				repeat_rotate(t_node **x, int num, char *ptr);
-void				repeat_reverse(t_node **x, int num, char *ptr);
+void				repeat_push(t_stacks *stacks, int num,
+						char *ptr, int output);
+void				repeat_rotate(t_node **x, int num, char *ptr, int output);
+void				repeat_reverse(t_node **x, int num, char *ptr, int output);
 /**
  * SORT FUNCTIONS
 */
@@ -112,7 +122,8 @@ int					*bubble_sort(int *ptr, int size);
  * COST FUNCTIONS
 */
 void				exit_cost(t_node **stack, int size, int mid_pos);
-void				target_cost(t_node **stack_a, t_node **stack_b, t_details *details, int size);
+void				target_cost(t_node **stack_a, t_node **stack_b,
+						t_details *details, int size);
 void				priority(t_node **stack_b);
 void				optimize(t_node **stack_b);
 t_node				*highest_priority(t_node **stack_b, t_node **stack_a);

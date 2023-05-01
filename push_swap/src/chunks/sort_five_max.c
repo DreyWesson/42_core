@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/28 06:55:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:59:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	move_picker(t_node **stack, int target_pos, int mid_pos)
 
 	size = lst_size(stack);
 	if (target_pos <= mid_pos)
-		repeat_rotate(stack, target_pos, "ra");
+		repeat_rotate(stack, target_pos, "ra", 1);
 	else if (target_pos > mid_pos)
-		repeat_reverse(stack, size - target_pos, "rra");
+		repeat_reverse(stack, size - target_pos, "rra", 1);
 }
 
 void	double_opportunity(t_node *highest,
@@ -38,27 +38,31 @@ void	double_opportunity(t_node *highest,
 void	exit_moves(t_node *highest, t_node **stack_b)
 {
 	if (highest->exit_cost > 0)
-		repeat_rotate(stack_b, highest->exit_cost, "rb");
+		repeat_rotate(stack_b, highest->exit_cost, "rb", 1);
 	else if (highest->exit_cost < 0)
-		repeat_reverse(stack_b, highest->exit_cost * -1, "rrb");
+		repeat_reverse(stack_b, highest->exit_cost * -1, "rrb", 1);
 	highest->exit_cost = 0;
 }
 
 void	target_moves(t_node *highest, t_node **stack_a)
 {
 	if (highest->target_cost > 0)
-		repeat_rotate(stack_a, highest->target_cost, "ra");
+		repeat_rotate(stack_a, highest->target_cost, "ra", 1);
 	else if (highest->target_cost < 0)
-		repeat_reverse(stack_a, highest->target_cost * -1, "rra");
+		repeat_reverse(stack_a, highest->target_cost * -1, "rra", 1);
 	highest->target_cost = 0;
 }
 
 void	sort_more(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*highest;
+	t_node		*highest;
+	t_stacks	*stacks;
 
 	handle_indexing(stack_a);
-	repeat_push(stack_a, stack_b, lst_size(stack_a) - 3, "pb");
+	stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	stacks->stack_a = stack_a;
+	stacks->stack_b = stack_b;
+	repeat_push(stacks, lst_size(stack_a) - 3, "pb", 1);
 	if (!is_sorted(stack_a) && !is_cyclic(stack_a))
 		sort_three_max(stack_a, 'y');
 	while (*stack_b)
@@ -68,7 +72,7 @@ void	sort_more(t_node **stack_a, t_node **stack_b)
 		double_opportunity(highest, stack_a, stack_b);
 		exit_moves(highest, stack_b);
 		target_moves(highest, stack_a);
-		push(stack_b, stack_a, "pa");
+		push(stack_b, stack_a, "pa", 1);
 		if (!is_sorted(stack_a) && !is_cyclic(stack_a))
 			break ;
 	}

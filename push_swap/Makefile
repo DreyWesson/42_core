@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 17:03:35 by doduwole          #+#    #+#              #
-#    Updated: 2023/04/28 07:09:54 by doduwole         ###   ########.fr        #
+#    Updated: 2023/05/01 11:41:37 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 BONUS = checker
-BONUS_MAIN = ./checker/checker.c
+BONUS_MAIN = src/checker/checker.c
 
-SRCS =		src/*.c \
-			src/utils/*.c \
+SRC_MAIN = src/push_swap.c
+
+SRCS =		src/utils/*.c \
 			src/operations/*.c \
 			src/nodes/*.c \
 			src/chunks/*.c
@@ -30,8 +31,8 @@ RM = rm -rf
 
 all: ${NAME}
 
-${NAME}: ${SRCS} ${LIBFT}
-	@${CC} ${CFLAGS} ${SRCS} ${LIBFT} -o ${NAME}
+${NAME}: ${SRCS} ${SRC_MAIN} ${LIBFT}
+	@${CC} ${CFLAGS} ${SRCS} ${SRC_MAIN} ${LIBFT} -o ${NAME}
 
 ${LIBFT}:
 	@make all -C ${LIBFTDIR}
@@ -39,9 +40,8 @@ ${LIBFT}:
 
 bonus: ${BONUS}
 
-${BONUS_MAIN}: ${SRCS} ${BONUS_MAIN} ${LIBFT}
-	@${CC} ${CFLAGS} ${SRCS} ${BONUS_MAIN} ${LIBFT} -o ${BONUS}
-
+${BONUS}: ${SRCS} ${LIBFT} ${BONUS_MAIN}
+	@${CC} ${CFLAGS} ${SRCS} ${LIBFT} ${BONUS_MAIN} -o ${BONUS}
 
 clean: 
 	@${MAKE} -C ./libft fclean
