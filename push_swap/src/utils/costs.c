@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:55:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/28 06:57:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:45:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	target_cost(t_node **stack_a, t_node **stack_b,
 			spring(tmp, &found, details, size);
 		tmp = tmp->next;
 	}
-	free(details);
 }
 
 void	optimize(t_node **stack_b)

@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 17:03:35 by doduwole          #+#    #+#              #
-#    Updated: 2023/05/01 11:41:37 by doduwole         ###   ########.fr        #
+#    Updated: 2023/05/05 19:51:57 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RM = rm -rf
 all: ${NAME}
 
 ${NAME}: ${SRCS} ${SRC_MAIN} ${LIBFT}
-	@${CC} ${CFLAGS} ${SRCS} ${SRC_MAIN} ${LIBFT} -o ${NAME}
+	@${CC} ${CFLAGS} $? -o $@
 
 ${LIBFT}:
 	@make all -C ${LIBFTDIR}
@@ -41,7 +41,7 @@ ${LIBFT}:
 bonus: ${BONUS}
 
 ${BONUS}: ${SRCS} ${LIBFT} ${BONUS_MAIN}
-	@${CC} ${CFLAGS} ${SRCS} ${LIBFT} ${BONUS_MAIN} -o ${BONUS}
+	@${CC} ${CFLAGS} $? -o $@
 
 clean: 
 	@${MAKE} -C ./libft fclean

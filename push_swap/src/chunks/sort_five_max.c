@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:56:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/01 14:59:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:37:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,6 @@ void	sort_more(t_node **stack_a, t_node **stack_b)
 			break ;
 	}
 	re_sort(stack_a);
+	free_both(stacks->stack_a, stacks->stack_b);
+	free(stacks);
 }

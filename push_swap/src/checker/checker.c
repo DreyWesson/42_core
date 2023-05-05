@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 06:18:26 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/01 16:01:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:57:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,29 +76,29 @@ int	is_empty(char *line_ops, t_node **a, t_node **b)
 
 int	main(int argc, char **argv)
 {
-	t_node	**a;
-	t_node	**b;
+	t_node	*a;
+	t_node	*b;
 	char	*line_ops;
 
-	a = (t_node **)malloc(sizeof(t_node *));
-	b = (t_node **)malloc(sizeof(t_node *));
-	if (!handle_validation(argc, argv, a, b))
+	a = NULL;
+	b = NULL;
+	if (!handle_validation(argc, argv, &a, &b))
 		return (0);
 	line_ops = get_next_line(0);
 	while (line_ops)
 	{
-		if (is_empty(line_ops, a, b))
+		if (is_empty(line_ops, &a, &b))
 			break ;
-		if (!read_operations(a, b, line_ops))
+		if (!read_operations(&a, &b, line_ops))
 		{
-			free_all(line_ops, a, b);
+			free_all(line_ops, &a, &b);
 			ft_perror("Error\n");
 			return (0);
 		}
 		free(line_ops);
 		line_ops = get_next_line(0);
 	}
-	print_result(a, b);
-	free_all(line_ops, a, b);
+	print_result(&a, &b);
+	free_all(line_ops, &a, &b);
 	return (0);
 }
