@@ -3,7 +3,11 @@
         "*.ejs": "html",
         "minitalk.h": "c",
         "libft.h": "c",
-        "push_swap.h": "c"
+        "push_swap.h": "c",
+        "x.h": "c",
+        "__locale": "c",
+        "mlx_sample.h": "c",
+        "so_long.h": "c"
     },
     "cSpell.words": [
         "libft",

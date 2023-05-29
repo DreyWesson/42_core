@@ -6,37 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:32:21 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/05 17:15:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/07 10:20:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
-
-void	ft_putnbr(int n)
-{
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		if (n == -2147483648)
-		{
-			write(1, "2", 1);
-			ft_putnbr(147483648);
-			return ;
-		}
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	if (n < 10)
-	{
-		n += '0';
-		write(1, &n, 1);
-	}
-}
 
 void reverse_bit(unsigned int size, void* value){
 	char *data;
@@ -52,8 +27,8 @@ void reverse_bit(unsigned int size, void* value){
 		byte = data[i];
 		while (j < 8)
 		{
-			bit = (byte >> j) & 1; // right shift by j times using >> and check what is the rightmost bit with & operator
-			ft_putnbr(bit);
+			bit = ((byte >> j) & 1) + '0'; // right shift by j times using >> and check what is the rightmost bit with & operator
+			write(1, &bit, 1);
 			j++;
 		}
 		write(1, " ", 1);
@@ -61,10 +36,40 @@ void reverse_bit(unsigned int size, void* value){
 	}
 }
 
+// unsigned char	reverse_bits(unsigned char octet)
+// {
+// 	int i;
+// 	unsigned char bit;
+// 	i = 0;
+// 	while (i < 8)
+// 	{
+// 		bit = ((octet >> i) & 1) + '0';
+// 		write(1, &bit, 1);
+// 		i++;
+// 	}
+// 	return (bit);
+// }
+unsigned char	reverse_bits(unsigned char octet)
+{
+	int		i = 8;
+	unsigned char	res = 0;
+
+	while (i > 0)
+	{
+		res = res * 2 + (octet % 2);
+		octet = octet / 2;
+		i--;
+	}
+	return (res);
+}
+
 int main(void)
 {
-	int a = 38;
-	reverse_bit(sizeof(int), &a);
-	write(1, "\n", 1);
+	// int a = 38;
+	char a = 'z';
+	// reverse_bit(sizeof(int), &a);
+	// write(1, "\n", 1);
+	printf("%c\n",reverse_bits(a));
+
 	return 0;
 }

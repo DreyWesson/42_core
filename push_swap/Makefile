@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 17:03:35 by doduwole          #+#    #+#              #
-#    Updated: 2023/05/05 19:51:57 by doduwole         ###   ########.fr        #
+#    Updated: 2023/05/06 10:43:17 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ ${BONUS}: ${SRCS} ${LIBFT} ${BONUS_MAIN}
 	@${CC} ${CFLAGS} $? -o $@
 
 clean: 
-	@${MAKE} -C ./libft fclean
+	@${MAKE} -C ${LIBFTDIR} fclean
 
 fclean: clean
 	@${RM} ${NAME}
