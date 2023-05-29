@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/29 11:58:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:04:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,29 @@ char	**map_reader(char *s, int line_nbr)
  * [🔴] If any misconfiguration of any kind is encountered in the file, the program must exit in a clean way
 */
 
-void validate_qty(char s, int *c, int *e, int *p)
+void validate_composition(char s, int *c, int *e, int *p)
 {
-	if (s == 'C')
-		*c += 1;
-	else if (s == 'E')
-		*e += 1;
-	else if (s == 'P')
-		*p += 1;
-	if (*c > 1 || *e > 1 || *p > 1)
+	char *set;
+
+	set = "01CEP";
+	if (!ft_strchr(set, s))
 	{
-		ft_error("Invalid composition quantity");
+		ft_error("Invalid composition");
 		exit(0);
+	}
+	else
+	{
+		if (s == 'C')
+			*c += 1;
+		else if (s == 'E')
+			*e += 1;
+		else if (s == 'P')
+			*p += 1;
+		if (*c > 1 || *e > 1 || *p > 1)
+		{
+			ft_error("Invalid composition quantity");
+			exit(0);
+		}
 	}
 }
 
@@ -96,10 +107,10 @@ void	validate_map(char **map, int line_nbr)
 	int i;
 	int j;
 	int col_nbr;
-	char *set;
+	// char *set;
 	t_qty qty;
 
-	set = "01CEP";
+	// set = "01CEP";
 	i = 0;
 	qty.c = 0;
 	qty.e = 0;
@@ -109,16 +120,8 @@ void	validate_map(char **map, int line_nbr)
 		j = 0;
 		while (map[i][j])
 		{
-			if (!ft_strchr(set, map[i][j]))
-			{
-				ft_error("Invalid composition");
-				exit(0);
-			}
-			else
-			{
-				// validate_qty(map[i][j], &qty.c, &qty.e, &qty.p);
+			validate_composition(map[i][j], &qty.c, &qty.e, &qty.p);
 
-			}
 			if (map[i][j] != '1' && (i == 0 || i == line_nbr - 1
 					|| j == 0 || map[i][j + 1] == '\0'))
 			{
