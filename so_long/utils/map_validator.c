@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/29 12:32:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:23:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void	validate_map(char **map, int line_nbr)
 		validate_shape(line_nbr, &col_nbr, i, j);
 		i++;
 	}
+	free(qty);
 }
