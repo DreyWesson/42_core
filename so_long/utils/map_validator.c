@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/29 17:23:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:41:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ void	validate_composition(char s, t_qty *qty)
 			(*qty).e += 1;
 		else if (s == 'P')
 			(*qty).p += 1;
-		if ((*qty).c > 1 || (*qty).e > 1 || (*qty).p > 1)
-		{
-			ft_error("Invalid composition quantity");
-			exit(0);
-		}
 	}
 }
 
@@ -52,7 +47,7 @@ void	validate_shape(int line_nbr, int *col_nbr, int i, int j)
 {
 	if (i == 0)
 		*col_nbr = j;
-	if (j <= line_nbr || *col_nbr != j)
+	if (j == line_nbr || *col_nbr != j)
 	{
 		ft_error("Provide rectangular maps only");
 		exit(0);
@@ -83,6 +78,11 @@ void	validate_map(char **map, int line_nbr)
 		}
 		validate_shape(line_nbr, &col_nbr, i, j);
 		i++;
+	}
+	if (qty->c < 1 || qty->e != 1 || qty->p != 1)
+	{
+		ft_error("Invalid composition quantity");
+		exit(0);
 	}
 	free(qty);
 }

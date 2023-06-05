@@ -6,12 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/29 12:32:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:08:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
 
 int line_counter(char *file_name)
 {
@@ -76,19 +75,24 @@ char	**map_reader(char *s, int line_nbr)
  * [🔴] If any misconfiguration of any kind is encountered in the file, the program must exit in a clean way
 */
 
+/**
+ * make sure all collectibles and exit are accessible
+ * by checking if its all surrounded by 1s
+ */
 
 
 void handle_map(char **argv)
 {
 	char **ptr;
 	int line_nbr;
+	int i = 0;
 
 	line_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], line_nbr);
 	validate_map(ptr, line_nbr);
-	// while (ptr[i])
-	// {
-	// 	ft_printf("%s\n", ptr[i]);
-	// 	i++;
-	// }
+	while (ptr[i])
+	{
+		ft_printf("%s", ptr[i]);
+		i++;
+	}
 }

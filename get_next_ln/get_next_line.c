@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:59:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/02/13 11:50:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/06/02 07:55:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,3 +113,27 @@ char	*get_next_line(int fd)
 	}
 	return (ft_free(&chunk), ft_split(&line));
 }
+
+// int main()
+// {
+//     char buf[3][10] = {"text1", "text2", "test3"};
+//     int fd;
+//     int i;
+//     int j = -1;
+//     char *line;
+
+//     while (++j < 3)
+//     {
+//         i = -1;
+//         fd = open(buf[j],O_RDONLY);
+//         while (++i < 8)
+//         {
+//             line = get_next_line(fd);
+//             printf("%s", line);
+//             free(line);
+//         }
+//         printf("\n");
+//         close(fd);
+//     }
+//     return (0);
+// }
