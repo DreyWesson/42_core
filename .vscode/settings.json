@@ -9,7 +9,8 @@
         "mlx_sample.h": "c",
         "so_long.h": "c",
         "__tree": "c",
-        "map": "c"
+        "map": "c",
+        "errno.h": "c"
     },
     "cSpell.words": [
         "libft",
