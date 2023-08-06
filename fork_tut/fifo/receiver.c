@@ -8,14 +8,19 @@
 #include <errno.h>
 #include <fcntl.h>
 
-int	send_sum(int fd, int sum)
+int	send_sum( int sum)
 {
+	int fd;
+	int val;
+
+	val = sum;
+
 	fd = open("sum", O_WRONLY);
 	if (fd == -1)
 		return (1);
-	if (write(fd, &sum, sizeof(int)) == -1)
+	if (write(fd, &val, sizeof(int)) == -1)
 		return (2);
-	printf("Sum sent is %d\n", sum);
+	printf("Sum sent is %d\n", val);
 	close(fd);
 	return (0);
 }
@@ -41,7 +46,7 @@ int	main(void)
 		i++;
 	}
 	printf("Sum is %d\n", sum);
-	send_sum(fd, sum);
+	send_sum(sum);
 	close(fd);
 	return (0);
 }

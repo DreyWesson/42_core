@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 07:59:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/06/02 07:55:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:33:17 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ char	*get_next_line(int fd)
 //     int i;
 //     int j = -1;
 //     char *line;
-
 //     while (++j < 3)
 //     {
 //         i = -1;

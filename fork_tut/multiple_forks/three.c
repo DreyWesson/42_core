@@ -45,18 +45,15 @@ int main()
 		if (ids.id2 == 0)
 		{
 			if (ids.id3 == 0)
-			{
 				print_ids(ids, "ggc");
-			} else {
+			else 
 				print_ids(ids, "gc");
-			}
+			
 		} else {
 			if (ids.id3 == 0)
-			{
 				print_ids(ids, "gc");
-			} else {
+			else 
 				print_ids(ids, "c");
-			}
 		}
 	}
 	else
@@ -64,24 +61,16 @@ int main()
 		if (ids.id2 == 0)
 		{
 			if (ids.id3 == 0)
-			{
-					print_ids(ids, "gc");
-			} else {
+				print_ids(ids, "gc");
+			 else 
 				print_ids(ids, "c");
-			}
 		} else {
 			if (ids.id3 == 0)
-			{
 				print_ids(ids, "c");
-			}
 			else
-			{
-				print_ids(ids, "");
-			}	
+				print_ids(ids, "");	
 		}
 	}
-	while (wait(NULL) != -1 || errno != ECHILD)
-	{
-	}
+	while (wait(NULL) != -1 || errno != ECHILD);
     return 0;
 }

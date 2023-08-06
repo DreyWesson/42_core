@@ -10,7 +10,9 @@
         "so_long.h": "c",
         "__tree": "c",
         "map": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "minishell.h": "c",
+        "mlx.h": "c"
     },
     "cSpell.words": [
         "libft",
@@ -20,6 +22,7 @@
         "lstnew",
         "lstprint",
         "lstsize",
+        "minishell",
         "pushswap",
         "putendl",
         "putnbr"

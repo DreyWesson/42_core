@@ -7,6 +7,8 @@
 #include <sys/wait.h>
 // #include <sys/types.h>
 
+// Using just a single pipe sample
+
 int main(void)
 {
 	int fd[2];
