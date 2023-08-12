@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/29 12:34:08 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:12:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@ typedef struct s_qty
 	int e;
 	int p;
 } t_qty;
+
+typedef struct s_nodes
+{
+	
+} t_nodes;
+
+
+enum	e_space_type
+{
+	EMPTY,
+	COLLECTIBLES,
+	EXIT
+};
+
+enum	e_status
+{
+	IDLE,
+	WAITING,
+	VISITED
+};
 
 /**
  * UTILS FUNCTION

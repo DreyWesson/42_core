@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "unordered_map": "c",
+        "chrono": "c"
+    }
+}

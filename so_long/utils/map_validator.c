@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/30 16:41:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 12:48:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	validate_map(char **map, int line_nbr)
 	int		j;
 	int		col_nbr;
 	t_qty	*qty;
+	char *start_pos;
+
 
 	i = 0;
 	qty = malloc(sizeof(t_qty));
