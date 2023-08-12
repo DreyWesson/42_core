@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validator.c                                    :+:      :+:    :+:   */
+/*   one.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 12:48:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:56:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../../../../inc/so_long.h"
 
 void	validate_composition(char s, t_qty *qty)
 {
@@ -54,33 +54,17 @@ void	validate_shape(int line_nbr, int *col_nbr, int i, int j)
 	}
 }
 
-void	validate_map(char **map, int line_nbr)
+t_coord	save_start(int x, int y)
 {
-	int		i;
-	int		j;
-	int		col_nbr;
-	t_qty	*qty;
-	char *start_pos;
+	t_coord	start_pos;
 
+	start_pos.x = x;
+	start_pos.y = y;
+	return (start_pos);
+}
 
-	i = 0;
-	qty = malloc(sizeof(t_qty));
-	qty->c = 0;
-	qty->e = 0;
-	qty->p = 0;
-	col_nbr = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			validate_composition(map[i][j], qty);
-			validate_walls(map[i], line_nbr, j, i);
-			j++;
-		}
-		validate_shape(line_nbr, &col_nbr, i, j);
-		i++;
-	}
+void	check_quant(t_qty *qty)
+{
 	if (qty->c < 1 || qty->e != 1 || qty->p != 1)
 	{
 		ft_error("Invalid composition quantity");

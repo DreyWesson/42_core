@@ -6,15 +6,15 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/07/26 09:30:44 by doduwole         ###   ########.fr        #
+#    Updated: 2023/08/12 16:21:08 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 
-SRC =	$(wildcard main.c utils/*.c maps/*.c)
-# SRC := $(wildcard *.c */*.c */*/*.c */*/*/*.c */*/*/*/*.c)
+# SRC =	$(wildcard main.c inc/maps/*.c utils/*.c maps/*.c)
+SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 
 
 CFLAGS = -Werror -Wall -Wextra

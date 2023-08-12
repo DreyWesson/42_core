@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   two.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 17:05:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 15:43:18 by doduwole         ###   ########.fr       */
+/*   Created: 2023/08/12 16:54:55 by doduwole          #+#    #+#             */
+/*   Updated: 2023/08/12 16:57:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/so_long.h"
+#include "../../../../inc/so_long.h"
 
-int	main(int argc, char **argv)
+void	default_quant(t_qty *qty)
 {
-	if (!handle_validation(argc, argv))
-		return (0);
-	handle_map(argv);
-	return (0);
+	qty->c = 0;
+	qty->e = 0;
+	qty->p = 0;
 }
