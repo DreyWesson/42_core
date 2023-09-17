@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:43:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:43:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:11:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 int	line_counter(char *file_name)
 {
-	int	i;
-	int	fd;
+	int		i;
+	int		fd;
+	char	*line;
 
 	i = 0;
+	line = NULL;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_error("Some error occurred");
 		exit(1);
 	}
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	while (line)
+	{
 		i++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	return (i);
 }
 

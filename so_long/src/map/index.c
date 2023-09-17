@@ -6,33 +6,50 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:33:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:16:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-/**
- * [✅] only contains "01CEP"
- * [✅] must contain only one /E/P
- * [✅] all first & last row and first & last cols are 1s ELSE return error
- * [✅] must be rectangular ie the num of cols must be greater than rows
- * [✅] If any misconfiguration of any kind is encountered in the file, the program must exit in a clean way
- * [🔴] check if there’s a valid path in the map.
- * 		make sure all collectibles and exit are accessible
- * 		by checking if its all surrounded by 1s
- */
-/**
- * When you encounter C/E make sure P can access it
- * check if P is above or below or same line
- * check if the next lines are not sealed
-*/
-void handle_map(char **argv)
+int	handle_map(char **argv, t_game *game)
 {
-	char **ptr;
-	int line_nbr;
+	char		**ptr;
+	t_details	props;
+	t_nodes		*queue;
+	t_cell		**grid;
 
-	line_nbr = line_counter(argv[1]);
-	ptr = map_reader(argv[1], line_nbr);
-	validate_map(ptr, line_nbr);
+	queue = NULL;
+	grid = NULL;
+	props = default_details(argv[1]);
+	ptr = map_reader(argv[1], props.row_nbr);
+	grid = validate_map(ptr, &props, &queue);
+	ft_free2d(ptr);
+	if (!grid || !build_graphics(game, grid, props))
+		return (free_grid(grid, props.row_nbr, 1), 0);
+	return (1);
+}
+
+int	validate_arg(int argc, char **argv)
+{
+	if (argc == 1)
+		return (ft_error("Too few argument"));
+	if (argc > 2)
+		return (ft_error("Too many argument"));
+	if (!is_valid(argv[1]))
+		return (ft_error("Expecting a .ber file"));
+	return (1);
+}
+
+int	handle_validation(int argc, char **argv, t_game *game)
+{
+	if (!validate_arg(argc, argv))
+		return (0);
+	if (!handle_map(argv, game))
+	{
+		if (game->grid)
+			free_grid(game->grid, game->props.row_nbr, 1);
+		return (0);
+	}
+	return (1);
 }

@@ -19,22 +19,27 @@ GETNEXTLNDIR = get_next_ln
 
 SRCS = $(wildcard *.c ${PRINTFDIR}/*.c ${CONVERSIONSDIR}/*.c ${UTILSDIR}/*.c ${GETNEXTLNDIR}/*.c)
 
-OBJS = $(SRCS:.c=.o)
+OBJ_DIR = obj
+
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 BONUS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
-BONUS_OBJS	= $(BONUS:.c=.o)
+BONUS_OBJS	= $(BONUS:.c=$(OBJ_DIR)/%.o)
 
 CC				= gcc
-RM				= rm -f
+RM				= rm -rf
 CFLAGS			= -Wall -Wextra -Werror -I.
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS) 
 				ar rcs $(NAME) $(OBJS)
-				@make clean -C ./
+
+$(OBJ_DIR)/%.o: %.c
+	@echo $(CURSIVE)$(GRAY) "     - Building $<" $(NONE)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)

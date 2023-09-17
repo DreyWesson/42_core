@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:43:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:10:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-// int	line_counter(char *file_name)
-// {
-// 	int	i;
-// 	int	fd;
+void	check_fd(int fd)
+{
+	if (fd < 0)
+	{
+		ft_error("Some error occurred");
+		exit(1);
+	}
+}
 
-// 	i = 0;
-// 	fd = open(file_name, O_RDONLY);
-// 	if (fd < 0)
-// 	{
-// 		ft_error("Some error occurred");
-// 		exit(1);
-// 	}
-// 	while (get_next_line(fd))
-// 		i++;
-// 	return (i);
-// }
-
-// size_t	ft_strlen_ln(const char *str)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (str[i] != '\0' && str[i] != '\n')
-// 		i++;
-// 	return (i);
-// }
-
-char	**map_reader(char *s, int line_nbr)
+char	**map_reader(char *s, int row_nbr)
 {
 	char	**ptr;
 	char	*str;
@@ -48,23 +30,19 @@ char	**map_reader(char *s, int line_nbr)
 	int		fd;
 
 	fd = open(s, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_error("Some error occurred");
-		exit(1);
-	}
-	// line_nbr = line_counter(s);
-	ptr = (char **)ft_calloc(sizeof(char *), line_nbr + 1);
+	check_fd(fd);
+	ptr = (char **)ft_calloc(sizeof(char *), row_nbr + 1);
 	if (!ptr)
-		return (0);
+		return (NULL);
 	i = 0;
-	while (i < line_nbr)
+	while (i < row_nbr)
 	{
 		str = get_next_line(fd);
 		len = ft_strlen_ln(str);
 		ptr[i] = ft_substr(str, 0, len);
 		ptr[i][len] = '\0';
 		i++;
+		free(str);
 	}
 	return (ptr);
 }
