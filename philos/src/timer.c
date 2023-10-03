@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   timer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 19:37:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/09/06 16:50:30 by doduwole         ###   ########.fr       */
+/*   Created: 2023/09/22 19:17:20 by doduwole          #+#    #+#             */
+/*   Updated: 2023/10/01 14:05:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/philosopher.h"
+#include "../inc/philo.h"
 
-void	*routine(void *arg)
+long long	get_time(void)
 {
-	printf("Hello philosopher\n");
-	sleep(3);
-	printf("Dead\n");
-	(void)arg;
-	return (NULL);
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec * 0.001));
 }
 
-int	main(int argc, char **argv)
+long long	time_diff(long long time)
 {
-	pthread_t t1;
-	pthread_t t2;
-
-	(void)argc;
-	(void)argv;
-	pthread_create(&t1, NULL, &routine, NULL);
-	pthread_create(&t2, NULL, &routine, NULL);
-	pthread_join(t1, NULL);
-	pthread_join(t2, NULL);
+	if (time > 0)
+		return (get_time() - time);
 	return (0);
+}
+
+void	time_sim(long long time)
+{
+	long long start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(500);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:04:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/01/16 14:07:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:11:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		*lst = new;
 }
+
 // int	main(void)
 // {
 // 	t_list	*head;
