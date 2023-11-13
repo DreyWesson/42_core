@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/oduwoledare/atoms/core",
-      "program": "/Users/oduwoledare/atoms/core/build/Debug/outDebug"
+      "cwd": "/Users/oduwoledare/atoms/core/minishell/src",
+      "program": "/Users/oduwoledare/atoms/core/minishell/src/build/Debug/outDebug"
     }
   ]
 }

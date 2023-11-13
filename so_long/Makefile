@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/04 22:36:24 by doduwole         ###   ########.fr        #
+#    Updated: 2023/10/27 16:47:25 by oduwoledare      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
